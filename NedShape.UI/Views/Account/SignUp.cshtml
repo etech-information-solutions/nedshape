@@ -1,0 +1,473 @@
+﻿@model NedShape.UI.Models.SignUpViewModel
+
+@using NedShape.Core.Enums;
+@using NedShape.Data.Models;
+@using NedShape.UI.Models;
+
+@{
+    ViewBag.Title = "Sign Up";
+
+    List<string> monthNames = System.Globalization.CultureInfo.CurrentCulture.DateTimeFormat.MonthNames.Where( m => !string.IsNullOrEmpty( m ) ).ToList();
+
+    BankDetailViewModel bank = ( Model.BankDetails != null ) ? Model.BankDetails : new BankDetailViewModel() { };
+    AddressViewModel address = ( Model.Addresses != null && Model.Addresses.Any() ) ? Model.Addresses.FirstOrDefault() : new AddressViewModel() { };
+
+    string[] dob = ( Model.DateOfBirth != null ) ? Model.DateOfBirth.Value.ToString("yyyy/MM/dd").Split( '/' ) : null;
+}
+
+
+<div class="sign-in sign-up" style="margin-top: 0; padding: 2% 3% 0.01% 3%;">
+
+    <div class="heads" style="text-align: left; margin-bottom: 20px;">
+        Sign Up For NedShape
+    </div>
+
+    <div class="details">
+
+        @using ( Html.BeginForm( "SignUp", "Account", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return C4L.UI.DataValidateForm($(this))", id = "sign-up-form" } ) )
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary( true )
+
+            <div class="left" style="width: 50%; margin-right: 1%;">
+
+                <div class="editor-field">
+
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        NAME
+                    </label>
+
+                    @Html.TextBoxFor( model => model.Name, new { @class = "input", @placeholder = "Your First Name", @style = "float: right; display: inline-block; width: 60%;" } )
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Name )
+
+                </div>
+
+                <div class="editor-field">
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        SURNAME
+                    </label>
+
+                    @Html.TextBoxFor( model => model.Surname, new { @class = "input", @placeholder = "Your Surname", @style = "float: right; display: inline-block; width: 60%;" } )
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Surname )
+
+                </div>
+
+                <div class="editor-field">
+
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        DATE OF BIRTH
+                    </label>
+
+                    @Html.HiddenFor( model => model.DateOfBirth )
+
+                    <div class="right" style="width: 20%;">
+                        <select id="dob-year" data-dob="1" data-name="year" class="chzn" required="required" style="width: 100%;">
+                            <option value="">-- Year</option>
+
+                            @for ( int i = DateTime.Now.Year; i > 1939; i-- )
+                            {
+                                string sel = ( dob != null && dob.Length >= 1 && dob[ 0 ] == i.ToString() ) ? "selected=selected" : "";
+
+                                <option value="@i" @sel>@i</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="right" style="width: 22%; margin-right: 1%;">
+                        <select id="dob-month" data-dob="1" data-name="month" class="chzn" required="required" style="width: 100%;">
+                            <option value="">-- Month</option>
+
+                            @for ( int i = 0; i < 12; i++ )
+                            {
+                                string m = monthNames[ i ];
+
+                                string sel = ( dob != null && dob.Length >= 2 && dob[ 1 ] == ( i + 1 ).ToString() ) ? "selected=selected" : "";
+
+                                <option value="@(i + 1)" @sel>@m</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="right" style="width: 20%; margin-right: 1%;">
+                        <select id="dob-day" data-dob="1" data-name="day" class="chzn" required="required" style="width: 100%;">
+                            <option value="">-- Day</option>
+
+                            @for ( int i = 1; i < 32; i++ )
+                            {
+                                string d = ( i >= 10 ) ? "" + i : "0" + i;
+
+                                string sel = ( dob != null && dob.Length >= 3 && dob[ 2 ] == i.ToString() ) ? "selected=selected" : "";
+
+                                <option value="@i" @sel>@d</option>
+                            }
+                        </select>
+                    </div>
+
+                    @*@Html.DatePickerFor( model => model.DateOfBirth, new { @class = "input date-picker", @placeholder = "Your Date of Birth", @style = "float: right; display: inline-block; width: 60%;" } )*@
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.DateOfBirth )
+
+                </div>
+
+                <div class="editor-field">
+
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        ID/PASSPORT
+                    </label>
+
+                    <label style="display: inline-block; margin-top: 7px; font-size: 12px; float: right;">
+                        <input id="IsSAId-No" name="IsSAId" value="0" type="radio" @( ( Model.IsSAId == YesNo.No ) ? "checked=checked" : "" ) style="margin-top: 1px;" /> Other
+                    </label>
+
+                    <label style="display: inline-block; margin-top: 7px; font-size: 12px; float: right;">
+                        <input id="IsSAId-Yes" name="IsSAId" value="1" type="radio" @( ( Model.IsSAId == YesNo.Yes ) ? "checked=checked" : "" ) style="margin-top: 1px;" /> SA ID
+                    </label>
+
+                    @Html.TextBoxFor( model => model.IdNumber, new { @class = "input", @style = "width: 41%; float: right; display: inline-block;", @placeholder = "Your ID Number" } )
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.IdNumber )
+
+                </div>
+
+                <div class="editor-field">
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        TAX NUMBER
+                    </label>
+
+                    @Html.TextBoxFor( model => model.TaxNumber, new { @class = "input", @placeholder = "Your Tax Number", @style = "float: right; display: inline-block; width: 60%;" } )
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.TaxNumber )
+
+                </div>
+
+                <div class="editor-field">
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        CELL NUMBER
+                    </label>
+
+                    @Html.TextBoxFor( model => model.Cell, new { @class = "input", @placeholder = "Your Cellphone Number", @style = "float: right; display: inline-block; width: 60%;" } )
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Cell )
+
+                </div>
+
+                <div id="confirm-cell" class="@( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "block" : "none" ) none editor-field">
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        CONFIRM CELL NUMBER
+                    </label>
+
+                    @Html.TextBoxFor( model => model.ConfirmCell, new { @class = "input", @placeholder = "Confirm your Cellphone Number", @style = "float: right; display: inline-block; width: 60%;" } )
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.ConfirmCell )
+
+                </div>
+
+
+
+                <div class="editor-field">
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        EMAIL
+                    </label>
+
+                    @Html.TextBoxFor( model => model.Email, new { @class = "input", @placeholder = "Your Email Address", @style = "float: right; display: inline-block; width: 60%;" } )
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Email )
+                </div>
+
+
+                <!-- START: Address Details -->
+                <input id="Addresses_AddressType" name="Addresses[0].AddressType" type="hidden" value="@( ( int ) AddressType.Postal )" />
+
+                <div class="editor-field">
+
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        PROVINCE
+                    </label>
+
+                    <div style="float: right; display: inline-block; width: 64%;">
+
+                        <select id="Addresses_Province" name="Addresses[0].Province" class="chzn" required="required" style="width: 100%;">
+                            <option value="">-- select</option>
+                            @foreach ( int p in Enum.GetValues( typeof( Province ) ) )
+                            {
+                                string text = ( ( Province ) p ).GetDisplayText();
+
+                                if ( text.ToLower() == "all" )
+                                {
+                                    continue;
+                                }
+
+                                string sel = ( p == ( int? ) address?.Province ) ? "selected=selected" : "";
+
+                                <option value="@p" @sel>@text</option>
+                            }
+                        </select>
+
+                    </div>
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().Province )
+
+                </div>
+
+                <div class="editor-field">
+
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        TOWN
+                    </label>
+
+                    <input id="Addresses_Town" name="Addresses[0].Town" type="text" class="input" value="@address.Town" required="required" placeholder="Enter Town" style="float: right; display: inline-block; width: 60%;" />
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().Town )
+
+                </div>
+
+                <div class="editor-field">
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        ADDRESS
+                    </label>
+
+                    <input id="Addresses_AddressLine1" name="Addresses[0].AddressLine1" type="text" class="input" value="@address.AddressLine1" required="required" placeholder="Enter Address Line 1" style="float: right; display: inline-block; width: 60%;" />
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().AddressLine1 )
+
+                </div>
+
+                <div class="editor-field">
+
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        &nbsp;
+                    </label>
+
+                    <input id="Addresses_AddressLine2" name="Addresses[0].AddressLine2" type="text" class="input" value="@address.AddressLine2" placeholder="Enter Address Line 2" style="float: right; display: inline-block; width: 60%;" />
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().AddressLine2 )
+                </div>
+
+                <div class="editor-field">
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        POSTAL CODE
+                    </label>
+
+                    <input id="Addresses_PostCode" name="Addresses[0].PostCode" type="text" class="input" value="@address.PostCode" required="required" placeholder="Enter Postal Code" style="float: right; display: inline-block; width: 60%;" />
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().PostCode )
+                </div>
+
+                <!-- END: Address Details -->
+
+                <div class="clear">&nbsp;</div>
+
+                <div class="editor-field">
+
+                    <label style="text-align: left;">
+                        <input id="IsAccpetedTC" name="IsAccpetedTC" value="True" type="checkbox" style="margin-top: 1px;" />
+                        You have read and agree with the
+                        <a href="@Url.Content( "~/Uploads/Documents/Terms-and-Conditions.pdf" )" target="_blank"><strong>Terms and Conditions</strong></a>
+                        of signing up?
+                    </label>
+
+                </div>
+
+            </div>
+
+            <div class="right" style="width: 42%; text-align: left;">
+
+                <div class="editor-field" style="margin-bottom: 10px;">
+
+                    <label>UPLOAD PICTURE OF ID/PASSPORT</label>
+
+                    <input id="Files[0].File" name="Files[0].File" type="file" value="" required="required" data-val-file="1" />
+                    <input id="Files[0].Name" name="Files[0].Name" type="hidden" value="ID/Passport" />
+                    <input id="Files[0].Description" name="Files[0].Description" class="input" type="hidden" value="This is the ID/Passport uploaded picture" />
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Files.FirstOrDefault().File )
+
+                </div>
+
+                <div class="editor-field">
+
+                    <label>UPLOAD A SELFIE</label>
+
+                    <input id="Files[1].File" name="Files[1].File" type="file" value="" data-val-file="1" />
+                    <input id="Files[1].Name" name="Files[1].Name" type="hidden" value="SELFIE" />
+                    <input id="Files[1].Description" name="Files[1].Description" class="input" type="hidden" value="This is the SELFIE uploaded picture" />
+
+                    <div class="clear"></div>
+
+                    @Html.ValidationMessageFor( model => model.Files.FirstOrDefault().File )
+
+                </div>
+
+                <div class="editor-field" style="margin-top: 24px; padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px dashed #ddd;">
+
+                    <p>
+                        <strong style="font-size: 14px;">REWARDS MUST BE PAID TO:</strong>
+                    </p>
+
+                    <label style="display: inline-block; margin-right: 10%;">
+                        <input id="PaymentMethod" name="PaymentMethod" type="radio" value="1" @( ( Model.PaymentMethod == PaymentMethod.Cell ) ? "checked=checked" : "" ) style="margin-top: 1px;" data-show-hide="1" data-show="#confirm-cell" data-hide="#bank-details" data-show-required="1" />
+                        CELLPHONE WALLET
+                    </label>
+
+                    <label style="display: inline-block; margin-right: 2%;">
+                        <input id="PaymentMethod" name="PaymentMethod" type="radio" value="2" @( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "checked=checked" : "" ) style="margin-top: 1px;" data-show-hide="1" data-show="#bank-details" data-hide="#confirm-cell" data-show-required="1" />
+                        Bank ACCOUNT
+                    </label>
+
+                    <div class="clear"></div>
+
+                </div>
+
+                <div id="bank-details" class="@( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "block" : "none" )">
+
+                    <div class="editor-field">
+                        <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                            BENEFICIARY NAME
+                        </label>
+
+                        <input type="text" class="input" id="BankDetails_Beneficiary" name="BankDetails.Beneficiary" value="@bank.Beneficiary" placeholder="Enter Beneficiary Name" style="float: right; display: inline-block; width: 60%;" />
+
+                        <div class="clear"></div>
+
+                        @Html.ValidationMessageFor( model => model.BankDetails.Beneficiary )
+
+                    </div>
+
+
+                    <div class="editor-field">
+                        <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                            BANK
+                        </label>
+
+                        <div style="float: right; width: 64%;">
+
+                            <select class="chzn" id="BankDetails_BankId" name="BankDetails.BankId" data-bank="1" data-target="#BankDetails_Branch" style="width: 100%;">
+                                <option value="">--select</option>
+
+                                @foreach ( Bank b in Model.BankOptions )
+                                {
+                                    string sel = ( b.Id == ( int? ) bank?.BankId ) ? "selected=selected" : "";
+
+                                    <option value="@b.Id" @sel>@b.Description</option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                        @Html.ValidationMessageFor( model => model.BankDetails.BankId )
+
+                    </div>
+
+                    <div class="editor-field">
+                        <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                            ACCOUNT TYPE
+                        </label>
+
+                        <div style="float: right; width: 64%;">
+
+                            <select class="chzn" id="BankDetails_AccountType" name="BankDetails.AccountType" style="width: 100%;">
+                                <option value="">--select</option>
+
+                                @foreach ( int p in Enum.GetValues( typeof( BankAccountType ) ) )
+                                {
+                                    string text = ( ( BankAccountType ) p ).GetDisplayText();
+
+                                    if ( text.ToLower() == "all" || text.ToLower() == "none" )
+                                    {
+                                        continue;
+                                    }
+
+                                    string sel = ( p == ( int? ) bank?.AccountType ) ? "selected=selected" : "";
+
+                                    <option value="@p" @sel>@text</option>
+                                }
+
+                            </select>
+
+                        </div>
+
+                        <div class="clear"></div>
+
+                        @Html.ValidationMessageFor( model => model.BankDetails.AccountType )
+
+                    </div>
+
+                    <div class="editor-field">
+                        <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                            ACCOUNT NUMBER
+                        </label>
+
+                        <input id="BankDetails_Account" name="BankDetails.Account" type="text" class="input" value="@bank.Account" placeholder="Enter Account Number" style="float: right; display: inline-block; width: 60%;" />
+
+                        <div class="clear"></div>
+
+                        @Html.ValidationMessageFor( model => model.BankDetails.Account )
+
+                    </div>
+
+                    <div class="editor-field">
+                        <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                            BRANCH CODE
+                        </label>
+
+                        <input id="BankDetails_Branch" name="BankDetails.Branch" type="text" class="input" value="@bank.Branch" placeholder="Enter Branch Code" style="float: right; display: inline-block; width: 60%;" />
+
+                        <div class="clear"></div>
+
+                        @Html.ValidationMessageFor( model => model.BankDetails.Branch )
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div class="clear">&nbsp;</div>
+
+            <p style="text-align: left;">
+
+                <input type="submit" value="Sign Up" style="display: inline;" />
+
+                <span style="padding: 0 2px;">/</span>
+
+                @Html.ActionLink( "Sign In", "Login", new { }, new { @class = "uppercase" } )
+            </p>
+        }
+
+    </div>
+
+</div>

@@ -1,0 +1,240 @@
+﻿@model Statement
+
+@using NedShape.Data.Models;
+
+@{
+    if ( VariableExtension.SystemRules == null )
+    {
+        VariableExtension.SetRules();
+    }
+    
+    String absoluteUrlBase = Request.Url.Scheme + "://" + Request.Url.Host + ( Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port );
+
+    List<StatementLine> lines = Model.StatementLines.ToList();
+    List<int> pids = lines.Select( s => s.SubProductId ).Distinct().ToList();
+}
+
+
+<table cellspacing="0" cellpadding="10" width="100%" style="width: 100%; font-size: 11px; margin: 0 auto; background-color: #fff; font-family: Helvetica, 'Segoe UI', Verdana, Sans-Serif;">
+
+    <tbody>
+        <tr>
+            <td colspan="2">
+                <img alt="NedShape" src="@Url.Content( absoluteUrlBase + "/Images/cash4leads-logo.png" )" style="width: 100%;" />
+            </td>
+            <td valign="middle" colspan="3" style="text-align: right; font-size: 18px;">
+                <strong>COMMISSION STATEMENT</strong>
+            </td>
+        </tr>
+        <tr>
+            <td height="20" colspan="5"></td>
+        </tr>
+        <tr>
+            <td>
+                Address
+            </td>
+            <td>
+                @VariableExtension.SystemRules.Address
+            </td>
+            <td style="text-align: right; border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                Statement Date
+            </td>
+            <td colspan="2" style="text-align: right; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                @Model.CreatedOn.ToString( "yyyy/MM/dd" )
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone
+            </td>
+            <td>
+                @VariableExtension.SystemRules.ContactNumber
+            </td>
+            <td style="text-align: right; border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                Statement No
+            </td>
+            <td colspan="2" style="text-align: right; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                @Model.Number
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email Address
+            </td>
+            <td>
+                @VariableExtension.SystemRules.ContactEmail
+            </td>
+            <td style="border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;"></td>
+            <td colspan="2" style="border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;"></td>
+        </tr>
+        <tr>
+            <td height="20" colspan="5"></td>
+        </tr>
+        <tr>
+            <td colspan="2" style="background-color: #dddddd; font-weight: bold; text-align: center; border-right: 1px solid #aaa;">
+                Trading Partner
+            </td>
+            <td colspan="3" style="background-color: #dddddd; font-weight: bold; text-align: center;">
+                @Model.User.Name @Model.User.Surname
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Contact
+            </td>
+            <td>
+                @Model.User.Cell
+            </td>
+            <td>Email</td>
+            <td colspan="2">
+                @Model.User.Email
+            </td>
+        </tr>
+        <tr>
+            <td height="20" colspan="5"></td>
+        </tr>
+        <tr>
+            <td width="20%" style="background-color: #dddddd; border-top: 1px solid #aaaaaa; border-left: 1px solid #aaaaaa; font-weight: bold; text-align: left;">
+                Product
+            </td>
+            <td width="30%" style="background-color: #dddddd; border-top: 1px solid #aaaaaa; border-left: 1px solid #aaaaaa; font-weight: bold; text-align: left;">
+                Product Description
+            </td>
+            <td width="20%" style="background-color: #dddddd; border-top: 1px solid #aaaaaa; border-left: 1px solid #aaaaaa; font-weight: bold; text-align: right;">
+                No of Leads
+            </td>
+            <td width="15%" style="background-color: #dddddd; border-top: 1px solid #aaaaaa; border-left: 1px solid #aaaaaa; font-weight: bold; text-align: right;">
+                Fee
+            </td>
+            <td width="15%" style="background-color: #dddddd; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa; border-left: 1px solid #aaaaaa; font-weight: bold; text-align: right;">
+                Total
+            </td>
+        </tr>
+        @foreach ( int id in pids )
+        {
+            StatementLine line = lines.FirstOrDefault( l => l.SubProductId == id );
+
+            <tr>
+                <td style="text-align: left; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                    @line.SubProduct.Product.Name
+                </td>
+                <td style="text-align: left; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                    @line.SubProduct.OptionDescription
+                </td>
+                <td style="text-align: right; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                    @lines.Count( l => l.SubProductId == id )
+                </td>
+                <td style="text-align: right; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                    @line.LeadFee.ToString( "C", System.Globalization.CultureInfo.CreateSpecificCulture( "en-ZA" ) )
+                </td>
+                <td style="text-align: right; border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                    @lines.Where( l => l.SubProductId == id ).Sum( s => s.LeadFee ).ToString( "C", System.Globalization.CultureInfo.CreateSpecificCulture( "en-ZA" ) )
+                </td>
+            </tr>
+        }
+
+        <tr>
+            <td style="background-color: #dddddd; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;"></td>
+            <td style="background-color: #dddddd; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;"></td>
+            <td style="background-color: #dddddd; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;"></td>
+            <td style="background-color: #dddddd; border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;"></td>
+            <td style="text-align: right; background-color: #dddddd; border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                <strong>
+                    @lines.Sum( s => s.LeadFee ).ToString( "C", System.Globalization.CultureInfo.CreateSpecificCulture( "en-ZA" ) )
+                </strong>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;"></td>
+            <td style="border-top: 1px solid #aaaaaa; font-weight: bold; border-bottom: 1px solid #aaaaaa;">
+                Total due Incl VAT
+            </td>
+            <td style="border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;"></td>
+            <td style="border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;"></td>
+            <td style="text-align: right; border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;">
+                @lines.Sum( s => s.LeadFee ).ToString( "C", System.Globalization.CultureInfo.CreateSpecificCulture( "en-ZA" ) )
+            </td>
+        </tr>
+
+        <tr>
+            <td height="20" colspan="5"></td>
+        </tr>
+
+        <tr>
+            <td style="border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                Date Paid
+            </td>
+            <td style="border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                @Model.PaymentDate.ToString( "yyyy/MM/dd" )
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                Account Holder
+            </td>
+            <td style="border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                @Model.Benificiary
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                Bank
+            </td>
+            <td style="border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                @Model.Bank
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                Account Number
+            </td>
+            <td style="border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa;">
+                @Model.AccountNo.Expose( 4 )
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td style="border-left: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;">
+                Branch
+            </td>
+            <td style="border-left: 1px solid #aaaaaa; border-right: 1px solid #aaaaaa; border-top: 1px solid #aaaaaa; border-bottom: 1px solid #aaaaaa;">
+                @Model.Branch
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td height="20" colspan="5"></td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: center;">
+                <p>
+                    Support Email: <a href="mailto:@VariableExtension.SystemRules.ContactEmail">@VariableExtension.SystemRules.ContactEmail</a>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="5" style="text-align: center; color: #aaa;">
+                <i>@DateTime.Now.Year Copyright &copy; | Cash4Leds. All Rights Reserved</i>
+            </td>
+        </tr>
+    </tfoot>
+
+</table>

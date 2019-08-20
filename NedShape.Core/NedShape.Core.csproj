@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{0B59152F-72FC-4190-8459-F231AD8E0112}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NedShape.Core</RootNamespace>
+    <AssemblyName>NedShape.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.6132.35681, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.7\lib\net40\System.Linq.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\NedShape.UI\bin\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\EnumAttributes.cs" />
+    <Compile Include="Attributes\FormattedDisplayNameAttribute.cs" />
+    <Compile Include="Attributes\InstanceSpecificDisplayName.cs" />
+    <Compile Include="Attributes\InterfaceDisplayName.cs" />
+    <Compile Include="Attributes\ViewModelAttribute.cs" />
+    <Compile Include="Attributes\ViewModelBindingAttribute.cs" />
+    <Compile Include="Encryption\Encryption.cs" />
+    <Compile Include="Enums\ActivityTypes.cs" />
+    <Compile Include="Enums\AddressType.cs" />
+    <Compile Include="Enums\BroadcastType.cs" />
+    <Compile Include="Enums\Timers.cs" />
+    <Compile Include="Enums\BankAccountType.cs" />
+    <Compile Include="Enums\DeclineReason.cs" />
+    <Compile Include="Enums\Province.cs" />
+    <Compile Include="Enums\RoleType.cs" />
+    <Compile Include="Enums\DocumentType.cs" />
+    <Compile Include="Enums\Months.cs" />
+    <Compile Include="Enums\NotificationType.cs" />
+    <Compile Include="Enums\PermissionContext.cs" />
+    <Compile Include="Enums\PermissionTo.cs" />
+    <Compile Include="Enums\Status.cs" />
+    <Compile Include="Enums\Title.cs" />
+    <Compile Include="Enums\YesNo.cs" />
+    <Compile Include="Extensions\ConfigSettings.cs" />
+    <Compile Include="Extensions\ContextExtensions.cs" />
+    <Compile Include="Extensions\CustomAttributeProviderExtensions.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\DictionaryExtensions.cs" />
+    <Compile Include="Extensions\DoubleExtensions.cs" />
+    <Compile Include="Extensions\EnumExtensions.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
+    <Compile Include="Extensions\FloatExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\ListExtensions.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\PagingExtension.cs" />
+    <Compile Include="Extensions\PrettySizeExtension.cs" />
+    <Compile Include="Extensions\QueryableExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="Extensions\VariableExtensions.cs" />
+    <Compile Include="Helpers\DateTimeHelper.cs" />
+    <Compile Include="Helpers\DictionaryHelpers.cs" />
+    <Compile Include="Helpers\EnumHelper.cs" />
+    <Compile Include="Helpers\MvcHelper.cs" />
+    <Compile Include="Helpers\ObjectHelpers.cs" />
+    <Compile Include="Helpers\ParseHelper.cs" />
+    <Compile Include="Interfaces\IEncryptor.cs" />
+    <Compile Include="Interfaces\IEntity.cs" />
+    <Compile Include="Interfaces\IIdentifyable.cs" />
+    <Compile Include="Interfaces\IOwnable.cs" />
+    <Compile Include="Interfaces\IPermission.cs" />
+    <Compile Include="Interfaces\IRole.cs" />
+    <Compile Include="Interfaces\IUser.cs" />
+    <Compile Include="Models\AuditLogCustomModel.cs" />
+    <Compile Include="Models\BankDetailModel.cs" />
+    <Compile Include="Models\CDVResult.cs" />
+    <Compile Include="Models\DeclinePRModel.cs" />
+    <Compile Include="Models\DownloadDocumentModel.cs" />
+    <Compile Include="Models\JsonCommonModel.cs" />
+    <Compile Include="Models\CountModel.cs" />
+    <Compile Include="Models\KeyValueModel.cs" />
+    <Compile Include="Models\SimpleBankModel.cs" />
+    <Compile Include="Models\CustomSearchModel.cs" />
+    <Compile Include="Models\EmailModel.cs" />
+    <Compile Include="Models\NotificationModel.cs" />
+    <Compile Include="Models\PagingModel.cs" />
+    <Compile Include="Models\PermissionModel.cs" />
+    <Compile Include="Models\RoleModel.cs" />
+    <Compile Include="Models\SimpleUserModel.cs" />
+    <Compile Include="Models\StringDropDownModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AddressService.cs" />
+    <Compile Include="Services\BankDetailService.cs" />
+    <Compile Include="Services\DocumentService.cs" />
+    <Compile Include="Services\BankService.cs" />
+    <Compile Include="Services\BroadcastService.cs" />
+    <Compile Include="Services\ImageService.cs" />
+    <Compile Include="Services\TokenService.cs" />
+    <Compile Include="Services\UserBroadcastService.cs" />
+    <Compile Include="Services\SystemConfigService.cs" />
+    <Compile Include="Services\BaseService.cs" />
+    <Compile Include="Services\RoleService.cs" />
+    <Compile Include="Services\AuditLogService.cs" />
+    <Compile Include="Services\UserRoleService.cs" />
+    <Compile Include="Services\UserService.cs" />
+    <Compile Include="Specifications\AdHocSpecification.cs" />
+    <Compile Include="Specifications\AndSpecification.cs" />
+    <Compile Include="Specifications\CompositeSpecification.cs" />
+    <Compile Include="Specifications\ExpressionExtensions.cs" />
+    <Compile Include="Specifications\ISpecification.cs" />
+    <Compile Include="Specifications\OrderBy.cs" />
+    <Compile Include="Specifications\OrSpecification.cs" />
+    <Compile Include="Specifications\ParameterRewriter.cs" />
+    <Compile Include="Specifications\SpecificationExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NedShape.Data\NedShape.Data.csproj">
+      <Project>{5a785592-8695-46bf-9fd0-8a650d7ff05a}</Project>
+      <Name>NedShape.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Utilities\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

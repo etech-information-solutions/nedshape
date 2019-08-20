@@ -1,0 +1,138 @@
+﻿
+
+@{
+    String controller = ViewContext.RouteData.Values[ "controller" ].ToString();
+    var user = ( Request.IsAuthenticated && ViewBag.CurrentUser != null ) ? ( NedShape.Core.Models.UserModel ) ViewBag.CurrentUser : User.Get();
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NedShape - @ViewBag.Title</title>
+
+    <link href="~/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render( "~/Content/css" )
+    @Styles.Render( "~/Content/jqueryui" )
+    @Scripts.Render( "~/bundles/modernizr" )
+    @Scripts.Render( "~/bundles/jquery" )
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="@(Request.IsAuthenticated ? "logged-in" : "")">
+
+            @if ( Request.IsAuthenticated )
+            {
+                <div id="my-account" class="header my-account">
+
+                    <div class="left" style="width: 22%;">
+
+                        <strong style="padding-right: 20px; border-right: 1px solid #848484;">
+                            <a href="@Url.Action( "Index", "DashBoard" )">
+                                <img alt="NedShape" src="@Url.Content( "~/images/cash4leads-logo.png" )" style="width: 55%;" />
+                            </a>
+                        </strong>
+
+                        <strong style="font-size: 13px; padding-left: 20px;">
+                            @DateTime.Now.ToString( "dd / MM / yyyy" )
+                        </strong>
+
+                    </div>
+
+                    <div class="right" style="font-size: 13px;">
+
+                        <span class="left" style="text-align: right;">
+                            Welcome:
+
+                            <strong class="block">@user.Name @user.Surname</strong>
+                        </span>
+                        <span class="left" style="padding-left: 20px;">
+                            <a class="red-bg" href="@Url.Action( "LogOff", "Account" )" style="color: #fff; padding: 10px 15px; font-size: 13px; font-weight: bold; display: inline-block;">
+                                LOGOUT
+                            </a>
+                        </span>
+
+                        <div class="clear"></div>
+
+                    </div>
+
+                    <div class="clear"></div>
+
+                </div>
+            }
+            else
+            {
+                <div class="logo @(Request.IsAuthenticated ? "logged-in" : "")">
+                    <a href="@Url.Action( "Login", "Account" )">
+                        <img alt="NedShape" src="@Url.Content( "~/images/cash4leads-logo.png" )" />
+                    </a>
+                </div>
+            }
+
+            <div class="sep @(Request.IsAuthenticated ? "logged-in" : "")"></div>
+
+        </div>
+
+        @if ( Request.IsAuthenticated )
+        {
+            <div id="side-bar" class="side-bar @(Request.IsAuthenticated ? "logged-in" : "")">
+
+                @Html.Partial( "_Menu" )
+
+                <div class="clear"></div>
+
+            </div>
+        }
+
+        <div id="main-content" class="content @(Request.IsAuthenticated ? "logged-in" : "")" style="margin-bottom: 0;">
+
+            @Html.Partial( "_Notification" )
+
+            <div id="item-list" class="body">
+                @RenderBody()
+            </div>
+
+        </div>
+
+        <footer class="@(Request.IsAuthenticated ? "logged-in" : "")">
+
+            <div id="footernote" class="content">
+
+                Copyright &copy; @DateTime.Now.Year NedShape. All rights reserved.
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    @Html.Partial( "_Modal" )
+    @Html.Partial( "_StickyOne" )
+    @Html.Partial( "_AutoLogout" )
+    @Html.Partial( "_Announcement" )
+
+    @{
+        String absoluteUrlBase = Request.Url.Scheme + "://" + Request.Url.Host + ( Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port );
+    }
+
+    <script>
+        var imgurl = "@absoluteUrlBase/";
+        var siteurl = "@Url.Content( String.Format( "~/{0}/", controller ) )";
+    </script>
+
+    @Scripts.Render( "~/bundles/jqueryval" )
+    @Scripts.Render( "~/bundles/jqueryui" )
+    @Scripts.Render( "~/bundles/plugins" )
+    @Scripts.Render( "~/bundles/c4l" )
+
+    <div id="empty-div" style="display: none;"></div>
+</body>
+</html>

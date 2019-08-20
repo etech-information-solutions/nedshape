@@ -1,0 +1,308 @@
+﻿@model NedShape.UI.Models.SystemConfigViewModel
+
+@{
+    if ( ViewBag.IncludeLayout == null )
+    {
+        Layout = null;
+    }
+
+    ViewBag.Title = "Edit";
+}
+
+
+@Html.Partial( "_Notification" )
+
+@using ( Html.BeginForm( "EditSystemConfig", "Administration", FormMethod.Post, new { enctype = "multipart/form-data", @data_ajax_form = "1", @data_target = "#systemconfig", @style = "width: auto;" } ) )
+{
+    <div id="edit-item">
+
+        <h2 class="uppercase" style="width: auto;">
+            <img alt="" src="@Url.Content( "~/images/edit.png" )" />
+            <span>Edit System Configuration</span>
+        </h2>
+
+        @Html.ValidationSummary( true )
+
+        @Html.HiddenFor( model => model.Id )
+
+        <div id="item-details" class="item-details" style="width: auto;">
+
+            <div class="grouped-area">
+
+                <div class="left" style="width: 48%; margin-right: 1%;">
+
+                    <div class="edit-label">
+                        System Contact Email
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ContactEmail, new { @placeholder = "Enter System Contact Email" } )
+                        @Html.ValidationMessageFor( model => model.ContactEmail )
+                    </div>
+
+                    <div class="edit-label">
+                        System Contact Number
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ContactNumber, new { @placeholder = "Enter System Contact Number" } )
+                        @Html.ValidationMessageFor( model => model.ContactNumber )
+                    </div>
+
+                    <div class="edit-label">
+                        Finance Contact Email
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.FinancialEmail, new { @placeholder = "Enter Finance Contact Email" } )
+                        @Html.ValidationMessageFor( model => model.FinancialEmail )
+                    </div>
+
+                    <div class="edit-label">
+                        System Contact Address
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.Address, new { @placeholder = "Enter System Contact Address" } )
+                        @Html.ValidationMessageFor( model => model.Address )
+                    </div>
+
+                    <div class="edit-label">
+                        Password Change
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.PasswordChange, new { @placeholder = "30" } )
+                        @Html.ValidationMessageFor( model => model.PasswordChange )
+                    </div>
+
+                </div>
+
+                <div class="left" style="width: 48%;">
+
+                    <div class="edit-label">
+                        Images Location
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ImagesLocation, new { @placeholder = "Enter Images Location" } )
+                        @Html.ValidationMessageFor( model => model.ImagesLocation )
+                    </div>
+
+                    <div class="edit-label">
+                        Documents Location
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.DocumentsLocation, new { @placeholder = "Enter Documents Location" } )
+                        @Html.ValidationMessageFor( model => model.DocumentsLocation )
+                    </div>
+
+                    <div class="edit-label">
+                        App Download Url
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.AppDownloadUrl, new { @placeholder = "Enter App Download Url" } )
+                        @Html.ValidationMessageFor( model => model.AppDownloadUrl )
+                    </div>
+
+                    <div class="edit-label">
+                        Payment Account
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.PaymentAccount, new { @placeholder = "Enter Payment Account" } )
+                        @Html.ValidationMessageFor( model => model.PaymentAccount )
+                    </div>
+
+                    <div class="edit-label">
+                        Payment User Code
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.PaymentUserCode, new { @placeholder = "Enter Payment User Code" } )
+                        @Html.ValidationMessageFor( model => model.PaymentUserCode )
+                    </div>
+
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="grouped-area">
+
+                <div class="left" style="width: 48%; margin-right: 1%;">
+
+                    <div class="edit-label">
+                        Payment Monitor Path
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.PaymentMonitorPath, new { @placeholder = "Enter Payment Monitor Path" } )
+                        @Html.ValidationMessageFor( model => model.PaymentMonitorPath )
+                    </div>
+
+                    <div class="edit-label">
+                        Payment Monitor Run Day
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.PaymentMonitorDay, new { @placeholder = "Select Payment Monitor Run Day" } )
+                        @Html.ValidationMessageFor( model => model.PaymentMonitorDay )
+                    </div>
+
+                    <div class="edit-label">
+                        Payment Monitor Start
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.PaymentMonitorStart, new { @placeholder = "Select Payment Monitor Start Time", @class = "time-picker" } )
+                        @Html.ValidationMessageFor( model => model.PaymentMonitorStart )
+                    </div>
+
+                </div>
+
+                <div class="left" style="width: 48%;">
+
+                    <div class="edit-label">
+                        QA Monitor Path
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.QAMonitorPath, new { @placeholder = "Enter QA Monitor Path" } )
+                        @Html.ValidationMessageFor( model => model.QAMonitorPath )
+                    </div>
+
+                    <div class="edit-label">
+                        QA Monitor Start
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.QAMonitorStart, new { @placeholder = "Select QA Monitor Start Time", @class = "time-picker" } )
+                        @Html.ValidationMessageFor( model => model.QAMonitorStart )
+                    </div>
+
+                    <div class="edit-label">
+                        QA Monitor End
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.QAMonitorEnd, new { @placeholder = "Select QA Monitor End Time", @class = "time-picker" } )
+                        @Html.ValidationMessageFor( model => model.QAMonitorEnd )
+                    </div>
+
+                    <div class="edit-label">
+                        QA Monitor Poll Interval (minutes)
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.QAMonitorPoll, new { @placeholder = "Enter QA Monitor Poll Interval (minutes)" } )
+                        @Html.ValidationMessageFor( model => model.QAMonitorPoll )
+                    </div>
+
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="grouped-area">
+
+                <div class="left" style="width: 48%; margin-right: 1%;">
+
+                    <div class="edit-label">
+                        Export Monitor Path
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ExportMonitorPath, new { @placeholder = "Enter Export Monitor Path" } )
+                        @Html.ValidationMessageFor( model => model.ExportMonitorPath )
+                    </div>
+
+                    <div class="edit-label">
+                        Export Monitor Start
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ExportMonitorStart, new { @placeholder = "Select Export Monitor Start Time", @class = "time-picker" } )
+                        @Html.ValidationMessageFor( model => model.ExportMonitorStart )
+                    </div>
+
+                    <div class="edit-label">
+                        Export Monitor End
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ExportMonitorEnd, new { @placeholder = "Select Export Monitor End Time", @class = "time-picker" } )
+                        @Html.ValidationMessageFor( model => model.ExportMonitorEnd )
+                    </div>
+
+                    <div class="edit-label">
+                        Export Monitor Poll Interval (minutes)
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ExportMonitorPoll, new { @placeholder = "Enter Export Monitor Poll Interval (minutes)" } )
+                        @Html.ValidationMessageFor( model => model.ExportMonitorPoll )
+                    </div>
+
+                </div>
+
+                <div class="left" style="width: 48%;">
+
+                    <div class="edit-label">
+                        Import Monitor Path
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ImportMonitorPath, new { @placeholder = "Enter Import Monitor Path" } )
+                        @Html.ValidationMessageFor( model => model.ImportMonitorPath )
+                    </div>
+
+                    <div class="edit-label">
+                        Import Monitor Start
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ImportMonitorStart, new { @placeholder = "Select Import Monitor Start Time", @class = "time-picker" } )
+                        @Html.ValidationMessageFor( model => model.ImportMonitorStart )
+                    </div>
+
+                    <div class="edit-label">
+                        Import Monitor End
+                    </div>
+                    <div class="edit-field">
+
+                        @Html.TextBoxFor( model => model.ImportMonitorEnd, new { @placeholder = "Select Import Monitor End Time", @class = "time-picker" } )
+                        @Html.ValidationMessageFor( model => model.ImportMonitorEnd )
+                    </div>
+
+                    <div class="edit-label">
+                        Import Monitor Poll Interval (minutes)
+                    </div>
+                    <div class="edit-field">
+                        @Html.TextBoxFor( model => model.ImportMonitorPoll, new { @placeholder = "Enter Import Monitor Poll Interval (minutes)" } )
+                        @Html.ValidationMessageFor( model => model.ImportMonitorPoll )
+                    </div>
+
+                </div>
+
+                <div class="clear"></div>
+
+            </div>
+
+            <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
+
+            <div class="grouped-area" style="margin-bottom: 0;">
+
+                <p style="margin-bottom: 0;">
+
+                    <input id="save-btn" type="submit" value="Save" />
+
+                    <span style="padding: 0 5px;">/</span>
+
+                    <a data-refresh="1" data-target="#systemconfig">Cancel</a>
+
+                    <span class="loader"></span>
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+}

@@ -1,0 +1,245 @@
+﻿@model NedShape.UI.Models.UserViewModel
+
+@using NedShape.Core.Enums;
+@using NedShape.Core.Models;
+@using NedShape.Data.Models;
+@using NedShape.UI.Models;
+
+@{
+    if ( ViewBag.IncludeLayout == null )
+    {
+        Layout = null;
+    }
+
+    ViewBag.Title = "Add User";
+
+    UserModel user = User.Get();
+    List<Role> roleOptions = new List<Role>();
+
+    roleOptions.AddRange( Model.RoleOptions.Where( r => r.Name.ToLower() != "agent" ) );
+
+    AddressViewModel address = ( Model.Addresses != null && Model.Addresses.Any() ) ? Model.Addresses.FirstOrDefault() : new AddressViewModel() { };
+}
+
+
+@Html.Partial( "_Notification" )
+
+@using ( Html.BeginForm( "AddUser", "Administration", FormMethod.Post, new { enctype = "multipart/form-data", @data_ajax_form = "1", @data_target = "#users", @class = "custom-validate", @style = "width: auto;" } ) )
+{
+    <div id="edit-item">
+
+        <h2 class="uppercase" style="width: auto;">
+            <img alt="" src="@Url.Content( "~/images/add.png" )" />
+            <span>Add User</span>
+        </h2>
+
+        @Html.ValidationSummary( true )
+
+        <div id="item-details" class="item-details" style="width: auto;">
+
+            <div class="left" style="width: 46%; margin-right: 2%;">
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.Name )
+                </div>
+                <div class="edit-field">
+                    @Html.TextBoxFor( model => model.Name, new { @placeholder = "Enter First Name" } )
+                    @Html.ValidationMessageFor( model => model.Name )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.Surname )
+                </div>
+                <div class="edit-field">
+                    @Html.TextBoxFor( model => model.Surname, new { @placeholder = "Enter Surname" } )
+                    @Html.ValidationMessageFor( model => model.Surname )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.IdNumber )
+                </div>
+                <div class="edit-field">
+                    @Html.HiddenFor( model => model.IsSAId )
+                    @Html.TextBoxFor( model => model.IdNumber, new { @placeholder = "Enter ID Number" } )
+                    @Html.ValidationMessageFor( model => model.IdNumber )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.DateOfBirth )
+                </div>
+                <div class="edit-field">
+                    @Html.DatePickerFor( model => model.DateOfBirth, new { @class = "date-picker", @placeholder = "Your Date of Birth" } )
+                    @Html.ValidationMessageFor( model => model.DateOfBirth )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.TaxNumber )
+                </div>
+                <div class="edit-field">
+                    @Html.TextBoxFor( model => model.TaxNumber, new { @placeholder = "Enter Tax Number" } )
+                    @Html.ValidationMessageFor( model => model.TaxNumber )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.Status )
+                </div>
+                <div class="edit-field">
+                    @Html.EnumDropDownFor( model => model.Status, false, new { @class = "chzn", @style = "width: 98%;" } )
+                    @Html.ValidationMessageFor( model => model.Status )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.RoleId )
+                </div>
+                <div class="edit-field">
+                    @Html.DropDownListFor( model => model.RoleId, model => roleOptions, role => role.Id, role => role.Name, false, new { @class = "chzn", data_role = "1", data_target = "#qa-clients", @style = "width: 98%;" } )
+                    @Html.ValidationMessageFor( model => model.RoleId )
+                </div>
+
+                <div id="qa-clients" class="none">
+
+                    <div class="edit-label">
+                        @Html.LabelFor( model => model.ClientIds )
+                    </div>
+
+                    <div class="edit-field" style="position: relative;">
+
+                        <input id="qa-client-list" type="text" data-select-client="1" data-target="#qa-select-client" placeholder="Click to select client.." />
+
+                        <div id="qa-select-client" class="qa-select-client">
+                            <ul>
+                                @foreach ( var c in Model.ClientOptions )
+                                {
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="ClientIds[0]" value="@c.Key" data-name="@c.Value" />
+                                            @c.Value
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        @Html.ValidationMessageFor( model => model.ClientIds )
+                    </div>
+
+                </div>
+
+                <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.Password )
+                </div>
+                <div class="edit-field">
+                    @Html.PasswordFor( model => model.Password, new { @placeholder = "Enter Password" } )
+                    @Html.ValidationMessageFor( model => model.Password )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.ConfirmPassword )
+                </div>
+                <div class="edit-field">
+                    @Html.PasswordFor( model => model.ConfirmPassword, new { @placeholder = "Confirm Password" } )
+                    @Html.ValidationMessageFor( model => model.ConfirmPassword )
+                </div>
+
+            </div>
+
+            <div class="grouped-area left" style="width: 46%;">
+
+                <p>
+                    <strong class="uppercase" style="color: #9935bd !important;">CONTACT DETAILS</strong>
+                </p>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.Email )
+                </div>
+                <div class="edit-field">
+                    @Html.TextBoxFor( model => model.Email, new { @placeholder = "Enter Email Address" } )
+                    @Html.ValidationMessageFor( model => model.Email )
+                </div>
+
+                <div class="edit-label">
+                    @Html.LabelFor( model => model.Cell )
+                </div>
+                <div class="edit-field">
+                    @Html.TextBoxFor( model => model.Cell, new { @placeholder = "Enter Cell Number" } )
+                    @Html.ValidationMessageFor( model => model.Cell )
+                </div>
+
+                <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
+
+                <input id="Addresses[0].AddressType" name="Addresses[0].AddressType" type="hidden" value="@( ( int ) AddressType.Postal )" />
+
+                <div class="edit-label">
+                    <label for="Addresses_Province">Province</label>
+                </div>
+                <div class="editor-field">
+                    <select id="Addresses_Province" name="Addresses[0].Province" class="chzn" required="required" style="width: 97%;">
+                        <option value="">-- select</option>
+                        @foreach ( int p in Enum.GetValues( typeof( Province ) ) )
+                        {
+                            string text = ( ( Province ) p ).GetDisplayText();
+
+                            if ( text.ToLower() == "all" )
+                            {
+                                continue;
+                            }
+
+                            string sel = ( p == ( int? ) address?.Province ) ? "selected=selected" : "";
+
+                            <option value="@p" @sel>@text</option>
+                        }
+                    </select>
+
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().Province )
+                </div>
+
+                <div class="edit-label">
+                    <label for="Addresses_Town">Town</label>
+                </div>
+                <div class="editor-field">
+                    <input type="text" class="input" id="Addresses_Town" name="Addresses[0].Town" value="@address.Town" required="required" placeholder="Enter Town" />
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().Town )
+
+                </div>
+
+                <div class="edit-label">
+                    <label for="Addresses_AddressLine1">Address</label>
+                </div>
+                <div class="editor-field">
+                    <input type="text" class="input" id="Addresses_AddressLine1" name="Addresses[0].AddressLine1" value="@address.AddressLine1" required="required" placeholder="Enter Address Line 1" />
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().AddressLine1 )
+                </div>
+
+                <div class="editor-field">
+                    <input type="text" class="input" id="Addresses_AddressLine2" name="Addresses[0].AddressLine2" value="@address.AddressLine2" placeholder="Enter Address Line 2" />
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().AddressLine2 )
+                </div>
+
+                <div class="edit-label">
+                    <label for="Addresses_PostCode">Postal Code</label>
+                </div>
+                <div class="editor-field">
+                    <input type="text" class="input" id="Addresses_PostCode" name="Addresses[0].PostCode" value="@address.PostCode" required="required" placeholder="Enter Postal Code" />
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().PostCode )
+                </div>
+
+                <!-- END: Address Details -->
+
+            </div>
+
+            <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
+
+            <p>
+                <input id="save-btn" type="submit" value="Save" />
+
+                <span style="padding: 0 5px;">/</span>
+
+                <a data-refresh="1" data-target="#users">Cancel</a>
+            </p>
+
+        </div>
+
+    </div>
+}

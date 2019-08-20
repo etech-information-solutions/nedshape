@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = "Administration";
+}
+
+
+<div class="ap-tabs">
+
+    <ul>
+
+        <li data-hot-spot="1" data-c="Administration" data-t="Roles">
+            <a data-ap-tab="1" data-target="#roles" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="Roles">Roles</a>
+        </li>
+        <li data-hot-spot="1" data-c="Administration" data-t="Users">
+            <a data-ap-tab="1" data-target="#users" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="Users">Users</a>
+        </li>
+        <li data-hot-spot="1" data-c="Administration" data-t="AuditLog">
+            <a data-ap-tab="1" data-target="#auditlog" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="AuditLog">Audit Log</a>
+        </li>
+        <li data-hot-spot="1" data-c="Administration" data-t="Broadcasts">
+            <a data-ap-tab="1" data-target="#broadcasts" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="Broadcasts">Broadcasts</a>
+        </li>
+        <li data-hot-spot="1" data-c="Administration" data-t="Banks">
+            <a data-ap-tab="1" data-target="#banks" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="Banks">Banks</a>
+        </li>
+        <li data-hot-spot="1" data-c="Administration" data-t="SystemConfig">
+            <a data-ap-tab="1" data-target="#systemconfig" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="SystemConfig">System Config</a>
+        </li>
+
+        <li class="last"></li>
+    </ul>
+
+
+
+    <div id="tab-data" class="tab-data">
+
+        <div id="roles" class="da-tab none" data-load-url="Roles"> </div>
+
+        <div id="users" class="da-tab none" data-load-url="Users"> </div>
+
+        <div id="auditlog" class="da-tab none" data-load-url="AuditLog"> </div>
+
+        <div id="broadcasts" class="da-tab none" data-load-url="Broadcasts"> </div>
+
+        <div id="banks" class="da-tab none" data-load-url="Banks"> </div>
+
+        <div id="systemconfig" class="da-tab none" data-load-url="SystemConfig"> </div>
+    </div>
+
+</div>
+

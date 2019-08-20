@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5A785592-8695-46BF-9FD0-8A650D7FF05A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NedShape.Data</RootNamespace>
+    <AssemblyName>NedShape.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Address.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuditLog.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bank.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BankDetail.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Broadcast.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Document.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gym.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GymAgreement.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GymPayment.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GymService.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GymTime.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Image.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NedShape.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NedShape.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NedShape.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NedShape.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NedShape.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Service.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SystemConfig.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Token.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserBroadcast.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserGym.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserPassword.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserPayment.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserRole.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserStatement.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserType.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Models\NedShape.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NedShape.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\NedShape.edmx.diagram">
+      <DependentUpon>NedShape.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\NedShape.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NedShape.edmx</DependentUpon>
+      <LastGenOutput>NedShape.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\NedShape.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NedShape.edmx</DependentUpon>
+      <LastGenOutput>NedShape.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

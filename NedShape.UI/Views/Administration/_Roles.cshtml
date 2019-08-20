@@ -1,0 +1,140 @@
+﻿@model PagingExtension
+
+@using NedShape.Data.Models;
+@using NedShape.Core.Enums;
+@using NedShape.Core.Models;
+@using NedShape.Core.Services;
+
+@{
+    ViewBag.ShowExport = true;
+    ViewBag.ViewName = "_Roles";
+
+    UserModel user = User.Get();
+}
+
+
+@Html.Partial( "_Notification" )
+
+@{
+    Int32 count = Model.Start;
+    List<Role> items = ( List<Role> ) Model.Items;
+
+    UserRoleService urservice = new UserRoleService();
+}
+
+@if ( Model == null || !items.Any() )
+{
+    <div class="notification message-warn" style="margin-bottom: 20px;">
+        There are no Roles available matching your search criteria.
+    </div>
+}
+
+<p>
+    @Html.ActionLink( "Add Role", "AddRole", new { }, new { @class = "add", @rel = "tipsyS", @title = "Add a new Role?", @data_edit = "1", @data_id = 0, @data_target = "#roles" } )
+    <span class="loader"></span>
+</p>
+
+<table class="da-table datatable-numberpaging sort">
+
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th data-column="Name">
+                Name
+            </th>
+            <th>
+                DashBoard
+            </th>
+            <th>
+                Clients
+            </th>
+            <th>
+                Products
+            </th>
+            <th>
+                Agents
+            </th>
+            <th>
+                Leads
+            </th>
+            <th>
+                Financials
+            </th>
+            <th>
+                Administration
+            </th>
+            <th>
+                Reports
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if ( Model != null && items != null && items.Count() > 0 )
+        {
+            foreach ( var item in items )
+            {
+                RoleType type = ( RoleType ) item.Type;
+
+                int users = urservice.Count( item.Id );
+
+                <tr id="tr-@item.Id-item" class="tr-@item.Id-item">
+
+                    <td width="1%">
+                        @count
+                    </td>
+                    <td width="17%">
+                        @item.Name
+
+                        <a rel="tipsyW" title="There are @users @item.Name (s) in the system" class="right counter-tip">
+                            @users
+                        </a>
+                    </td>
+                    <td class="@( ( item.DashBoard ? "light-green-bg" : "") )">
+                        @item.DashBoard
+                    </td>
+                    <td class="@( ( item.Clients ? "light-green-bg" : "") )">
+                        @item.Clients
+                    </td>
+                    <td class="@( ( item.Products ? "light-green-bg" : "") )">
+                        @item.Products
+                    </td>
+                    <td class="@( ( item.Agents ? "light-green-bg" : "") )">
+                        @item.Agents
+                    </td>
+                    <td class="@( ( item.Leads ? "light-green-bg" : "") )">
+                        @item.Leads
+                    </td>
+                    <td class="@( ( item.Financials ? "light-green-bg" : "") )">
+                        @item.Financials
+                    </td>
+                    <td class="@( ( item.Administration ? "light-green-bg" : "") )">
+                        @item.Administration
+                    </td>
+                    <td class="@( ( item.Reports ? "light-green-bg" : "") )">
+                        @item.Reports
+                    </td>
+                    <td width="15%">
+                        @Html.ActionLink( "Details", "RoleDetails", new { id = item.Id }, new { @class = "info", @data_details = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
+
+                        @Html.ActionLink( "Edit", "EditRole", new { id = item.Id, returnView = "Roles" }, new { @class = "edit", @data_edit = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
+                        @Html.ActionLink( "Delete", "DeleteRole", new { id = item.Id }, new { @class = "warn", @data_delete = "1", @data_id = item.Id, @data_target = "#tr-" + item.Id + "-item", @data_refresh_target = "#roles", @rel = "tipsyE", @title = "Delete this item?" } )
+                    </td>
+
+                </tr>
+
+                count++;
+            }
+        }
+    </tbody>
+
+</table>
+
+@*@Html.Partial( "_RoleCustomSearch", new NedShape.Core.Models.CustomSearchModel() )*@
+
+@Html.Partial( "_Paging" )

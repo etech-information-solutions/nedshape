@@ -1,0 +1,325 @@
+﻿@model SystemConfig
+
+@using NedShape.Data.Models;
+
+@using NedShape.Core.Enums;
+@using NedShape.Core.Models;
+
+@{
+
+    ViewBag.ViewName = "_SystemConfigs";
+
+    UserModel user = User.Get();
+}
+
+
+@Html.Partial( "_Notification" )
+
+
+@if ( Model == null )
+{
+    <div class="notification message-warn" style="margin-bottom: 20px;">
+        Sorry, it seems that the System Configurations has not yet been pr-configured. Please contact the System Administrator for further help.
+    </div>
+}
+
+<h2 class="uppercase" style="margin-bottom: 0; height: 5px;">
+    <img alt="" src="@Url.Content( "~/images/info.png" )" />
+    <span>System Configuration</span>
+</h2>
+
+<div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 10px;">&nbsp;</div>
+
+<div id="item-details" class="item-details" style="width: auto;">
+
+    <div class="grouped-area">
+
+        <div class="left" style="width: 48%; margin-right: 1%;">
+
+            <div class="display-label">
+                System Contact Email
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ContactEmail )
+            </div>
+
+            <div class="display-label">
+                System Contact Number
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ContactNumber )
+            </div>
+
+            <div class="display-label">
+                Finance Contact Email
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.FinancialEmail )
+            </div>
+
+            <div class="display-label">
+                System Contact Address
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.Address )
+            </div>
+
+            <div class="display-label">
+                Password Change
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.PasswordChange )
+            </div>
+
+            <div class="display-label">
+                Images Location
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ImagesLocation )
+            </div>
+
+            <div class="display-label">
+                Documents Location
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.DocumentsLocation )
+            </div>
+
+            <div class="display-label">
+                App Download Url
+            </div>
+            <div class="display-field">
+                <a href="@Model.AppDownloadUrl" target="_blank">@Model.AppDownloadUrl</a>
+            </div>
+
+        </div>
+
+        <div class="left" style="width: 48%;">
+
+            <div class="display-label">
+                Payment User Code
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.PaymentUserCode )
+            </div>
+
+            <div class="display-label">
+                Payment Account
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.PaymentAccount )
+            </div>
+
+            <div class="display-label">
+                Payment Monitor Path
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.PaymentMonitorPath )
+            </div>
+
+            <div class="display-label">
+                Payment Monitor Day
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.PaymentMonitorDay )
+            </div>
+
+            <div class="display-label">
+                Payment Monitor Start Time
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.PaymentMonitorStart )
+            </div>
+
+            <div class="display-label">
+                Last Monitor Payment Run
+            </div>
+            <div class="display-field">
+                @(Model.LastPaymentMonitorRun.HasValue ? Model.LastPaymentMonitorRun.Value.ToLongDateString() : "-/-")
+            </div>
+
+            <div class="display-label">
+                Last Payment Monitor Count
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.LastPaymentMonitorCount )
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="grouped-area">
+
+        <div class="left" style="width: 32%; margin-right: 1%;">
+
+            <div class="display-label">
+                QA Monitor Path
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.QAMonitorPath )
+            </div>
+
+            <div class="display-label">
+                QA Monitor Start
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.QAMonitorStart )
+            </div>
+
+            <div class="display-label">
+                QA Monitor End
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.QAMonitorEnd )
+            </div>
+
+            <div class="display-label">
+                QA Monitor Poll
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.QAMonitorPoll )
+            </div>
+
+            <div class="display-label">
+                Last QA Monitor Run
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.LastQAMonitorRun )
+            </div>
+
+            <div class="display-label">
+                Last QA Monitor Count
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.LastQAMonitorCount )
+            </div>
+
+        </div>
+
+        <div class="left" style="width: 32%; margin-right: 1%;">
+
+            <div class="display-label">
+                Export Monitor Path
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ExportMonitorPath )
+            </div>
+
+            <div class="display-label">
+                Export Monitor Start
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ExportMonitorStart )
+            </div>
+
+            <div class="display-label">
+                Export Monitor End
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ExportMonitorEnd )
+            </div>
+
+            <div class="display-label">
+                Export Monitor Poll
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ExportMonitorPoll )
+            </div>
+
+            <div class="display-label">
+                Last Export Monitor Run
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.LastExportMonitorRun )
+            </div>
+
+            <div class="display-label">
+                Last Export Monitor Count
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.LastExportMonitorCount )
+            </div>
+
+        </div>
+
+        <div class="left" style="width: 32%;">
+
+            <div class="display-label">
+                Import Monitor Path
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ImportMonitorPath )
+            </div>
+
+            <div class="display-label">
+                Import Monitor Start
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ImportMonitorStart )
+            </div>
+
+            <div class="display-label">
+                Import Monitor End
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ImportMonitorEnd )
+            </div>
+
+            <div class="display-label">
+                Import Monitor Poll
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.ImportMonitorPoll )
+            </div>
+
+            <div class="display-label">
+                Last Import Monitor Run
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.LastImportMonitorRun )
+            </div>
+
+            <div class="display-label">
+                Last Import Monitor Count
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor( model => model.LastImportMonitorCount )
+            </div>
+
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+
+    <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
+
+    <div class="grouped-area" style="margin-bottom: 0;">
+
+        <p style="margin-bottom: 0;">
+
+            @Html.ActionLink( "Edit", "EditSystemConfig", new { id = Model.Id }, new { @class = "edit", @rel = "tipsyS", @title = "...edit System Configuration?", @data_edit = "1", @data_id = Model.Id, @data_target = "#systemconfig" } )
+
+            <span style="padding: 0 5px;">/</span>
+
+            <a target="_blank" href="@Url.Action( "Export", new { @type = "systemconfig" } )" rel="tipsyS" title="...export to csv/excel?">
+                <img src="@Url.Content( "~/Images/excel.gif" )" alt="Export to csv/excel?" style="vertical-align: middle;" />
+                Export
+            </a>
+
+            <span style="padding: 0 5px;">/</span>
+
+            <a rel="tipsyS" title="...refresh details?" data-refresh="1" data-target="#systemconfig">
+                <img src="@Url.Content( "~/Images/refresh.png" )" alt="Refresh List?" style="width: 20px; vertical-align: middle;" />
+            </a>
+
+            <span class="loader"></span>
+
+        </p>
+
+    </div>
+
+</div>

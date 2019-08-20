@@ -1,0 +1,47 @@
+﻿
+
+
+.menu
+{
+    position: relative;
+}
+
+    .menu ul
+    {
+        padding: 0;
+        list-style: none;
+    }
+
+        .menu ul li
+        {
+            list-style: none;
+            text-align: left;
+            position: relative;
+            border-bottom: 1px solid #4d596e;
+        }
+
+            .menu ul li a
+            {
+                padding: 20px;
+                color: #8c96a5;
+                font-size: 14px;
+                font-weight: bold;
+                display: block;
+                transition: all 0.4s ease-in 0s;
+            }
+
+            .menu ul li.current, .menu ul li:hover
+            {
+                background: #28313d;
+                border-left: 2px solid #fdc842;
+            }
+
+                .menu ul li.current a, .menu ul li a:hover
+                {
+                    color: #ffffff;
+                }
+
+                    .menu ul li.current a .fa, .menu ul li a:hover .fa
+                    {
+                        color: #ffffff;
+                    }

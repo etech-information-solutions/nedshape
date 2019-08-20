@@ -1,0 +1,2188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NedShapeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectId" Type="int" Nullable="false" />
+          <Property Name="ObjectType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Addressline1" Type="varchar" MaxLength="100" />
+          <Property Name="Addressline2" Type="varchar" MaxLength="100" />
+          <Property Name="Town" Type="varchar" MaxLength="50" />
+          <Property Name="PostCode" Type="varchar" MaxLength="50" />
+          <Property Name="Province" Type="int" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ObjectId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="ActionTable" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsAjaxRequest" Type="bit" Nullable="false" />
+          <Property Name="Parameters" Type="varchar(max)" Nullable="false" />
+          <Property Name="Controller" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Action" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Comments" Type="varchar(max)" />
+          <Property Name="BeforeImage" Type="varchar(max)" />
+          <Property Name="AfterImage" Type="varchar(max)" />
+          <Property Name="Browser" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Code" Type="char" MaxLength="6" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BankDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Beneficiary" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Branch" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Broadcast">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Message" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Category" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Size" Type="float" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Gym">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankId" Type="int" Nullable="false" />
+          <Property Name="ApprovedById" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="TradingName" Type="varchar" MaxLength="150" />
+          <Property Name="RegNo" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Cell" Type="varchar" MaxLength="20" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Address1" Type="varchar" MaxLength="50" />
+          <Property Name="Address2" Type="varchar" MaxLength="50" />
+          <Property Name="Address3" Type="varchar" MaxLength="50" />
+          <Property Name="PostCode" Type="char" MaxLength="10" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="Province" Type="int" Nullable="false" />
+          <Property Name="Account" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Branch" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+          <Property Name="Reference" Type="varchar" MaxLength="50" />
+          <Property Name="POPEmail" Type="varchar" MaxLength="150" />
+          <Property Name="CompanyEmail" Type="varchar" MaxLength="150" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactTel" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactEmail" Type="varchar" MaxLength="150" />
+          <Property Name="ContactCell" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="StatusDate" Type="date" Nullable="false" />
+          <Property Name="PostalAddress1" Type="varchar" MaxLength="50" />
+          <Property Name="PostalAddress2" Type="varchar" MaxLength="50" />
+          <Property Name="PostPostalCode" Type="varchar" MaxLength="50" />
+          <Property Name="VATNo" Type="varchar" MaxLength="50" />
+          <Property Name="PhysicalAddress1" Type="varchar" MaxLength="50" />
+          <Property Name="PhysicalAddress2" Type="varchar" MaxLength="50" />
+          <Property Name="PhysicalPostCode" Type="char" MaxLength="10" />
+          <Property Name="PhysicalCity" Type="varchar" MaxLength="50" />
+          <Property Name="Website" Type="varchar" MaxLength="255" />
+          <Property Name="PostalCity" Type="varchar" MaxLength="255" />
+          <Property Name="PostalProvince" Type="int" />
+          <Property Name="PhysicalProvince" Type="int" />
+          <Property Name="AccountHolder" Type="varchar" MaxLength="255" />
+          <Property Name="Approved" Type="bit" Nullable="false" />
+          <Property Name="ApprovedOn" Type="datetime" />
+          <Property Name="ApproverComments" Type="varchar" MaxLength="250" />
+          <Property Name="Latitude" Type="varchar" MaxLength="50" />
+          <Property Name="Longitude" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GymAgreement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GymId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GymPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GymId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentReference" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GymService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Fee" Type="money" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="GymTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GymServiceId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MondayIsOpen" Type="bit" />
+          <Property Name="MondayStart" Type="time" Precision="7" />
+          <Property Name="MondayClose" Type="time" Precision="7" />
+          <Property Name="TuesdayIsOpen" Type="bit" />
+          <Property Name="TuesdayStart" Type="time" Precision="7" />
+          <Property Name="TuesdayClose" Type="time" Precision="7" />
+          <Property Name="WednesdayIsOpen" Type="bit" />
+          <Property Name="WednesdayStart" Type="time" Precision="7" />
+          <Property Name="WednesdayClose" Type="time" Precision="7" />
+          <Property Name="ThursdayIsOpen" Type="bit" />
+          <Property Name="ThursdayStart" Type="time" Precision="7" />
+          <Property Name="ThursdayClose" Type="time" Precision="7" />
+          <Property Name="FridayIsOpen" Type="bit" />
+          <Property Name="FridayStart" Type="time" Precision="7" />
+          <Property Name="FridayClose" Type="time" Precision="7" />
+          <Property Name="SaturdayIsOpen" Type="bit" />
+          <Property Name="SaturdayStart" Type="time" Precision="7" />
+          <Property Name="SaturdayClose" Type="time" Precision="7" />
+          <Property Name="SundayIsOpen" Type="bit" />
+          <Property Name="SundayStart" Type="time" Precision="7" />
+          <Property Name="SundayClose" Type="time" Precision="7" />
+          <Property Name="PublicHolidayIsOpen" Type="bit" />
+          <Property Name="PublicHolidayStart" Type="time" Precision="7" />
+          <Property Name="PublicHolidayClose" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ObjectId" Type="int" Nullable="false" />
+          <Property Name="ObjectType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="1000" />
+          <Property Name="Location" Type="varchar" MaxLength="500" />
+          <Property Name="Name" Type="varchar" MaxLength="250" />
+          <Property Name="Extension" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Size" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="ExternalUrl" Type="varchar" MaxLength="500" />
+          <Property Name="IsMain" Type="bit" Nullable="false" />
+          <Property Name="Mime" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="DashBoard" Type="bit" Nullable="false" />
+          <Property Name="Clients" Type="bit" Nullable="false" />
+          <Property Name="Products" Type="bit" Nullable="false" />
+          <Property Name="Members" Type="bit" Nullable="false" />
+          <Property Name="Gyms" Type="bit" Nullable="false" />
+          <Property Name="Financials" Type="bit" Nullable="false" />
+          <Property Name="Administration" Type="bit" Nullable="false" />
+          <Property Name="Reports" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar" MaxLength="500" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Price" Type="money" />
+        </EntityType>
+        <EntityType Name="SystemConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="PasswordChange" Type="int" Nullable="false" />
+          <Property Name="ImagesLocation" Type="varchar" MaxLength="200" />
+          <Property Name="DocumentsLocation" Type="varchar" MaxLength="200" />
+          <Property Name="ContactEmail" Type="varchar" MaxLength="150" />
+          <Property Name="FinancialEmail" Type="varchar" MaxLength="150" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="ContactNumber" Type="varchar" MaxLength="20" />
+          <Property Name="PaymentUserCode" Type="varchar" MaxLength="50" />
+          <Property Name="PaymentAccount" Type="varchar" MaxLength="50" />
+          <Property Name="AppDownloadUrl" Type="varchar" MaxLength="500" />
+          <Property Name="PaymentMonitorPath" Type="varchar" MaxLength="200" />
+          <Property Name="PaymentMonitorDay" Type="int" />
+          <Property Name="PaymentMonitorStart" Type="time" Precision="7" />
+          <Property Name="LastPaymentMonitorRun" Type="datetime" />
+          <Property Name="LastPaymentMonitorCount" Type="int" />
+          <Property Name="PaymentsExportPath" Type="varchar" MaxLength="200" />
+          <Property Name="StatementFolder" Type="varchar" MaxLength="200" />
+          <Property Name="PaymentFolder" Type="varchar" MaxLength="200" />
+          <Property Name="DRDiscount" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="UID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BankId" Type="int" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Reset" Type="bit" Nullable="false" />
+          <Property Name="IdNumber" Type="varchar" MaxLength="50" />
+          <Property Name="IsSAId" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Cell" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="JobTitle" Type="varchar" MaxLength="150" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="PasswordDate" Type="datetime" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="PaymentMethod" Type="int" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="TaxNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Province" Type="varchar" MaxLength="50" />
+          <Property Name="City" Type="varchar" MaxLength="50" />
+          <Property Name="BuildingNo" Type="varchar" MaxLength="50" />
+          <Property Name="BuildingName" Type="varchar" MaxLength="50" />
+          <Property Name="StreetNo" Type="varchar" MaxLength="50" />
+          <Property Name="StreetName" Type="varchar" MaxLength="50" />
+          <Property Name="AddressCoordinates" Type="varchar" MaxLength="50" />
+          <Property Name="PostCode" Type="varchar" MaxLength="50" />
+          <Property Name="IsAgreement" Type="bit" />
+          <Property Name="BankAccountNo" Type="varchar" MaxLength="50" />
+          <Property Name="BankBranch" Type="varchar" MaxLength="50" />
+          <Property Name="DebitDate" Type="datetime" />
+          <Property Name="MembershipNo" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserBroadcast">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="BroadcastId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGym">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GymId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="FirstVisit" Type="datetime" />
+          <Property Name="LastVisit" Type="datetime" />
+          <Property Name="DateJoined" Type="datetime" />
+          <Property Name="DateLeft" Type="datetime" />
+          <Property Name="Status" Type="int" />
+          <Property Name="UserGymAgreement" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserPassword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PasswordDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GymServiceId" Type="int" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" />
+          <Property Name="PaymentReference" Type="varchar" MaxLength="50" />
+          <Property Name="Amount" Type="money" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserStatement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="GymId" Type="int" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="MembershipNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="Reference" Type="varchar" MaxLength="100" />
+          <Property Name="Emailed" Type="bit" Nullable="false" />
+          <Property Name="PaymentDate" Type="datetime" Nullable="false" />
+          <Property Name="PaymentStatus" Type="int" Nullable="false" />
+          <Property Name="ResultDate" Type="datetime" />
+          <Property Name="ResultCode" Type="varchar" MaxLength="50" />
+          <Property Name="ResultDescription" Type="varchar" MaxLength="150" />
+          <Property Name="PaymentType" Type="int" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BankDetail_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="BankDetail" Type="Self.BankDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankDetail">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BankDetail_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="BankDetail" Type="Self.BankDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gym_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Gym" Type="Self.Gym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gym">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gym_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Gym" Type="Self.Gym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gym">
+              <PropertyRef Name="ApprovedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymAgreement_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="GymAgreement" Type="Self.GymAgreement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymAgreement">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymPayment_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="GymPayment" Type="Self.GymPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymPayment">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymPayment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="GymPayment" Type="Self.GymPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymPayment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymTime_GymService">
+          <End Role="GymService" Type="Self.GymService" Multiplicity="1" />
+          <End Role="GymTime" Type="Self.GymTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GymService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymTime">
+              <PropertyRef Name="GymServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Token_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Token" Type="Self.Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBroadcast_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserBroadcast" Type="Self.UserBroadcast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBroadcast">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBroadcasts_Broadcasts">
+          <End Role="Broadcast" Type="Self.Broadcast" Multiplicity="1" />
+          <End Role="UserBroadcast" Type="Self.UserBroadcast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broadcast">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBroadcast">
+              <PropertyRef Name="BroadcastId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGym_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="UserGym" Type="Self.UserGym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGym">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGym_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserGym" Type="Self.UserGym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGym">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPassword_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPassword" Type="Self.UserPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPayment_GymService">
+          <End Role="GymService" Type="Self.GymService" Multiplicity="1" />
+          <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GymService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPayment">
+              <PropertyRef Name="GymServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPayment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPayment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStatement_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="UserStatement" Type="Self.UserStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatement">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStatement_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserStatement" Type="Self.UserStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatement">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NedShapeModelStoreContainer">
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditLog" EntityType="Self.AuditLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bank" EntityType="Self.Bank" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BankDetail" EntityType="Self.BankDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Broadcast" EntityType="Self.Broadcast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Document" EntityType="Self.Document" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gym" EntityType="Self.Gym" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GymAgreement" EntityType="Self.GymAgreement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GymPayment" EntityType="Self.GymPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GymService" EntityType="Self.GymService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GymTime" EntityType="Self.GymTime" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemConfig" EntityType="Self.SystemConfig" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBroadcast" EntityType="Self.UserBroadcast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGym" EntityType="Self.UserGym" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPassword" EntityType="Self.UserPassword" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPayment" EntityType="Self.UserPayment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserStatement" EntityType="Self.UserStatement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BankDetail_Bank" Association="Self.FK_BankDetail_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="BankDetail" EntitySet="BankDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BankDetail_User" Association="Self.FK_BankDetail_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="BankDetail" EntitySet="BankDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gym_Bank" Association="Self.FK_Gym_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="Gym" EntitySet="Gym" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gym_User" Association="Self.FK_Gym_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Gym" EntitySet="Gym" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymAgreement_Gym" Association="Self.FK_GymAgreement_Gym">
+            <End Role="Gym" EntitySet="Gym" />
+            <End Role="GymAgreement" EntitySet="GymAgreement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymPayment_Gym" Association="Self.FK_GymPayment_Gym">
+            <End Role="Gym" EntitySet="Gym" />
+            <End Role="GymPayment" EntitySet="GymPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymPayment_User" Association="Self.FK_GymPayment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="GymPayment" EntitySet="GymPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymTime_GymService" Association="Self.FK_GymTime_GymService">
+            <End Role="GymService" EntitySet="GymService" />
+            <End Role="GymTime" EntitySet="GymTime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Token_User" Association="Self.FK_Token_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Token" EntitySet="Token" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Bank" Association="Self.FK_User_Bank">
+            <End Role="Bank" EntitySet="Bank" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBroadcast_User" Association="Self.FK_UserBroadcast_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserBroadcast" EntitySet="UserBroadcast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBroadcasts_Broadcasts" Association="Self.FK_UserBroadcasts_Broadcasts">
+            <End Role="Broadcast" EntitySet="Broadcast" />
+            <End Role="UserBroadcast" EntitySet="UserBroadcast" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGym_Gym" Association="Self.FK_UserGym_Gym">
+            <End Role="Gym" EntitySet="Gym" />
+            <End Role="UserGym" EntitySet="UserGym" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGym_User" Association="Self.FK_UserGym_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserGym" EntitySet="UserGym" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPassword_User" Association="Self.FK_UserPassword_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPassword" EntitySet="UserPassword" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPayment_GymService" Association="Self.FK_UserPayment_GymService">
+            <End Role="GymService" EntitySet="GymService" />
+            <End Role="UserPayment" EntitySet="UserPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPayment_User" Association="Self.FK_UserPayment_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserPayment" EntitySet="UserPayment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStatement_Gym" Association="Self.FK_UserStatement_Gym">
+            <End Role="Gym" EntitySet="Gym" />
+            <End Role="UserStatement" EntitySet="UserStatement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStatement_User" Association="Self.FK_UserStatement_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserStatement" EntitySet="UserStatement" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NedShapeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AuditLog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="ActionTable" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsAjaxRequest" Type="Boolean" Nullable="false" />
+          <Property Name="Parameters" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Controller" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="BeforeImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AfterImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Browser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Bank">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="6" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gyms" Relationship="Self.FK_Gym_Bank" FromRole="Bank" ToRole="Gym" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Bank" FromRole="Bank" ToRole="User" />
+          <NavigationProperty Name="BankDetails" Relationship="NedShapeModel.FK_BankDetail_Bank" FromRole="Bank" ToRole="BankDetail" />
+        </EntityType>
+        <EntityType Name="Broadcast">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="UserBroadcasts" Relationship="Self.FK_UserBroadcasts_Broadcasts" FromRole="Broadcast" ToRole="UserBroadcast" />
+        </EntityType>
+        <EntityType Name="Document">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Size" Type="Double" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Gym">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="ApprovedById" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TradingName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="RegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cell" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="Int32" Nullable="false" />
+          <Property Name="Account" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="POPEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactTel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ContactCell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="StatusDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PostalAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostalAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostPostalCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VATNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhysicalAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhysicalAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhysicalPostCode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="PhysicalCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PostalCity" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="PostalProvince" Type="Int32" />
+          <Property Name="PhysicalProvince" Type="Int32" />
+          <Property Name="AccountHolder" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Approved" Type="Boolean" Nullable="false" />
+          <Property Name="ApprovedOn" Type="DateTime" Precision="3" />
+          <Property Name="ApproverComments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_Gym_Bank" FromRole="Gym" ToRole="Bank" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Gym_User" FromRole="Gym" ToRole="User" />
+          <NavigationProperty Name="GymAgreements" Relationship="Self.FK_GymAgreement_Gym" FromRole="Gym" ToRole="GymAgreement" />
+          <NavigationProperty Name="GymPayments" Relationship="Self.FK_GymPayment_Gym" FromRole="Gym" ToRole="GymPayment" />
+          <NavigationProperty Name="UserGyms" Relationship="Self.FK_UserGym_Gym" FromRole="Gym" ToRole="UserGym" />
+          <NavigationProperty Name="UserStatements" Relationship="Self.FK_UserStatement_Gym" FromRole="Gym" ToRole="UserStatement" />
+        </EntityType>
+        <EntityType Name="GymAgreement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GymId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gym" Relationship="Self.FK_GymAgreement_Gym" FromRole="GymAgreement" ToRole="Gym" />
+        </EntityType>
+        <EntityType Name="GymPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GymId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Gym" Relationship="Self.FK_GymPayment_Gym" FromRole="GymPayment" ToRole="Gym" />
+          <NavigationProperty Name="User" Relationship="Self.FK_GymPayment_User" FromRole="GymPayment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="GymService">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Fee" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="GymTimes" Relationship="Self.FK_GymTime_GymService" FromRole="GymService" ToRole="GymTime" />
+          <NavigationProperty Name="UserPayments" Relationship="Self.FK_UserPayment_GymService" FromRole="GymService" ToRole="UserPayment" />
+        </EntityType>
+        <EntityType Name="GymTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GymServiceId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MondayIsOpen" Type="Boolean" />
+          <Property Name="MondayStart" Type="Time" Precision="7" />
+          <Property Name="MondayClose" Type="Time" Precision="7" />
+          <Property Name="TuesdayIsOpen" Type="Boolean" />
+          <Property Name="TuesdayStart" Type="Time" Precision="7" />
+          <Property Name="TuesdayClose" Type="Time" Precision="7" />
+          <Property Name="WednesdayIsOpen" Type="Boolean" />
+          <Property Name="WednesdayStart" Type="Time" Precision="7" />
+          <Property Name="WednesdayClose" Type="Time" Precision="7" />
+          <Property Name="ThursdayIsOpen" Type="Boolean" />
+          <Property Name="ThursdayStart" Type="Time" Precision="7" />
+          <Property Name="ThursdayClose" Type="Time" Precision="7" />
+          <Property Name="FridayIsOpen" Type="Boolean" />
+          <Property Name="FridayStart" Type="Time" Precision="7" />
+          <Property Name="FridayClose" Type="Time" Precision="7" />
+          <Property Name="SaturdayIsOpen" Type="Boolean" />
+          <Property Name="SaturdayStart" Type="Time" Precision="7" />
+          <Property Name="SaturdayClose" Type="Time" Precision="7" />
+          <Property Name="SundayIsOpen" Type="Boolean" />
+          <Property Name="SundayStart" Type="Time" Precision="7" />
+          <Property Name="SundayClose" Type="Time" Precision="7" />
+          <Property Name="PublicHolidayIsOpen" Type="Boolean" />
+          <Property Name="PublicHolidayStart" Type="Time" Precision="7" />
+          <Property Name="PublicHolidayClose" Type="Time" Precision="7" />
+          <NavigationProperty Name="GymService" Relationship="Self.FK_GymTime_GymService" FromRole="GymTime" ToRole="GymService" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="DashBoard" Type="Boolean" Nullable="false" />
+          <Property Name="Clients" Type="Boolean" Nullable="false" />
+          <Property Name="Products" Type="Boolean" Nullable="false" />
+          <Property Name="Members" Type="Boolean" Nullable="false" />
+          <Property Name="Gyms" Type="Boolean" Nullable="false" />
+          <Property Name="Financials" Type="Boolean" Nullable="false" />
+          <Property Name="Administration" Type="Boolean" Nullable="false" />
+          <Property Name="Reports" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="SystemConfig">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordChange" Type="Int32" Nullable="false" />
+          <Property Name="ImagesLocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DocumentsLocation" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContactEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FinancialEmail" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentUserCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentAccount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppDownloadUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMonitorPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentMonitorDay" Type="Int32" />
+          <Property Name="PaymentMonitorStart" Type="Time" Precision="7" />
+          <Property Name="LastPaymentMonitorRun" Type="DateTime" Precision="3" />
+          <Property Name="LastPaymentMonitorCount" Type="Int32" />
+          <Property Name="PaymentsExportPath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StatementFolder" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentFolder" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DRDiscount" Type="Decimal" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BankId" Type="Int32" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Reset" Type="Boolean" Nullable="false" />
+          <Property Name="IdNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsSAId" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cell" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="JobTitle" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordDate" Type="DateTime" Precision="3" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="PaymentMethod" Type="Int32" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="3" />
+          <Property Name="TaxNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuildingNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BuildingName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StreetName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AddressCoordinates" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsAgreement" Type="Boolean" />
+          <Property Name="BankAccountNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BankBranch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DebitDate" Type="DateTime" Precision="3" />
+          <Property Name="MembershipNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Bank" Relationship="Self.FK_User_Bank" FromRole="User" ToRole="Bank" />
+          <NavigationProperty Name="Gyms" Relationship="Self.FK_Gym_User" FromRole="User" ToRole="Gym" />
+          <NavigationProperty Name="GymPayments" Relationship="Self.FK_GymPayment_User" FromRole="User" ToRole="GymPayment" />
+          <NavigationProperty Name="UserType" Relationship="Self.FK_User_UserType" FromRole="User" ToRole="UserType" />
+          <NavigationProperty Name="UserBroadcasts" Relationship="Self.FK_UserBroadcast_User" FromRole="User" ToRole="UserBroadcast" />
+          <NavigationProperty Name="UserGyms" Relationship="Self.FK_UserGym_User" FromRole="User" ToRole="UserGym" />
+          <NavigationProperty Name="UserPasswords" Relationship="Self.FK_UserPassword_User" FromRole="User" ToRole="UserPassword" />
+          <NavigationProperty Name="UserPayments" Relationship="Self.FK_UserPayment_User" FromRole="User" ToRole="UserPayment" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_User" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="UserStatements" Relationship="Self.FK_UserStatement_User" FromRole="User" ToRole="UserStatement" />
+          <NavigationProperty Name="BankDetails" Relationship="NedShapeModel.FK_BankDetail_User" FromRole="User" ToRole="BankDetail" />
+          <NavigationProperty Name="Tokens" Relationship="NedShapeModel.FK_Token_User" FromRole="User" ToRole="Token" />
+        </EntityType>
+        <EntityType Name="UserBroadcast">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BroadcastId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Broadcast" Relationship="Self.FK_UserBroadcasts_Broadcasts" FromRole="UserBroadcast" ToRole="Broadcast" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserBroadcast_User" FromRole="UserBroadcast" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserGym">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GymId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FirstVisit" Type="DateTime" Precision="3" />
+          <Property Name="LastVisit" Type="DateTime" Precision="3" />
+          <Property Name="DateJoined" Type="DateTime" Precision="3" />
+          <Property Name="DateLeft" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="UserGymAgreement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Gym" Relationship="Self.FK_UserGym_Gym" FromRole="UserGym" ToRole="Gym" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserGym_User" FromRole="UserGym" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserPassword">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PasswordDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserPassword_User" FromRole="UserPassword" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserPayment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GymServiceId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Precision="3" />
+          <Property Name="PaymentReference" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="GymService" Relationship="Self.FK_UserPayment_GymService" FromRole="UserPayment" ToRole="GymService" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserPayment_User" FromRole="UserPayment" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_UserRole_Role" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserRole_User" FromRole="UserRole" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserStatement">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="GymId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MembershipNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Reference" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Emailed" Type="Boolean" Nullable="false" />
+          <Property Name="PaymentDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PaymentStatus" Type="Int32" Nullable="false" />
+          <Property Name="ResultDate" Type="DateTime" Precision="3" />
+          <Property Name="ResultCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ResultDescription" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PaymentType" Type="Int32" />
+          <NavigationProperty Name="Gym" Relationship="Self.FK_UserStatement_Gym" FromRole="UserStatement" ToRole="Gym" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserStatement_User" FromRole="UserStatement" ToRole="User" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_UserType" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Gym_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+          <End Role="Gym" Type="Self.Gym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gym">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Bank">
+          <End Role="Bank" Type="Self.Bank" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBroadcasts_Broadcasts">
+          <End Role="Broadcast" Type="Self.Broadcast" Multiplicity="1" />
+          <End Role="UserBroadcast" Type="Self.UserBroadcast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Broadcast">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBroadcast">
+              <PropertyRef Name="BroadcastId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gym_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Gym" Type="Self.Gym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Gym">
+              <PropertyRef Name="ApprovedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymAgreement_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="GymAgreement" Type="Self.GymAgreement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymAgreement">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymPayment_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="GymPayment" Type="Self.GymPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymPayment">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGym_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="UserGym" Type="Self.UserGym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGym">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStatement_Gym">
+          <End Role="Gym" Type="Self.Gym" Multiplicity="1" />
+          <End Role="UserStatement" Type="Self.UserStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gym">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatement">
+              <PropertyRef Name="GymId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymPayment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="GymPayment" Type="Self.GymPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymPayment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GymTime_GymService">
+          <End Role="GymService" Type="Self.GymService" Multiplicity="1" />
+          <End Role="GymTime" Type="Self.GymTime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GymService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GymTime">
+              <PropertyRef Name="GymServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPayment_GymService">
+          <End Role="GymService" Type="Self.GymService" Multiplicity="1" />
+          <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GymService">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPayment">
+              <PropertyRef Name="GymServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_UserType">
+          <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBroadcast_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserBroadcast" Type="Self.UserBroadcast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserBroadcast">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserGym_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserGym" Type="Self.UserGym" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGym">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPassword_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPassword" Type="Self.UserPassword" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPassword">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPayment_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserPayment" Type="Self.UserPayment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPayment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserRole_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserStatement_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserStatement" Type="Self.UserStatement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserStatement">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NedShapeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AuditLogs" EntityType="Self.AuditLog" />
+          <EntitySet Name="Banks" EntityType="Self.Bank" />
+          <EntitySet Name="Broadcasts" EntityType="Self.Broadcast" />
+          <EntitySet Name="Documents" EntityType="Self.Document" />
+          <EntitySet Name="Gyms" EntityType="Self.Gym" />
+          <EntitySet Name="GymAgreements" EntityType="Self.GymAgreement" />
+          <EntitySet Name="GymPayments" EntityType="Self.GymPayment" />
+          <EntitySet Name="GymServices" EntityType="Self.GymService" />
+          <EntitySet Name="GymTimes" EntityType="Self.GymTime" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="SystemConfigs" EntityType="Self.SystemConfig" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserBroadcasts" EntityType="Self.UserBroadcast" />
+          <EntitySet Name="UserGyms" EntityType="Self.UserGym" />
+          <EntitySet Name="UserPasswords" EntityType="Self.UserPassword" />
+          <EntitySet Name="UserPayments" EntityType="Self.UserPayment" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="UserStatements" EntityType="Self.UserStatement" />
+          <EntitySet Name="UserTypes" EntityType="Self.UserType" />
+          <AssociationSet Name="FK_Gym_Bank" Association="Self.FK_Gym_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="Gym" EntitySet="Gyms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Bank" Association="Self.FK_User_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBroadcasts_Broadcasts" Association="Self.FK_UserBroadcasts_Broadcasts">
+            <End Role="Broadcast" EntitySet="Broadcasts" />
+            <End Role="UserBroadcast" EntitySet="UserBroadcasts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gym_User" Association="Self.FK_Gym_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Gym" EntitySet="Gyms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymAgreement_Gym" Association="Self.FK_GymAgreement_Gym">
+            <End Role="Gym" EntitySet="Gyms" />
+            <End Role="GymAgreement" EntitySet="GymAgreements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymPayment_Gym" Association="Self.FK_GymPayment_Gym">
+            <End Role="Gym" EntitySet="Gyms" />
+            <End Role="GymPayment" EntitySet="GymPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGym_Gym" Association="Self.FK_UserGym_Gym">
+            <End Role="Gym" EntitySet="Gyms" />
+            <End Role="UserGym" EntitySet="UserGyms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStatement_Gym" Association="Self.FK_UserStatement_Gym">
+            <End Role="Gym" EntitySet="Gyms" />
+            <End Role="UserStatement" EntitySet="UserStatements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymPayment_User" Association="Self.FK_GymPayment_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="GymPayment" EntitySet="GymPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GymTime_GymService" Association="Self.FK_GymTime_GymService">
+            <End Role="GymService" EntitySet="GymServices" />
+            <End Role="GymTime" EntitySet="GymTimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPayment_GymService" Association="Self.FK_UserPayment_GymService">
+            <End Role="GymService" EntitySet="GymServices" />
+            <End Role="UserPayment" EntitySet="UserPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_Role" Association="Self.FK_UserRole_Role">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_UserType" Association="Self.FK_User_UserType">
+            <End Role="UserType" EntitySet="UserTypes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBroadcast_User" Association="Self.FK_UserBroadcast_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserBroadcast" EntitySet="UserBroadcasts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserGym_User" Association="Self.FK_UserGym_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserGym" EntitySet="UserGyms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPassword_User" Association="Self.FK_UserPassword_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserPassword" EntitySet="UserPasswords" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPayment_User" Association="Self.FK_UserPayment_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserPayment" EntitySet="UserPayments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserRole_User" Association="Self.FK_UserRole_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserStatement_User" Association="Self.FK_UserStatement_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserStatement" EntitySet="UserStatements" />
+          </AssociationSet>
+          <EntitySet Name="Addresses" EntityType="NedShapeModel.Address" />
+          <EntitySet Name="BankDetails" EntityType="NedShapeModel.BankDetail" />
+          <EntitySet Name="Images" EntityType="NedShapeModel.Image" />
+          <EntitySet Name="Tokens" EntityType="NedShapeModel.Token" />
+          <AssociationSet Name="FK_BankDetail_Bank" Association="NedShapeModel.FK_BankDetail_Bank">
+            <End Role="Bank" EntitySet="Banks" />
+            <End Role="BankDetail" EntitySet="BankDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BankDetail_User" Association="NedShapeModel.FK_BankDetail_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="BankDetail" EntitySet="BankDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Token_User" Association="NedShapeModel.FK_Token_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Token" EntitySet="Tokens" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Addressline1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Addressline2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Town" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PostCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Province" Type="Int32" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BankDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="BankId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Beneficiary" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Account" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Branch" Type="String" Nullable="false" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bank" Relationship="NedShapeModel.FK_BankDetail_Bank" FromRole="BankDetail" ToRole="Bank" />
+          <NavigationProperty Name="User" Relationship="NedShapeModel.FK_BankDetail_User" FromRole="BankDetail" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ObjectId" Type="Int32" Nullable="false" />
+          <Property Name="ObjectType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Extension" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Size" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="ExternalUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IsMain" Type="Boolean" Nullable="false" />
+          <Property Name="Mime" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedBy" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="NedShapeModel.FK_Token_User" FromRole="Token" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_BankDetail_Bank">
+          <End Type="NedShapeModel.Bank" Role="Bank" Multiplicity="1" />
+          <End Type="NedShapeModel.BankDetail" Role="BankDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bank">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankDetail">
+              <PropertyRef Name="BankId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BankDetail_User">
+          <End Type="NedShapeModel.User" Role="User" Multiplicity="1" />
+          <End Type="NedShapeModel.BankDetail" Role="BankDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BankDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Token_User">
+          <End Type="NedShapeModel.User" Role="User" Multiplicity="1" />
+          <End Type="NedShapeModel.Token" Role="Token" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Token">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NedShapeModelStoreContainer" CdmEntityContainer="NedShapeEntities">
+          <EntitySetMapping Name="AuditLogs">
+            <EntityTypeMapping TypeName="NedShapeModel.AuditLog">
+              <MappingFragment StoreEntitySet="AuditLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ActionTable" ColumnName="ActionTable" />
+                <ScalarProperty Name="IsAjaxRequest" ColumnName="IsAjaxRequest" />
+                <ScalarProperty Name="Parameters" ColumnName="Parameters" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="BeforeImage" ColumnName="BeforeImage" />
+                <ScalarProperty Name="AfterImage" ColumnName="AfterImage" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banks">
+            <EntityTypeMapping TypeName="NedShapeModel.Bank">
+              <MappingFragment StoreEntitySet="Bank">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Broadcasts">
+            <EntityTypeMapping TypeName="NedShapeModel.Broadcast">
+              <MappingFragment StoreEntitySet="Broadcast">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Documents">
+            <EntityTypeMapping TypeName="NedShapeModel.Document">
+              <MappingFragment StoreEntitySet="Document">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Category" ColumnName="Category" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gyms">
+            <EntityTypeMapping TypeName="NedShapeModel.Gym">
+              <MappingFragment StoreEntitySet="Gym">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="ApprovedById" ColumnName="ApprovedById" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TradingName" ColumnName="TradingName" />
+                <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Address1" ColumnName="Address1" />
+                <ScalarProperty Name="Address2" ColumnName="Address2" />
+                <ScalarProperty Name="Address3" ColumnName="Address3" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="POPEmail" ColumnName="POPEmail" />
+                <ScalarProperty Name="CompanyEmail" ColumnName="CompanyEmail" />
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="ContactTel" ColumnName="ContactTel" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="ContactCell" ColumnName="ContactCell" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StatusDate" ColumnName="StatusDate" />
+                <ScalarProperty Name="PostalAddress1" ColumnName="PostalAddress1" />
+                <ScalarProperty Name="PostalAddress2" ColumnName="PostalAddress2" />
+                <ScalarProperty Name="PostPostalCode" ColumnName="PostPostalCode" />
+                <ScalarProperty Name="VATNo" ColumnName="VATNo" />
+                <ScalarProperty Name="PhysicalAddress1" ColumnName="PhysicalAddress1" />
+                <ScalarProperty Name="PhysicalAddress2" ColumnName="PhysicalAddress2" />
+                <ScalarProperty Name="PhysicalPostCode" ColumnName="PhysicalPostCode" />
+                <ScalarProperty Name="PhysicalCity" ColumnName="PhysicalCity" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="PostalCity" ColumnName="PostalCity" />
+                <ScalarProperty Name="PostalProvince" ColumnName="PostalProvince" />
+                <ScalarProperty Name="PhysicalProvince" ColumnName="PhysicalProvince" />
+                <ScalarProperty Name="AccountHolder" ColumnName="AccountHolder" />
+                <ScalarProperty Name="Approved" ColumnName="Approved" />
+                <ScalarProperty Name="ApprovedOn" ColumnName="ApprovedOn" />
+                <ScalarProperty Name="ApproverComments" ColumnName="ApproverComments" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GymAgreements">
+            <EntityTypeMapping TypeName="NedShapeModel.GymAgreement">
+              <MappingFragment StoreEntitySet="GymAgreement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GymId" ColumnName="GymId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GymPayments">
+            <EntityTypeMapping TypeName="NedShapeModel.GymPayment">
+              <MappingFragment StoreEntitySet="GymPayment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GymId" ColumnName="GymId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentReference" ColumnName="PaymentReference" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GymServices">
+            <EntityTypeMapping TypeName="NedShapeModel.GymService">
+              <MappingFragment StoreEntitySet="GymService">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Fee" ColumnName="Fee" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GymTimes">
+            <EntityTypeMapping TypeName="NedShapeModel.GymTime">
+              <MappingFragment StoreEntitySet="GymTime">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="GymServiceId" ColumnName="GymServiceId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MondayIsOpen" ColumnName="MondayIsOpen" />
+                <ScalarProperty Name="MondayStart" ColumnName="MondayStart" />
+                <ScalarProperty Name="MondayClose" ColumnName="MondayClose" />
+                <ScalarProperty Name="TuesdayIsOpen" ColumnName="TuesdayIsOpen" />
+                <ScalarProperty Name="TuesdayStart" ColumnName="TuesdayStart" />
+                <ScalarProperty Name="TuesdayClose" ColumnName="TuesdayClose" />
+                <ScalarProperty Name="WednesdayIsOpen" ColumnName="WednesdayIsOpen" />
+                <ScalarProperty Name="WednesdayStart" ColumnName="WednesdayStart" />
+                <ScalarProperty Name="WednesdayClose" ColumnName="WednesdayClose" />
+                <ScalarProperty Name="ThursdayIsOpen" ColumnName="ThursdayIsOpen" />
+                <ScalarProperty Name="ThursdayStart" ColumnName="ThursdayStart" />
+                <ScalarProperty Name="ThursdayClose" ColumnName="ThursdayClose" />
+                <ScalarProperty Name="FridayIsOpen" ColumnName="FridayIsOpen" />
+                <ScalarProperty Name="FridayStart" ColumnName="FridayStart" />
+                <ScalarProperty Name="FridayClose" ColumnName="FridayClose" />
+                <ScalarProperty Name="SaturdayIsOpen" ColumnName="SaturdayIsOpen" />
+                <ScalarProperty Name="SaturdayStart" ColumnName="SaturdayStart" />
+                <ScalarProperty Name="SaturdayClose" ColumnName="SaturdayClose" />
+                <ScalarProperty Name="SundayIsOpen" ColumnName="SundayIsOpen" />
+                <ScalarProperty Name="SundayStart" ColumnName="SundayStart" />
+                <ScalarProperty Name="SundayClose" ColumnName="SundayClose" />
+                <ScalarProperty Name="PublicHolidayIsOpen" ColumnName="PublicHolidayIsOpen" />
+                <ScalarProperty Name="PublicHolidayStart" ColumnName="PublicHolidayStart" />
+                <ScalarProperty Name="PublicHolidayClose" ColumnName="PublicHolidayClose" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="NedShapeModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="DashBoard" ColumnName="DashBoard" />
+                <ScalarProperty Name="Clients" ColumnName="Clients" />
+                <ScalarProperty Name="Products" ColumnName="Products" />
+                <ScalarProperty Name="Members" ColumnName="Members" />
+                <ScalarProperty Name="Gyms" ColumnName="Gyms" />
+                <ScalarProperty Name="Financials" ColumnName="Financials" />
+                <ScalarProperty Name="Administration" ColumnName="Administration" />
+                <ScalarProperty Name="Reports" ColumnName="Reports" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="NedShapeModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemConfigs">
+            <EntityTypeMapping TypeName="NedShapeModel.SystemConfig">
+              <MappingFragment StoreEntitySet="SystemConfig">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="PasswordChange" ColumnName="PasswordChange" />
+                <ScalarProperty Name="ImagesLocation" ColumnName="ImagesLocation" />
+                <ScalarProperty Name="DocumentsLocation" ColumnName="DocumentsLocation" />
+                <ScalarProperty Name="ContactEmail" ColumnName="ContactEmail" />
+                <ScalarProperty Name="FinancialEmail" ColumnName="FinancialEmail" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ContactNumber" ColumnName="ContactNumber" />
+                <ScalarProperty Name="PaymentUserCode" ColumnName="PaymentUserCode" />
+                <ScalarProperty Name="PaymentAccount" ColumnName="PaymentAccount" />
+                <ScalarProperty Name="AppDownloadUrl" ColumnName="AppDownloadUrl" />
+                <ScalarProperty Name="PaymentMonitorPath" ColumnName="PaymentMonitorPath" />
+                <ScalarProperty Name="PaymentMonitorDay" ColumnName="PaymentMonitorDay" />
+                <ScalarProperty Name="PaymentMonitorStart" ColumnName="PaymentMonitorStart" />
+                <ScalarProperty Name="LastPaymentMonitorRun" ColumnName="LastPaymentMonitorRun" />
+                <ScalarProperty Name="LastPaymentMonitorCount" ColumnName="LastPaymentMonitorCount" />
+                <ScalarProperty Name="PaymentsExportPath" ColumnName="PaymentsExportPath" />
+                <ScalarProperty Name="StatementFolder" ColumnName="StatementFolder" />
+                <ScalarProperty Name="PaymentFolder" ColumnName="PaymentFolder" />
+                <ScalarProperty Name="DRDiscount" ColumnName="DRDiscount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NedShapeModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Reset" ColumnName="Reset" />
+                <ScalarProperty Name="IdNumber" ColumnName="IdNumber" />
+                <ScalarProperty Name="IsSAId" ColumnName="IsSAId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cell" ColumnName="Cell" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordDate" ColumnName="PasswordDate" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="TaxNumber" ColumnName="TaxNumber" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="BuildingNo" ColumnName="BuildingNo" />
+                <ScalarProperty Name="BuildingName" ColumnName="BuildingName" />
+                <ScalarProperty Name="StreetNo" ColumnName="StreetNo" />
+                <ScalarProperty Name="StreetName" ColumnName="StreetName" />
+                <ScalarProperty Name="AddressCoordinates" ColumnName="AddressCoordinates" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="IsAgreement" ColumnName="IsAgreement" />
+                <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+                <ScalarProperty Name="BankBranch" ColumnName="BankBranch" />
+                <ScalarProperty Name="DebitDate" ColumnName="DebitDate" />
+                <ScalarProperty Name="MembershipNo" ColumnName="MembershipNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBroadcasts">
+            <EntityTypeMapping TypeName="NedShapeModel.UserBroadcast">
+              <MappingFragment StoreEntitySet="UserBroadcast">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BroadcastId" ColumnName="BroadcastId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGyms">
+            <EntityTypeMapping TypeName="NedShapeModel.UserGym">
+              <MappingFragment StoreEntitySet="UserGym">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GymId" ColumnName="GymId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="FirstVisit" ColumnName="FirstVisit" />
+                <ScalarProperty Name="LastVisit" ColumnName="LastVisit" />
+                <ScalarProperty Name="DateJoined" ColumnName="DateJoined" />
+                <ScalarProperty Name="DateLeft" ColumnName="DateLeft" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserGymAgreement" ColumnName="UserGymAgreement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPasswords">
+            <EntityTypeMapping TypeName="NedShapeModel.UserPassword">
+              <MappingFragment StoreEntitySet="UserPassword">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordDate" ColumnName="PasswordDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPayments">
+            <EntityTypeMapping TypeName="NedShapeModel.UserPayment">
+              <MappingFragment StoreEntitySet="UserPayment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GymServiceId" ColumnName="GymServiceId" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentReference" ColumnName="PaymentReference" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="NedShapeModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserStatements">
+            <EntityTypeMapping TypeName="NedShapeModel.UserStatement">
+              <MappingFragment StoreEntitySet="UserStatement">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="GymId" ColumnName="GymId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="MembershipNo" ColumnName="MembershipNo" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="Emailed" ColumnName="Emailed" />
+                <ScalarProperty Name="PaymentDate" ColumnName="PaymentDate" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+                <ScalarProperty Name="ResultDate" ColumnName="ResultDate" />
+                <ScalarProperty Name="ResultCode" ColumnName="ResultCode" />
+                <ScalarProperty Name="ResultDescription" ColumnName="ResultDescription" />
+                <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTypes">
+            <EntityTypeMapping TypeName="NedShapeModel.UserType">
+              <MappingFragment StoreEntitySet="UserType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="NedShapeModel.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+                <ScalarProperty Name="Town" ColumnName="Town" />
+                <ScalarProperty Name="Addressline2" ColumnName="Addressline2" />
+                <ScalarProperty Name="Addressline1" ColumnName="Addressline1" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BankDetails">
+            <EntityTypeMapping TypeName="NedShapeModel.BankDetail">
+              <MappingFragment StoreEntitySet="BankDetail">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Account" ColumnName="Account" />
+                <ScalarProperty Name="Beneficiary" ColumnName="Beneficiary" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="BankId" ColumnName="BankId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="NedShapeModel.Image">
+              <MappingFragment StoreEntitySet="Image">
+                <ScalarProperty Name="Mime" ColumnName="Mime" />
+                <ScalarProperty Name="IsMain" ColumnName="IsMain" />
+                <ScalarProperty Name="ExternalUrl" ColumnName="ExternalUrl" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Extension" ColumnName="Extension" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ObjectType" ColumnName="ObjectType" />
+                <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tokens">
+            <EntityTypeMapping TypeName="NedShapeModel.Token">
+              <MappingFragment StoreEntitySet="Token">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UID" ColumnName="UID" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

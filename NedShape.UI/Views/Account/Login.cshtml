@@ -1,0 +1,56 @@
+﻿@model NedShape.UI.Models.LoginViewModel
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+
+<div class="sign-in">
+
+    <div class="heads">
+        User Login
+    </div>
+
+    <div class="details">
+
+        @using ( Html.BeginForm( new { ReturnUrl = ViewBag.ReturnUrl } ) )
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary( true )
+
+            <p>
+                @Html.TextBoxFor( model => model.UserName, new { @class = "input", @placeholder = "User Name" } )
+                @Html.ValidationMessageFor( model => model.UserName )
+            </p>
+
+            <p>
+                @Html.PasswordFor( model => model.Password, new { @class = "input", @placeholder = "Password" } )
+                @Html.ValidationMessageFor( model => model.Password )
+            </p>
+            
+            <div class="h-space"></div>
+
+            <p>
+                <input type="submit" value="Sign In" style="display: inline;" />
+
+                <span style="padding: 0 2px;">|</span>
+
+                <a href="@Url.Action( "SignUp" )">
+                    <input type="button" value="Sign Up" class="purple-bg" style="display: inline;" />
+                </a>
+
+                <span style="padding: 0 2px;">|</span>
+
+                @Html.ActionLink( "Forgot Password", "ForgotPassword", new { }, new { @class = "uppercase" } )
+            </p>
+        
+            <p style="margin: 0;">
+                
+            </p>
+        }
+
+    </div>
+
+</div>
+
+<div class="shadow-small">&nbsp;</div>
