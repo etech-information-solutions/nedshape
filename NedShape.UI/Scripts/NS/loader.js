@@ -1,6 +1,6 @@
 (function ()
 {
-    PR.Loader = {
+    NS.Loader = {
         Sender: '',
 
         Image: '<img id="loader" class="apcloud-loader" src="' + imgurl + '/images/loader.gif" alt="" style="margin: 0 5px;" />',
@@ -11,22 +11,22 @@
         {
             if (sender && sender.length > 0)
             {
-                PR.Loader.Sender = sender;
+                NS.Loader.Sender = sender;
                 var par = $(sender).parent();
 
                 //sender.hide();
 
-                if (img && img == true)
+                if (img && img === true)
                 {
-                    par.append(PR.Loader.Image);
+                    par.append(NS.Loader.Image);
                 }
-                else if (img && img == 2)
+                else if (img && img === 2)
                 {
                     sender.css("background", "url('" + imgurl + "/images/loader.gif') no-repeat right center");
                 }
                 else
                 {
-                    par.append(PR.Loader.Html);
+                    par.append(NS.Loader.Html);
                 }
             }
 
@@ -34,18 +34,18 @@
             $('input, textarea, select, a').attr('disabled', 'disabled');
 
             // Reset auto log off timer
-            PR.UI.AutoLogOff(lgt);
+            //NS.UI.AutoLogOff(lgt);
         },
 
         Hide: function ()
         {
             $('.apcloud-loader').css({ 'display': 'none' });
 
-            if (PR.Loader.Sender.length)
+            if (NS.Loader.Sender.length)
             {
-                PR.Loader.Sender.css("background-image", "none");
-                PR.Loader.Sender.fadeIn('slow');
-                PR.Loader.Sender = '';
+                NS.Loader.Sender.css("background-image", "none");
+                NS.Loader.Sender.fadeIn('slow');
+                NS.Loader.Sender = '';
             }
 
             $('.apcloud-loader').remove();

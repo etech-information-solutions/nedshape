@@ -29,8 +29,8 @@ namespace NedShape.UI
                         "~/Scripts/Plugins/jquery.dataTables.js",
                         "~/Scripts/Plugins/jquery.placeholder.js" ) );
 
-            bundles.Add( new ScriptBundle( "~/bundles/c4l" ).Include(
-                        "~/Scripts/NS/c4l.js",
+            bundles.Add( new ScriptBundle( "~/bundles/ns" ).Include(
+                        "~/Scripts/NS/ns.js",
                         "~/Scripts/NS/ui.js",
                         "~/Scripts/NS/modal.js",
                         "~/Scripts/NS/loader.js",

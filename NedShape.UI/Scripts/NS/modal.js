@@ -1,6 +1,6 @@
 ( function ()
 {
-    PR.Modal = {
+    NS.Modal = {
 
         MovedObj: [],
 
@@ -12,26 +12,26 @@
         {
             if ( msg )
             {
-                $( PR.Modal.Container ).find( '#modal-body' ).html( msg );
+                $( NS.Modal.Container ).find( '#modal-body' ).html( msg );
             }
 
             if ( title )
             {
-                $( PR.Modal.Container ).find( '#modal-title' ).html( title );
+                $( NS.Modal.Container ).find( '#modal-title' ).html( title );
             }
 
             if ( show_btns )
             {
-                $( PR.Modal.Container ).find( '#btns' ).css( "display", "block" );
+                $( NS.Modal.Container ).find( '#btns' ).css( "display", "block" );
             }
             else
             {
-                $( PR.Modal.Container ).find( '#btns' ).css( "display", "none" );
+                $( NS.Modal.Container ).find( '#btns' ).css( "display", "none" );
             }
 
-            $( PR.Modal.Container ).fadeIn( 'medium', function ()
+            $( NS.Modal.Container ).fadeIn( 'medium', function ()
             {
-                PR.UI.DataCallBack(callback);
+                NS.UI.DataCallBack(callback);
             } );
 
             $( '.modalContainer' ).center();
@@ -40,15 +40,15 @@
         Close: function ()
         {
             $( ".announcement" ).slideUp( 1200 );
-            $( PR.Modal.Container ).fadeOut( 500, function ()
+            $( NS.Modal.Container ).fadeOut( 500, function ()
             {
-                if ( PR.Modal.MovedObj.length )
+                if ( NS.Modal.MovedObj.length )
                 {
-                    PR.Modal.MovedObj.appendTo( PR.Modal.MovedObjSource );
+                    NS.Modal.MovedObj.appendTo( NS.Modal.MovedObjSource );
                 }
 
-                $( PR.Modal.Container ).find( '#modal-body' ).html( '' );
-                $( PR.Modal.Container ).find( '#modal-title' ).html( '' );
+                $( NS.Modal.Container ).find( '#modal-body' ).html( '' );
+                $( NS.Modal.Container ).find( '#modal-title' ).html( '' );
             } );
         }
     }

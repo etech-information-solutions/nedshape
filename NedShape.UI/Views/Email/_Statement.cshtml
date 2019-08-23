@@ -1,0 +1,78 @@
+﻿
+@model Statement
+
+@using NedShape.Data.Models;
+
+@{
+    if ( VariableExtension.SystemRules == null )
+    {
+        VariableExtension.SetRules();
+    }
+    
+    String absoluteUrlBase = Request.Url.Scheme + "://" + Request.Url.Host + ( Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port );
+}
+
+<table cellspacing="0" cellpadding="10" width="100%" style="width: 100%; font-size: 11px; margin: 0 auto; background-color: #fff; font-family: Helvetica, 'Segoe UI', Verdana, Sans-Serif;">
+
+    <tbody>
+        <tr>
+            <td width="30%"></td>
+            <td width="40%" style="text-align: left;">
+                <img alt="NedShape" src="@Url.Content( absoluteUrlBase + "/Images/cash4leads-logo.png" )" style="width: 40%;" />
+            </td>
+            <td width="30%"></td>
+        </tr>
+        <tr>
+            <td height="20" colspan="3"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                Hi @Model.User.Name @Model.User.Surname,
+            </td>
+            <td width="20%"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                <p>
+                    Please find attached your <strong>Commission Statement</strong> for
+                    @Model.CreatedOn.AddMonths( -1 ).Year/@Model.CreatedOn.AddMonths( -1 ).Month.ToLeadingZeros( 10, 1 )
+                </p>
+            </td>
+            <td width="20%"></td>
+        </tr>
+        <tr>
+            <td height="10" colspan="3"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                <p>
+                    Should you have any queries please mail the support desk below:
+                </p>
+            </td>
+            <td width="20%"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                <p>
+                    Support Email: <a href="mailto:@VariableExtension.SystemRules.ContactEmail">@VariableExtension.SystemRules.ContactEmail</a>
+                </p>
+            </td>
+            <td width="20%"></td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%" style="text-align: left; color: #aaa;">
+                <i>@DateTime.Now.Year Copyright &copy; | Cash4Leds. All Rights Reserved</i>
+            </td>
+            <td width="20%"></td>
+        </tr>
+    </tfoot>
+
+</table>

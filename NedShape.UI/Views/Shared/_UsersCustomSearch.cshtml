@@ -16,7 +16,7 @@
 
     <div id="search-query" class="search-query">
 
-        @using ( Ajax.BeginForm( action, new { }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = action.ToLower(), OnBegin = "C4L.UI.BeginCustomSearch($('#sticky-one form'), true);", OnComplete = "C4L.UI.CompleteCustomSearch();" }, new { @style = "width: auto; padding: 0;" } ) )
+        @using ( Ajax.BeginForm( action, new { }, new AjaxOptions { HttpMethod = "POST", UpdateTargetId = action.ToLower(), OnBegin = "NS.UI.BeginCustomSearch($('#sticky-one form'), true);", OnComplete = "NS.UI.CompleteCustomSearch();" }, new { @style = "width: auto; padding: 0;" } ) )
         {
             <div class="left" style="width: 48%;">
                 <div class="editor-label">

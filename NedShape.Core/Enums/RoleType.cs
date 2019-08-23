@@ -11,22 +11,19 @@ namespace NedShape.Core.Enums
         All = 0,
 
         [UiIgnoreEnumValue]
-        [StringEnumDisplayText( "Agent" )]
-        Agent = 1,
+        [StringEnumDisplayText( "Gym Member" )]
+        Member = 1,
 
-        [StringEnumDisplayText( "Quality Assurer" )]
-        QualityAssurer = 2,
+        [StringEnumDisplayText( "Gym User" )]
+        GymUser = 2,
 
         [StringEnumDisplayText( "Financial User" )]
         FinancialUser = 3,
 
-        [StringEnumDisplayText( "Trading Partner" )]
-        TradingPartner = 4,
-
         [StringEnumDisplayText( "System Operator" )]
-        SystemOperator = 5,
+        SystemOperator = 4,
 
         [StringEnumDisplayText( "System Administrator" )]
-        SystemAdministrator = 6
+        SystemAdministrator = 5
     }
 }

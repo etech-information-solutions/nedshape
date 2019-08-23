@@ -34,9 +34,9 @@
 
                     <div class="left" style="width: 22%;">
 
-                        <strong style="padding-right: 20px; border-right: 1px solid #848484;">
-                            <a href="@Url.Action( "Index", "DashBoard" )">
-                                <img alt="NedShape" src="@Url.Content( "~/images/cash4leads-logo.png" )" style="width: 55%;" />
+                        <strong style="padding-right: 14px; border-right: 1px solid #848484;">
+                            <a href="@Url.Action( "Index", "DashBoard" )" style="font-size: 30px;">
+                                NedShape
                             </a>
                         </strong>
 
@@ -70,9 +70,7 @@
             else
             {
                 <div class="logo @(Request.IsAuthenticated ? "logged-in" : "")">
-                    <a href="@Url.Action( "Login", "Account" )">
-                        <img alt="NedShape" src="@Url.Content( "~/images/cash4leads-logo.png" )" />
-                    </a>
+                    NedShape
                 </div>
             }
 
@@ -131,7 +129,7 @@
     @Scripts.Render( "~/bundles/jqueryval" )
     @Scripts.Render( "~/bundles/jqueryui" )
     @Scripts.Render( "~/bundles/plugins" )
-    @Scripts.Render( "~/bundles/c4l" )
+    @Scripts.Render( "~/bundles/ns" )
 
     <div id="empty-div" style="display: none;"></div>
 </body>

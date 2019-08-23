@@ -8,56 +8,65 @@
 
     <ul>
 
-        @if ( User.Has( PermissionTo.View, PermissionContext.DashBoard ) )
+        @*@if ( User.Has( PermissionTo.View, PermissionContext.DashBoard ) )
         {
             <li class="@(controller.ToLower().Equals( "dashboard" ) ? "current" : "")" data-hot-spot="1" data-c="Dashboard" data-t="">
                 <a rel="tipsyW" title="Dashboard" href="@Url.Action( "Index", "Dashboard" )">
                     <span>Dashboard</span>
                 </a>
             </li>
-        }
+        }*@
 
-        @if ( User.Has( PermissionTo.View, PermissionContext.Clients ) )
+        @if ( User.Has( PermissionTo.View, PermissionContext.Gyms ) )
         {
-            <li class="first @(controller.ToLower().Equals( "clients" ) ? "current" : "")" data-hot-spot="1" data-c="Clients" data-t="">
-                <a rel="tipsyW" title="Clients" href="@Url.Action( "Index", "Clients" )">
-                    <span>Clients</span>
+            <li class="first @(controller.ToLower().Equals( "gyms" ) ? "current" : "")" data-hot-spot="1" data-c="Gyms" data-t="">
+                <a rel="tipsyW" title="Gyms & Services" href="@Url.Action( "Index", "Gyms" )">
+                    <span>Gyms & Services</span>
                 </a>
             </li>
         }
 
-        @if ( User.Has( PermissionTo.View, PermissionContext.Products ) )
+        @*@if ( User.Has( PermissionTo.View, PermissionContext.Products ) )
         {
             <li data-hot-spot="1" data-c="Products" data-t="" class="@(controller.ToLower().Equals( "products" ) ? "current" : "")">
                 <a rel="tipsyW" title="Products" href="@Url.Action( "Index", "Products" )">
                     <span>Products</span>
                 </a>
             </li>
-        }
+        }*@
 
-        @if ( User.Has( PermissionTo.View, PermissionContext.Agents ) )
+        @if ( User.Has( PermissionTo.View, PermissionContext.Members ) )
         {
-            <li data-hot-spot="1" data-c="Agents" data-t="" class="@(controller.ToLower().Equals( "agents" ) ? "current" : "")">
-                <a rel="tipsyW" title="Agents" href="@Url.Action( "Index", "Agents" )">
-                    <span>Agents</span>
+            <li data-hot-spot="1" data-c="Members" data-t="" class="@(controller.ToLower().Equals( "members" ) ? "current" : "")">
+                <a rel="tipsyW" title="Members" href="@Url.Action( "Index", "Members" )">
+                    <span>Members</span>
                 </a>
             </li>
         }
 
-        @if ( User.Has( PermissionTo.View, PermissionContext.Leads ) )
+        @*@if ( User.Has( PermissionTo.View, PermissionContext.Clients ) )
         {
-            <li data-hot-spot="1" data-c="Leads" data-t="" class="@(controller.ToLower().Equals( "leads" ) ? "current" : "")">
-                <a rel="tipsyW" title="Leads" href="@Url.Action( "Index", "Leads" )">
-                    <span>Leads</span>
+            <li data-hot-spot="1" data-c="Clients" data-t="" class="@(controller.ToLower().Equals( "clients" ) ? "current" : "")">
+                <a rel="tipsyW" title="Clients" href="@Url.Action( "Index", "Clients" )">
+                    <span>Clients</span>
                 </a>
             </li>
-        }
+        }*@
 
         @if ( User.Has( PermissionTo.View, PermissionContext.Financials ) )
         {
             <li data-hot-spot="1" data-c="Financials" data-t="" class="@(controller.ToLower().Equals( "financials" ) ? "current" : "")">
-                <a rel="tipsyW" title="Financials" href="@Url.Action( "Index", "Financials" )">
-                    <span>Financials</span>
+                <a rel="tipsyW" title="Finance" href="@Url.Action( "Index", "Financials" )">
+                    <span>Finance</span>
+                </a>
+            </li>
+        }
+
+        @if ( User.Has( PermissionTo.View, PermissionContext.Statements ) )
+        {
+            <li data-hot-spot="1" data-c="Statements" data-t="" class="@(controller.ToLower().Equals( "statements" ) ? "current" : "")">
+                <a rel="tipsyW" title="Statements" href="@Url.Action( "Index", "Statements" )">
+                    <span>Statements</span>
                 </a>
             </li>
         }
@@ -71,14 +80,14 @@
             </li>
         }
 
-        @*@if ( User.Has( PermissionTo.View, PermissionContext.Reports ) )
+        @if ( User.Has( PermissionTo.View, PermissionContext.Profile ) )
         {
-            <li data-hot-spot="1" data-c="Reports" data-t="" class="@(controller.ToLower().Equals( "reports" ) ? "current" : "")">
-                <a rel="tipsyW" title="Reports" href="@Url.Action( "Index", "Reports" )">
-                    <span>Reports</span>
+            <li data-hot-spot="1" data-c="Profile" data-t="" class="@(controller.ToLower().Equals( "profile" ) ? "current" : "")">
+                <a rel="tipsyW" title="My Profile" href="@Url.Action( "Index", "Profile" )">
+                    <span>My Profile</span>
                 </a>
             </li>
-        }*@
+        }
 
     </ul>
 

@@ -171,13 +171,13 @@ namespace System
         public static void CacheRemovedCallBack( string key, object value, CacheItemRemovedReason reason )
         {
             //CacheData( key, value );
-            using ( StreamWriter writer = new StreamWriter( @"C:\inetpub\wwwroot\vhosts\payments.voteda.org\wwwroot\Logs\Cache\log.log", true ) )
-            {
-                writer.AutoFlush = true;
+            //using ( StreamWriter writer = new StreamWriter( @"C:\inetpub\wwwroot\vhosts\payments.voteda.org\wwwroot\Logs\Cache\log.log", true ) )
+            //{
+            //    writer.AutoFlush = true;
 
-                writer.WriteLine();
-                writer.WriteLine( $"CACHE ITEM <{key} => {new JavaScriptSerializer().Serialize( value )}> REMOVED Because <{reason}> @ {DateTime.Now }   ========================" );
-            }
+            //    writer.WriteLine();
+            //    writer.WriteLine( $"CACHE ITEM <{key} => {new JavaScriptSerializer().Serialize( value )}> REMOVED Because <{reason}> @ {DateTime.Now }   ========================" );
+            //}
         }
     }
 }

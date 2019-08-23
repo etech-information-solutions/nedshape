@@ -7,26 +7,6 @@ namespace NedShape.Core.Enums
     [StringEnum]
     public enum PermissionContext
     {
-        // Admin can see Admin (or Everything!)
-        [PermissionContextSupports( PermissionTo.View )]
-        SystemAdministrator,
-
-        // Admin can see Admin (or Everything!)
-        [PermissionContextSupports( PermissionTo.View )]
-        Administration,
-
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Finance )]
-        [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        Finance,
-
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.AuthFin )]
-        [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        AuthFin,
-
-        // WebMaster can see WebMaster (or Everything!)
-        [PermissionContextSupports( PermissionTo.View )]
-        WebMaster,
-
         [PermissionPrerequisite( PermissionTo.View, PermissionContext.Dummy )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
         Dummy,
@@ -35,25 +15,41 @@ namespace NedShape.Core.Enums
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
         DashBoard,
 
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Client )]
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Clients )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        Client,
+        Clients,
 
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Product )]
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Products )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        Product,
+        Products,
 
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Member )]
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Members )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        Member,
+        Members,
 
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Gym )]
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Profile )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        Gym,
+        Profile,
 
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Report )]
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Gyms )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        Report,
+        Gyms,
+
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Reports )]
+        [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
+        Reports,
+
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Statements )]
+        [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
+        Statements,
+
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Financials )]
+        [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
+        Financials,
+
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Administration )]
+        [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
+        Administration,
 
         // Whatever else.
     }

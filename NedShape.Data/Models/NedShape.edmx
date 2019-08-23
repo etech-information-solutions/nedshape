@@ -265,6 +265,8 @@
           <Property Name="Financials" Type="bit" Nullable="false" />
           <Property Name="Administration" Type="bit" Nullable="false" />
           <Property Name="Reports" Type="bit" Nullable="false" />
+          <Property Name="Profile" Type="bit" Nullable="false" />
+          <Property Name="Statements" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -1052,6 +1054,8 @@
           <Property Name="Administration" Type="Boolean" Nullable="false" />
           <Property Name="Reports" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="UserRoles" Relationship="Self.FK_UserRole_Role" FromRole="Role" ToRole="UserRole" />
+          <Property Name="Profile" Type="Boolean" Nullable="false" />
+          <Property Name="Statements" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Service">
           <Key>
@@ -1898,6 +1902,8 @@
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="NedShapeModel.Role">
               <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Statements" ColumnName="Statements" />
+                <ScalarProperty Name="Profile" ColumnName="Profile" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />

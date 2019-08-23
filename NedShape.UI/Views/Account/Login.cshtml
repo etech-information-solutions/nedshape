@@ -8,7 +8,7 @@
 <div class="sign-in">
 
     <div class="heads">
-        User Login
+        Account Login
     </div>
 
     <div class="details">
@@ -19,12 +19,12 @@
             @Html.ValidationSummary( true )
 
             <p>
-                @Html.TextBoxFor( model => model.UserName, new { @class = "input", @placeholder = "User Name" } )
+                @Html.TextBoxFor( model => model.UserName, new { @class = "input username", @placeholder = "User Name" } )
                 @Html.ValidationMessageFor( model => model.UserName )
             </p>
 
             <p>
-                @Html.PasswordFor( model => model.Password, new { @class = "input", @placeholder = "Password" } )
+                @Html.PasswordFor( model => model.Password, new { @class = "input password", @placeholder = "Password" } )
                 @Html.ValidationMessageFor( model => model.Password )
             </p>
             
@@ -33,13 +33,11 @@
             <p>
                 <input type="submit" value="Sign In" style="display: inline;" />
 
-                <span style="padding: 0 2px;">|</span>
+                <span style="padding: 0 4px;">|</span>
 
-                <a href="@Url.Action( "SignUp" )">
-                    <input type="button" value="Sign Up" class="purple-bg" style="display: inline;" />
-                </a>
+                @Html.ActionLink( "Sign Up", "SignUp", new { }, new { @class = "uppercase" } )
 
-                <span style="padding: 0 2px;">|</span>
+                <span style="padding: 0 4px;">|</span>
 
                 @Html.ActionLink( "Forgot Password", "ForgotPassword", new { }, new { @class = "uppercase" } )
             </p>

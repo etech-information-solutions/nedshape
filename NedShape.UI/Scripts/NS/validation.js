@@ -1,6 +1,6 @@
 (function ()
 {
-    PR.Validation = {
+    NS.Validation = {
 
         Email: /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/,
 
@@ -13,7 +13,7 @@
             $('.pr-validation').unbind('click');
             $('.pr-validation').click(function ()
             {
-                PR.Validation.Validate($(this));
+                NS.Validation.Validate($(this));
             });
 
             $('*[data-id-number="1"]').each(function ()
@@ -25,7 +25,7 @@
                 {
                     var errCntr = $('[data-valmsg-for="' + $(this).attr("id") + '"]');
 
-                    if ($(this).val() != "" && !PR.Validation.IdNumber.test($(this).val()))
+                    if ($(this).val() != "" && !NS.Validation.IdNumber.test($(this).val()))
                     {
                         errCntr
                         .removeClass("field-validation-valid")
@@ -84,9 +84,9 @@
                 if ((allowedFormat && req && req != '0') || (allowedFormat && req == '1'))
                 {
                     if (allowedFormat == 'email')
-                        allowedFormat = PR.Validation.Email.test(val);
+                        allowedFormat = NS.Validation.Email.test(val);
                     else if (allowedFormat == 'int')
-                        allowedFormat = PR.Validation.Int.test(val);
+                        allowedFormat = NS.Validation.Int.test(val);
                 }
                 else
                 {

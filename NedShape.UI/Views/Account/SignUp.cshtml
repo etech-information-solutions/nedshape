@@ -24,7 +24,7 @@
 
     <div class="details">
 
-        @using ( Html.BeginForm( "SignUp", "Account", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return C4L.UI.DataValidateForm($(this))", id = "sign-up-form" } ) )
+        @using ( Html.BeginForm( "SignUp", "Account", FormMethod.Post, new { enctype = "multipart/form-data", onsubmit = "return NS.UI.DataValidateForm($(this))", id = "sign-up-form" } ) )
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary( true )
@@ -165,7 +165,7 @@
 
                 </div>
 
-                <div id="confirm-cell" class="@( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "block" : "none" ) none editor-field">
+                @*<div id="confirm-cell" class="@( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "block" : "none" ) none editor-field">
                     <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
                         CONFIRM CELL NUMBER
                     </label>
@@ -176,7 +176,7 @@
 
                     @Html.ValidationMessageFor( model => model.ConfirmCell )
 
-                </div>
+                </div>*@
 
 
 
@@ -328,7 +328,7 @@
 
                 </div>
 
-                <div class="editor-field" style="margin-top: 24px; padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px dashed #ddd;">
+                @*<div class="editor-field" style="margin-top: 24px; padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px dashed #ddd;">
 
                     <p>
                         <strong style="font-size: 14px;">REWARDS MUST BE PAID TO:</strong>
@@ -346,9 +346,9 @@
 
                     <div class="clear"></div>
 
-                </div>
+                </div>*@
 
-                <div id="bank-details" class="@( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "block" : "none" )">
+                @*<div id="bank-details" class="@( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "block" : "none" )">
 
                     <div class="editor-field">
                         <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
@@ -452,7 +452,7 @@
                     </div>
 
 
-                </div>
+                </div>*@
 
             </div>
 
@@ -466,6 +466,8 @@
 
                 @Html.ActionLink( "Sign In", "Login", new { }, new { @class = "uppercase" } )
             </p>
+
+            <div class="clear"></div>
         }
 
     </div>

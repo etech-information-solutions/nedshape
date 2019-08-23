@@ -100,7 +100,7 @@ namespace NedShape.Core.Services
                      where
                      (
                          // Where
-                         u.UserRoles.Any( ur => ur.Role.Type != ( int ) RoleType.Agent ) &&
+                         u.UserRoles.Any( ur => ur.Role.Type != ( int ) RoleType.Member ) &&
 
 
 
@@ -149,7 +149,7 @@ namespace NedShape.Core.Services
                      where
                      (
                          // Where
-                         u.UserRoles.Any( ur => ur.Role.Type != ( int ) RoleType.Agent ) &&
+                         u.UserRoles.Any( ur => ur.Role.Type != ( int ) RoleType.Member ) &&
 
 
 

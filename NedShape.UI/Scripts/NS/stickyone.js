@@ -1,6 +1,6 @@
 (function ()
 {
-    PR.Sticky = {
+    NS.Sticky = {
 
         Close: false,
 
@@ -76,23 +76,23 @@
                     "filter": "alpha(opacity=100)"
                 }, 800, function ()
                 {
-                    PR.Sticky.Close = true;
+                    NS.Sticky.Close = true;
 
-                    PR.UI.DataCallBack(callback);
+                    NS.UI.DataCallBack(callback);
                 });
             }
             else
             {
                 this.StickyOne.css({ "top": top + "px" });
 
-                PR.Sticky.Close = true;
+                NS.Sticky.Close = true;
             }
 
             this.StickyOne.click(function ()
             {
-                PR.Sticky.Close = false;
+                NS.Sticky.Close = false;
 
-                setTimeout("PR.Sticky.Close = true;", "100");
+                setTimeout("NS.Sticky.Close = true;", "100");
             });
         },
 
@@ -102,12 +102,12 @@
 
             if (this.Close && this.StickyOne.is(":visible"))
             {
-                PR.Sticky.StickyOne.hide(600, function ()
+                NS.Sticky.StickyOne.hide(600, function ()
                 {
-                    PR.Sticky.StickyOne.removeClass("error top-right center-left center-right t-position");
+                    NS.Sticky.StickyOne.removeClass("error top-right center-left center-right t-position");
 
-                    PR.Sticky.StickyOne.css({ "top": "0", "left": "-100px" });
-                    PR.Sticky.StickyOne.find(".sticky-title, .sticky-data").html("");
+                    NS.Sticky.StickyOne.css({ "top": "0", "left": "-100px" });
+                    NS.Sticky.StickyOne.find(".sticky-title, .sticky-data").html("");
                 });
             }
         }
@@ -119,6 +119,6 @@ $(function ()
 {
     $(document).click(function ()
     {
-        PR.Sticky.Hide();
+        NS.Sticky.Hide();
     });
 });

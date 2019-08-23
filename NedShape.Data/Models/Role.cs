@@ -34,6 +34,8 @@ namespace NedShape.Data.Models
         public bool Financials { get; set; }
         public bool Administration { get; set; }
         public bool Reports { get; set; }
+        public bool Profile { get; set; }
+        public bool Statements { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserRole> UserRoles { get; set; }

@@ -180,29 +180,17 @@ namespace NedShape.UI.Controllers
                     {
                         case "DashBoard":
 
-                            filterContext.Result = RedirectToAction( "Index", "Clients" );
+                            filterContext.Result = RedirectToAction( "Index", "Gyms" );
 
                             break;
 
-                        case "Clients":
+                        case "Gyms":
 
-                            filterContext.Result = RedirectToAction( "Index", "Products" );
-
-                            break;
-
-                        case "Products":
-
-                            filterContext.Result = RedirectToAction( "Index", "Agents" );
+                            filterContext.Result = RedirectToAction( "Index", "Members" );
 
                             break;
 
-                        case "Agents":
-
-                            filterContext.Result = RedirectToAction( "Index", "Leads" );
-
-                            break;
-
-                        case "Leads":
+                        case "Members":
 
                             filterContext.Result = RedirectToAction( "Index", "Financials" );
 
@@ -210,14 +198,26 @@ namespace NedShape.UI.Controllers
 
                         case "Financials":
 
+                            filterContext.Result = RedirectToAction( "Index", "Statements" );
+
+                            break;
+
+                        case "Statements":
+
                             filterContext.Result = RedirectToAction( "Index", "Administration" );
 
                             break;
 
-                        case "Report":
+                        case "Administration":
+
+                            filterContext.Result = RedirectToAction( "Index", "Profile" );
+
+                            break;
+
+                        case "Profile":
                         default:
 
-                            Notifications.Add( new NotificationModel() { Message = "Please note, you were signed out from your previous session due to time-out", Type = NotificationType.Error } );
+                            Notifications.Add( new NotificationModel() { Message = "Please note, you were signed out from your previous session", Type = NotificationType.Error } );
 
                             Session[ "Notifications" ] = Notifications;
 
@@ -231,7 +231,7 @@ namespace NedShape.UI.Controllers
                 }
                 else
                 {
-                    Notifications.Add( new NotificationModel() { Message = "Please note, you were signed out from your previous session due to time-out", Type = NotificationType.Error } );
+                    Notifications.Add( new NotificationModel() { Message = "Please note, you were signed out from your previous session", Type = NotificationType.Error } );
 
                     Session[ "Notifications" ] = Notifications;
 

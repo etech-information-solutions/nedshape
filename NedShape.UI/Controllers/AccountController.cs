@@ -76,7 +76,32 @@ namespace NedShape.UI.Controllers
 
             CustomExpiration( user, 3600 );
 
-            return RedirectToAction( "Index", "DashBoard" );
+            switch ( user.RoleType )
+            {
+                case RoleType.Member:
+
+                    return RedirectToAction( "Index", "Profile" );
+
+                case RoleType.GymUser:
+
+                    return RedirectToAction( "Index", "Gyms" );
+
+                case RoleType.FinancialUser:
+
+                    return RedirectToAction( "Index", "Financials" );
+
+                case RoleType.SystemOperator:
+
+                    return RedirectToAction( "Index", "Administration" );
+
+                case RoleType.SystemAdministrator:
+
+                    return RedirectToAction( "Index", "Administration" );
+
+                default:
+
+                    return RedirectToAction( "Index", "DashBoard" );
+            }
         }
 
         //

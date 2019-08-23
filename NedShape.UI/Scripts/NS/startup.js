@@ -1,14 +1,14 @@
 
 
 
-PR.Init = {
+NS.Init = {
 
     NotificationTimeout: [],
 
     Start: function (restartPlugin)
     {
         $(".tipsy").remove();
-        PR.Loader.Hide();
+        NS.Loader.Hide();
 
         $(".notification").stop().slideDown(700, function ()
         {
@@ -38,8 +38,8 @@ PR.Init = {
 
         this.PluginLoaded = true;
 
-        PR.UI.Start();
-        PR.Validation.Start();
+        NS.UI.Start();
+        NS.Validation.Start();
 
         if ($("#edit-item").length)
         {
@@ -54,12 +54,12 @@ PR.Init = {
             t = $(".da-tab:visible").attr("id");
         }
 
-        if (!PR.UI[t])
+        if (!NS.UI[t])
         {
-            PR.UI[t] = [];
+            NS.UI[t] = [];
         }
 
-        //var params = PR.UI.GetCustomSearchParams(t);
+        //var params = NS.UI.GetCustomSearchParams(t);
 
         //for (p in params)
         //{
@@ -71,38 +71,38 @@ PR.Init = {
 
         if (!$('input[name="skip"]').length)
         {
-            sender.append('<input type="hidden" name="skip" value="' + (PR.UI[t].PageSkip || PR.UI.PageSkip) + '" />');
+            sender.append('<input type="hidden" name="skip" value="' + (NS.UI[t].PageSkip || NS.UI.PageSkip) + '" />');
         }
         else
         {
-            $('input[name="skip"]').val((PR.UI[t].PageSkip || PR.UI.PageSkip));
+            $('input[name="skip"]').val((NS.UI[t].PageSkip || NS.UI.PageSkip));
         }
 
         if (!$('input[name="page"]').length)
         {
-            sender.append('<input type="hidden" name="page" value="' + (PR.UI[t].PageNumber || PR.UI.PageNumber) + '" />');
+            sender.append('<input type="hidden" name="page" value="' + (NS.UI[t].PageNumber || NS.UI.PageNumber) + '" />');
         }
         else
         {
-            $('input[name="page"]').val((PR.UI[t].PageNumber || PR.UI.PageNumber));
+            $('input[name="page"]').val((NS.UI[t].PageNumber || NS.UI.PageNumber));
         }
 
         if (!$('input[name="take"]').length)
         {
-            sender.append('<input type="hidden" name="take" value="' + (PR.UI[t].PageLength || PR.UI.PageLength) + '" />');
+            sender.append('<input type="hidden" name="take" value="' + (NS.UI[t].PageLength || NS.UI.PageLength) + '" />');
         }
         else
         {
-            $('input[name="take"]').val((PR.UI[t].PageLength || PR.UI.PageLength));
+            $('input[name="take"]').val((NS.UI[t].PageLength || NS.UI.PageLength));
         }
 
         if (!$('input[name="query"]').length)
         {
-            sender.append('<input type="hidden" name="query" value="' + (PR.UI[t].PageSearch || PR.UI.PageSearch) + '" />');
+            sender.append('<input type="hidden" name="query" value="' + (NS.UI[t].PageSearch || NS.UI.PageSearch) + '" />');
         }
         else
         {
-            $('input[name="query"]').val((PR.UI[t].PageSearch || PR.UI.PageSearch));
+            $('input[name="query"]').val((NS.UI[t].PageSearch || NS.UI.PageSearch));
         }
     },
 
@@ -137,9 +137,9 @@ PR.Init = {
                 inline: true, dateFormat: "yy/mm/dd",
                 onChangeMonthYear: function ()
                 {
-                    PR.Sticky.Close = false;
+                    NS.Sticky.Close = false;
 
-                    setTimeout("PR.Sticky.Close = true;", "100");
+                    setTimeout("NS.Sticky.Close = true;", "100");
                 }
             });
         });
@@ -147,7 +147,7 @@ PR.Init = {
         $.validator.methods.date = function (value, element)
         {
             return this.optional(element) || $.datepicker.parseDate('yy/mm/dd', value);
-        }
+        };
 
         target.find("table.datatable-numberpaging").each(function ()
         {
@@ -164,7 +164,7 @@ PR.Init = {
 
                     "fnDrawCallback": function ()
                     {
-                        PR.UI.Start();
+                        NS.UI.Start();
                     }
                 });
             }
@@ -183,7 +183,7 @@ PR.Init = {
 
                 "fnDrawCallback": function ()
                 {
-                    PR.UI.Start();
+                    NS.UI.Start();
                 }
             });
         });
@@ -214,5 +214,5 @@ PR.Init = {
 
 $(function ()
 {
-    PR.Init.Start(true);
+    NS.Init.Start(true);
 });

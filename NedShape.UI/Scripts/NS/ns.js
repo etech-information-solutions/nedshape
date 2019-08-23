@@ -106,7 +106,7 @@ jQuery.fn.chznreadonly = function ( readonly )
 
 
 
-var PR = {
+var NS = {
     UI: {},
     Init: {},
     Modal: {},

@@ -1,0 +1,86 @@
+﻿
+@model SignUpViewModel
+
+@using NedShape.UI.Models;
+
+@{
+    if ( VariableExtension.SystemRules == null )
+    {
+        VariableExtension.SetRules();
+    }
+    
+    Guid? token = ( ViewBag.Token != null ) ? ( Guid? ) ViewBag.Token : null;
+
+    String absoluteUrlBase = Request.Url.Scheme + "://" + Request.Url.Host + ( Request.Url.IsDefaultPort ? "" : ":" + Request.Url.Port );
+}
+
+<table cellspacing="0" cellpadding="10" width="100%" style="width: 100%; font-size: 11px; margin: 0 auto; background-color: #fff; font-family: Helvetica, 'Segoe UI', Verdana, Sans-Serif;">
+
+    <tbody>
+        <tr>
+            <td width="30%"></td>
+            <td width="40%" style="text-align: left;">
+                <img alt="NedShape" src="@Url.Content( absoluteUrlBase + "/Images/cash4leads-logo.png" )" style="width: 40%;" />
+            </td>
+            <td width="30%"></td>
+        </tr>
+        <tr>
+            <td height="20" colspan="3"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                Hi
+            </td>
+            <td width="20%"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                <p>
+                    A new user with the following details has requested to join the NedShape Platform.
+                    Kindly <a href="@absoluteUrlBase/Account/Login">Login Now</a> to review this request and provide necessary feedback in a timely manner.
+                </p>
+            </td>
+            <td width="20%"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                <p>
+                    Name: @Model.Name @Model.Surname
+                </p>
+                <p>
+                    Email: @Model.Email
+                </p>
+                <p>
+                    Cell: @Model.Cell
+                </p>
+                <p>
+                    ID/Passport: @Model.IdNumber
+                </p>
+            </td>
+            <td width="20%"></td>
+        </tr>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%">
+                <p>
+                    Support Email: <a href="mailto:@VariableExtension.SystemRules.ContactEmail">@VariableExtension.SystemRules.ContactEmail</a>
+                </p>
+            </td>
+            <td width="20%"></td>
+        </tr>
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td width="20%"></td>
+            <td width="60%" style="text-align: left; color: #aaa;">
+                <i>@DateTime.Now.Year Copyright &copy; | Cash4Leds. All Rights Reserved</i>
+            </td>
+            <td width="20%"></td>
+        </tr>
+    </tfoot>
+
+</table>
