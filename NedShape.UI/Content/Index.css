@@ -17,12 +17,16 @@
 }
 
 .login-button {
-    font-size: 20px;
-    border: none;
-    opacity: 0.8;
-    cursor: pointer;
-    background: 0 0;
-    color: #158F5A;
+    font-size: 20px !important;
+    border: none !important;
+    opacity: 0.8 !important;
+    cursor: pointer !important;
+    background: 0 0 !important;
+    color: #158F5A !important;
+    border-radius: none !important;
+    background: none !important;
+    text-transform: none !important;
+    transition: none !important;
 }
 
 .icon {
@@ -56,21 +60,26 @@
 }
 
 .left-button {
-    font-size: 16px;
-    opacity: 0.8;
-    cursor: pointer;
-    margin-left: 14mm;
+    font-size: 16px !important;
+    opacity: 0.8 !important;
+    cursor: pointer !important;
+    margin-left: 14mm !important;
     padding: 0;
     border: 0;
     outline: 0;
     vertical-align: baseline;
-    background: 0 0;
-    color: white;
+    background: none !important;
+    color: white !important;
+    width: auto;
+    height: 2% !important;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: none !important;
+    background: none !important;
+    text-transform: none !important;
+    transition: none !important;
 }
 
-    .left-button:hover {
-        color: #8e4f6b;
-    }
 
 .middle-button {
     cursor: pointer;
@@ -131,8 +140,11 @@
     border: none;
     color: white;
     margin: 0px;
-    padding: 8px;
     font-size: 21px;
+    padding-top: 0px;
+    padding-right: 13px;
+    padding-bottom: 2px;
+    padding-left: 7px;
 }
 
     .view-map-button:hover {
@@ -144,9 +156,9 @@
     background-color: #094a2e;
     color: white;
     border: none;
-    padding-top: 14px;
+    padding-top: 3px;
     padding-right: 14px;
-    padding-bottom: 11px;
+    padding-bottom: 3px;
     padding-left: 14px;
 }
 
@@ -255,7 +267,7 @@
 }
 
 .workout-floating-text {
-    margin-top: 4%;
+    margin-top: 2%;
     position: absolute;
     text-align: center;
     width: 100%;
@@ -325,11 +337,11 @@
 .form-control {
     width: 100%;
     max-width: 340px;
-    padding: 5px;
+    padding: 12px;
     background: rgba(34, 34, 34, 1);
     border-color: white;
     margin-top: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
     border-width: thick;
 }
 
