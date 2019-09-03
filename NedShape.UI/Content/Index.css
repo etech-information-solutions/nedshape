@@ -1,0 +1,506 @@
+﻿body {
+    background: rgba(34, 34, 34, 1);
+    text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#Header {
+    z-index: 1;
+}
+
+.nedshape-login {
+    color: #158F5A;
+    font-size: 58px;
+    font-stretch: 100%;
+    line-height: 6mm;
+}
+
+.login-button {
+    font-size: 20px;
+    border: none;
+    opacity: 0.8;
+    cursor: pointer;
+    background: 0 0;
+    color: #158F5A;
+}
+
+.icon {
+    position: absolute;
+    background: url('media/login-icon.png');
+    height: 20px;
+    width: 20px;
+    display: block;
+    /* Other styles here */
+}
+
+#backgroud-video {
+    opacity: 0.7;
+    z-index: 0;
+    width: 100%;
+    margin-top: -25px;
+    margin-bottom: -4px;
+}
+
+.left-group {
+    position: absolute;
+    top: 5%;
+    left: 1.3%;
+    z-index: 1;
+}
+
+.right-group {
+    position: absolute;
+    right: 8%;
+    z-index: 1;
+}
+
+.left-button {
+    font-size: 16px;
+    opacity: 0.8;
+    cursor: pointer;
+    margin-left: 14mm;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: 0 0;
+    color: white;
+}
+
+    .left-button:hover {
+        color: #8e4f6b;
+    }
+
+.middle-button {
+    cursor: pointer;
+    margin-left: 14mm;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    background: 0 0;
+    color: white;
+}
+
+.social-button {
+    cursor: pointer;
+    margin-left: -5px;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    vertical-align: baseline;
+    width: 25px;
+    height: 25px;
+    margin-bottom: 0;
+    margin-right: 12px;
+    background: 0 0;
+    color: white;
+}
+
+.btn:hover {
+    color: black;
+}
+
+.social-image {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+}
+
+.moving-text {
+    color: #158F5A;
+    font-size: 120px;
+    font-stretch: 100%;
+    font-weight: 1000;
+    letter-spacing: 2mm;
+    line-height: 20mm;
+}
+
+.lets-text {
+    color: white;
+    font-size: 120px;
+    font-stretch: 100%;
+    font-weight: 1000;
+    letter-spacing: 2mm;
+    line-height: 20mm;
+}
+
+.view-map-button {
+    background: rgba(0,0,0,0);
+    border: none;
+    color: white;
+    margin: 0px;
+    padding: 8px;
+    font-size: 21px;
+}
+
+    .view-map-button:hover {
+        background-color: #539c6a;
+        ;
+    }
+
+.book-class-button {
+    background-color: #094a2e;
+    color: white;
+    border: none;
+    padding-top: 14px;
+    padding-right: 14px;
+    padding-bottom: 11px;
+    padding-left: 14px;
+}
+
+    .book-class-button:hover {
+        background-color: #9c1c1c;
+        ;
+    }
+
+.middle-buttons {
+    margin-left: 26px;
+    margin-top: 6%;
+}
+
+.center-text {
+    text-align: left;
+    position: absolute;
+    top: 18%;
+    left: 14%;
+    z-index: 1;
+    line-height: 16mm;
+}
+
+.banner-top {
+    height: 150px;
+    width: 930px;
+    pointer-events: none;
+    position: relative;
+    margin: 11px 0px 35px calc((100% - 920px) * 0.5);
+}
+
+.banner-top-background {
+    background-color: #094a2e;
+    margin: 0;
+    padding: 1px;
+}
+
+.banner-text {
+    position: absolute;
+    text-align: center;
+    font: normal normal normal 36px/1.4em raleway,sans-serif;
+    color: #FFFFFF;
+}
+
+.about-us-row {
+    padding:0;
+    width: 100%;
+}
+
+.front-image {
+    padding:0;
+    text-align: left;
+    width: 100%;
+}
+.page-top{
+    padding:0;    
+}
+.image-div {
+    text-align: left;
+}
+.about-img-div{
+    padding:0;
+}
+
+.about-nedshape {
+    width: 30%;
+    margin-left: 6%;
+    float: left;
+    text-align: left;
+    margin-top: 6%;
+    opacity: 0.8;
+}
+
+.about-us-left {
+    padding:0;
+    text-align: left;
+}
+.contact-form{
+    width:100%;
+}
+.about-us-right {
+    padding:0;
+    text-align: left;
+}
+
+.text-about {
+    color: #666666;
+    font-family: raleway, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.text-nedshape-green {
+    font-weight: 700;
+    color: rgb(21, 143, 90);
+    font-family: lulo-clean-w01-one-bold, sans serif;
+    font-size: 38px;
+    font-stretch: 100%;
+}
+
+.text-nedshape-white {
+    color: rgb(255, 255, 255);
+    font-family: lulo-clean-w01-one-bold, sans-serif;
+    font-size: 22px;
+    letter-spacing: 3px;
+    font-weight: 1000;
+}
+
+.workout-floating-text {
+    margin-top: 4%;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+}
+
+.workout-options {
+    position: absolute;
+    text-align: center;
+    z-index: 3;
+    margin-left: 9%;
+}
+
+.workout-options-2 {
+    position: absolute;
+    margin-left: 9%;
+    margin-top: 10%;
+    z-index: 2;
+}
+
+.option-text {
+    z-index: 3;
+    border: none;
+    color: rgb(255, 255, 255) !important;
+    font-size: 20px;
+    text-decoration: none;
+}
+.option-icon{
+    padding:2%;
+}
+.contact-row{
+    padding:2%;
+}
+.option-text-div {
+    margin-top: -65px;
+}
+
+.option-number {
+    z-index: 2;
+    color: rgb(157, 36, 44);
+    letter-spacing: 3px;
+    font-weight: 1000;
+    font-size: 100px;
+}
+
+.paragraph-text {
+    opacity: 0.8;
+    width: 33%;
+    margin-left: 33.5%;
+    margin-top: 1%;
+}
+
+@media only screen and (max-width: 1440px) {
+    .paragraph-text {
+        width: 48%;
+        margin-left: 26%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .paragraph-text {
+        width: 70%;
+        margin-left: 15%;
+    }
+}
+
+.form-control {
+    width: 100%;
+    max-width: 340px;
+    padding: 5px;
+    background: rgba(34, 34, 34, 1);
+    border-color: white;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-width: thick;
+}
+
+.form-message {
+    padding-bottom: 71px;
+}
+
+.form-submit-button {
+    color: white;
+    border: solid rgba(34, 34, 34, 1) 0px;
+    background-color: rgba(236, 54, 66, 1);
+    margin-right: -9px;
+    width: 50%;
+    max-width: 118px;
+    padding: 3px;
+    margin-bottom: 32px;
+}
+
+.success-image {
+    min-height: 690px;
+    opacity: 0.25;
+    width: 100%;
+}
+
+.gym-image {
+    width: 100%;
+    opacity: 0.9;
+    min-height: 508px;
+}
+
+.comments-div {
+    color: #094a2e;
+    background: #094a2e;
+}
+.join-us-form {
+    text-align: center;
+}
+.text-banner-bottom {
+    padding-top: 70px;
+    padding-bottom: 70px;
+    float: left;
+    width: 100%;
+    margin-bottom: 2%;
+    background-color: #094a2e;
+}
+
+.country-code {
+    background: #094a2e;
+    border-top: #094a2e;
+    border-left: #094a2e;
+    border-right: #094a2e;
+}
+
+.phone-number {
+    background: #094a2e;
+    border-top: #094a2e;
+    border-left: #094a2e;
+    border-right: #094a2e;
+}
+
+.send-button {
+    width: 78px;
+    height: 31px;
+    border: none;
+}
+
+.nav-bar {
+    z-index: 99;
+    width: 100%;
+    position: fixed;
+    margin-top: 20px;
+}
+
+.success-floating-text {
+    z-index: 1;
+    margin-top: 2%;
+    width: 100%;
+    text-align:center;
+    position: absolute;
+}
+
+.text-success-white {
+    color: rgb(255, 255, 255, 0.9);
+    font-family: lulo-clean-w01-one-bold, sans-serif;
+    font-size: 46px;
+    letter-spacing: 3px;
+    font-weight: 1000;
+}
+
+.success-text {
+    margin-top: 60px;
+    color: rgb(255, 255, 255);
+    font-family: lulo-clean-w01-one-bold, sans-serif;
+    font-size: 25px;
+    letter-spacing: 3px;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.success-author {
+    margin-top: 18px;
+    color: rgb(255, 255, 255);
+    font-family: lulo-clean-w01-one-bold, sans-serif;
+    font-size: 17px;
+    letter-spacing: 3px;
+    font-weight: 700;
+}
+
+.success-date {
+    color: rgb(255, 255, 255);
+    font-family: lulo-clean-w01-one-bold, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 100;
+}
+
+.comment-seperator {
+    margin-left: 26%;
+    margin-right: 26%;
+    margin-top: 3%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+@media only screen and (max-width: 1024px) {
+    .comment-seperator {
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-top: 4%;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+}
+
+.site-div {
+    margin-top: 14px;
+    margin-bottom: 28px;
+    opacity: 0.8;
+}
+
+.contact-div {
+    margin-top: 50px;
+    opacity: 0.8;
+}
+
+.site-address {
+    text-decoration: none;
+    color: white;
+    opacity: 0.8;
+}
+
+.middle-group-1 {
+    right: 31%;
+    position: absolute;
+    top: 5%;
+    z-index: 1;
+}
+
+.middle-group-2 {
+    right: 22%;
+    position: absolute;
+    top: 5%;
+    z-index: 1;
+}
+
+@media only screen and (max-width: 940px) {
+    .middle-group-1 {
+        right: 24%;
+    }
+
+    .middle-group-2 {
+        right: 18%;
+    }
+}

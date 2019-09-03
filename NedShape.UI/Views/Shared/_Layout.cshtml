@@ -24,7 +24,7 @@
 </head>
 <body>
 
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="@(Request.IsAuthenticated ? "logged-in" : "")">
 
@@ -69,9 +69,9 @@
             }
             else
             {
-                <div class="logo @(Request.IsAuthenticated ? "logged-in" : "")">
+            /*    <div class="logo @(Request.IsAuthenticated ? "logged-in" : "")">
                     NedShape
-                </div>
+                </div>*/
             }
 
             <div class="sep @(Request.IsAuthenticated ? "logged-in" : "")"></div>
