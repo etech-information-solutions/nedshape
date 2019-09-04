@@ -1,0 +1,66 @@
+﻿body {
+    background: #0a4237;
+    text-align: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.member-check {
+    text-align:left;
+    display: inline-block; 
+    margin-top: 7px; 
+    font-size: 12px; 
+    width: 80px;
+}
+.form-style {
+    color: #ffffff;
+    background: rgba(10, 66, 55,0.7);
+    margin: 4%;
+    border-radius: 10px;
+    padding: 2%;
+}
+#footernote {
+    background: #274e13;
+}
+.padding-none{
+    padding:0 !important;
+    margin:0 !important;
+}
+.input-box {
+    float: right;
+    display: inline-block;
+    width: 100% !important;
+    max-width: 340px !important;
+    background: white !important;
+}
+.label-text {
+    display: inline-block;
+    margin: 7px 0 0 0;
+}
+.id-input {
+    display: inline-block;
+    margin-top: 7px;
+    font-size: 12px;
+    float: right;
+    padding-right: 10px;
+}
+.sign-up-logo {
+    padding-bottom: 2%;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+}
+.dropdown-style {
+    width: 19%;
+    max-width: 110px;
+    margin: 1.5px !important;
+}
+.payment-heading {
+    padding-bottom: 2% !important;
+    padding-top: 2% !important;
+    font-weight: 500;
+    font-size: 20px;
+}
+.sign-up-button {
+    padding-right: 2% !important;
+    text-align: right;
+}

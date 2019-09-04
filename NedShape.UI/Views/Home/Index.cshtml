@@ -1,4 +1,8 @@
-﻿
+﻿@model NedShape.UI.Models.SignUpViewModel
+
+@using NedShape.Core.Enums;
+@using NedShape.Data.Models;
+@using NedShape.UI.Models;
 
 <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
 <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
@@ -9,7 +13,7 @@
 
 <div class="col-md-12 nav-bar">
     <div class="btn-group left-group" role="group">
-        <input type="button" value="Home" class="left-button" />
+        <input type="button" value="Home" class="left-button" onclick="window.location.href='/Home/Index'"/>
         <input type="button" value="About" class="left-button" />
         <input type="button" value="Services" class="left-button" />
         <input type="button" value="Contact" class="left-button" />
@@ -85,11 +89,11 @@
     </div>
 
     <div class="col-md-12 about-us-row">
-        <div class="about-img-div col-md-6">
+        <div class="about-img-div col-lg-6 col-sm-6">
             <img class="front-image" src="https://static.wixstatic.com/media/ebb861_12ec071966d44aa2b429ad85ef9fd8d4~mv2_d_6000_4004_s_4_2.jpg/v1/fill/w_716,h_512,al_c,q_85,usm_0.66_1.00_0.01/ebb861_12ec071966d44aa2b429ad85ef9fd8d4~mv2_d_6000_4004_s_4_2.webp">
         </div>
 
-        <div class="col-6 about-nedshape">
+        <div class="col-lg-6 col-sm-6 about-nedshape">
             <span class="text-about">ABOUT US</span><br>
             <span class="text-nedshape-green">nedshape</span>
 
@@ -104,7 +108,7 @@
     </div>
 
 
-    <div class="col-md-12 workout-div">
+    <div class="col-lg-12 col-md-12 workout-div">
 
         <div class="workout-floating-text">
             <span class="text-success-white">CHOOSE YOUR</span><br>
@@ -115,7 +119,7 @@
 
 
 
-            <div class="col-md-4 option-icon">
+            <div class="col-lg-4 col-sm-4 option-icon">
                 <div class="option-number">
                     <span class="">1</span>
                 </div>
@@ -123,7 +127,7 @@
                     <a class="option-text" href=""><span>TRX WORKOUT</span></a>
                 </div>
             </div>
-            <div class="col-md-4 option-icon">
+            <div class="col-lg-4 col-sm-4 option-icon">
                 <div class="option-number">
                     <span class="">2</span>
                 </div>
@@ -131,7 +135,7 @@
                     <a class="option-text" href=""><span>POSTURE CORRECTION</span></a>
                 </div>
             </div>
-            <div class="col-md-4 option-icon">
+            <div class="col-lg-4 col-sm-4 option-icon">
                 <div class="option-number">
                     <span class="">3</span>
                 </div>
@@ -139,7 +143,7 @@
                     <a class="option-text" href=""><span>MUSSCLE TONE</span></a>
                 </div>
             </div>
-            <div class="col-md-4 option-icon">
+            <div class="col-lg-4 col-sm-4 option-icon">
                 <div class="option-number">
                     <span class="">4</span>
                 </div>
@@ -147,7 +151,7 @@
                     <a class="option-text" href=""><span>WEIGHT LOSS</span></a>
                 </div>
             </div>
-            <div class="col-md-4 option-icon">
+            <div class="col-lg-4 col-sm-4 option-icon">
                 <div class="option-number">
                     <span class="">5</span>
                 </div>
@@ -155,7 +159,7 @@
                     <a class="option-text" href=""><span>CARDIO FITNESS</span></a>
                 </div>
             </div>
-            <div class="col-md-4 option-icon">
+            <div class="col-lg-4 col-sm-4 option-icon">
                 <div class="option-number">
                     <span class="">6</span>
                 </div>
@@ -170,7 +174,7 @@
 
     </div>
 
-    <div class="col-md-12 comments-div">
+    <div class="col-lg-12 col-md-12 comments-div">
         <div class="success-floating-text">
             <span class="text-success-white">SUCCESS STORIES</span><br>
             <div class="successStories">
@@ -212,13 +216,13 @@
         <img class="success-image" src="https://static.wixstatic.com/media/ebb861_2fd073a8f7834e398f6461e0629ee10f~mv2_d_6141_4098_s_4_2.jpg/v1/fill/w_1905,h_713,al_c,q_85,usm_0.66_1.00_0.01/ebb861_2fd073a8f7834e398f6461e0629ee10f~mv2_d_6141_4098_s_4_2.webp">
     </div>
 
-    <div class="col-lg-12 contact-row">
-        <div class="col-lg-4 col-md-2 about-us-left">
+    <div class="col-lg-12 col-md-12 contact-row">
+        <div class="col-lg-4 col-md-2 col-sm-1 about-us-left">
 
         </div>
 
 
-        <div class="col-lg-2 col-md-4 about-us-left">
+        <div class="col-lg-2 col-md-4 col-sm-5 about-us-left">
             <span class="text-nedshape-white">nedshape</span><br>
 
             <div class="contact-div">
@@ -268,7 +272,7 @@
         </div>
 
 
-        <div class="col-lg-2 col-md-4 about-us-right">
+        <div class="col-lg-2 col-md-4 col-sm-6   about-us-right">
             <span class="text-nedshape-white">GET IN TOUCH</span>
 
             <form class="contact-form">
