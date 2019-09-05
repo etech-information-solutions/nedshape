@@ -27,7 +27,7 @@
     opacity: 0.8 !important;
     cursor: pointer !important;
     background: 0 0 !important;
-    color: #158F5A !important;
+    color: #158F5A;
     border-radius: none !important;
     background: none !important;
     text-transform: none !important;
@@ -70,8 +70,6 @@
     font-size: 16px !important;
     opacity: 0.8 !important;
     cursor: pointer !important;
-    margin-left: 1% !important;
-    margin-right: 1% !important;
     padding: 0;
     border: 0;
     outline: 0;
@@ -445,7 +443,6 @@
     height: 31px;
     border: none;
 }
-
 .nav-bar {
     z-index: 99;
     width: 100%;

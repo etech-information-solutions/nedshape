@@ -382,7 +382,7 @@ form fieldset, fieldset {
     }
 
     .sign-in .input {
-        width: 240px;
+        //width: 240px;
         border: 0 none;
         font-size: 14px;
         padding-left: 30px;

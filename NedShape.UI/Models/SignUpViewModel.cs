@@ -43,7 +43,7 @@ namespace NedShape.UI.Models
         public string IdNumber { get; set; }
 
         [Required]
-        [Display( Name = "ID/Passport Number" )]
+        [Display( Name = "Tax Number" )]
         [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string TaxNumber { get; set; }
 
@@ -54,6 +54,12 @@ namespace NedShape.UI.Models
         [Display( Name = "IsSAId" )]
         public YesNo? IsSAId { get; set; }
 
+        [Display(Name = "YesMEMBER")]
+        public YesNo? YesMEMBER { get; set; }
+
+        [Display(Name = "IsCREDIT")]
+        public YesNo? IsCREDIT { get; set; }
+
         //[Display( Name = "Payment Method" )]
         //public PaymentMethod? PaymentMethod { get; set; }
 
@@ -61,6 +67,9 @@ namespace NedShape.UI.Models
 
         [Display( Name = "You have read and agree with the Terms of signing up?" )]
         public bool IsAccpetedTC { get; set; }
+
+        [Display(Name = "PrefferedEMAIL")]
+        public YesNo? PrefferedEMAIL { get; set; }
 
         public BankDetailViewModel BankDetails { get; set; }
 

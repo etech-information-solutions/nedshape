@@ -5,18 +5,77 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 .member-check {
-    text-align:left;
-    display: inline-block; 
-    margin-top: 7px; 
-    font-size: 12px; 
-    width: 80px;
+    text-align: left;
+    display: inline-block;
+    margin-top: 7px;
+    margin-right: -2px;
+    margin-left: 14px;
+    font-size: 12px;
+    width: 78px;
+}
+.card-check {
+    text-align: left;
+    display: inline-block;
+    margin-top: 7px;
+    margin-right: -2px;
+    margin-left: 18px;
+    font-size: 12px;
+    width: 120px;
 }
 .form-style {
     color: #ffffff;
     background: rgba(10, 66, 55,0.7);
-    margin: 4%;
+    margin-top: 2%;
+    margin-right: 4%;
+    margin-bottom: 8%;
+    margin-left: 4%;
+    padding: 0 !important;
     border-radius: 10px;
-    padding: 2%;
+}
+.login-button {
+    height: 80px !important;
+    color:white;
+}
+.upload-div{
+    margin-top:42px;
+}
+.gym-member {
+    padding-left: 0 !important;
+    padding-bottom: 14px;
+}
+.upload-label {
+    margin-top: 29px;
+    margin-left: 54px;
+    color: gray;
+    margin-bottom: 58px !important;
+}
+.top-bar {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    background: rgba(0, 158, 15,0.2) !important;
+    margin-bottom: 16px !important;
+    height: 88px !important;
+    padding: 0 !important;
+}
+.middle-group-1 {
+    right: 29% !important;
+    top: 34% !important;
+}
+
+.middle-group-2 {
+    right: 20% !important;
+}
+
+.left-button {
+    margin-left: -4% !important;
+    margin-right: 2% !important;
+}
+.right-group {
+    top:38% !important;
+    right: 0% !important;
+}
+.left-group {
+    top: 38% !important;
 }
 #footernote {
     background: #274e13;
@@ -29,12 +88,47 @@
     float: right;
     display: inline-block;
     width: 100% !important;
-    max-width: 340px !important;
+    max-width: 340px;
     background: white !important;
+    border-radius: 4px;
+    height: 28px;
+    color: #274e13;
+}
+.upload-box {
+    float: left;
+    display: inline-block;
+    width: 100% !important;
+    max-width: 340px;
+    background: white !important;
+    border-radius: 4px;
+    height: 28px;
+    color: #274e13;
+}
+@media only screen and (max-width: 1340px) {
+    .input-box {
+        max-width: 274px !important;
+    }
 }
 .label-text {
     display: inline-block;
     margin: 7px 0 0 0;
+}
+.option-check {
+    padding-top: 4px !important;
+    padding-right: 0px !important;
+    padding-bottom: 4px !important;
+    padding-left: 0px !important;
+}
+.terms-check {
+    display: inline-block !important;
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-bottom: -2px !important;
+    margin-left: 0px !important;
+}
+.sign-up-check {
+    margin-top: 2.5px !important;
+    margin-left: 8px !important;
 }
 .id-input {
     display: inline-block;
@@ -55,7 +149,6 @@
     margin: 1.5px !important;
 }
 .payment-heading {
-    padding-bottom: 2% !important;
     padding-top: 2% !important;
     font-weight: 500;
     font-size: 20px;

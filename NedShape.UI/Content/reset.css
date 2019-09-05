@@ -292,7 +292,7 @@ input[type="button"], input[type="submit"], .btn {
     }
 
 input[type="text"], input[type="number"], input[type="file"], input[type="password"], textarea, select {
-    width: 92%;
+    //width: 92%;
     height: 28px;
     color: #274e13;
     font-size: 12px;
