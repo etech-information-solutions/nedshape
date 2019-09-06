@@ -401,6 +401,7 @@ namespace NedShape.UI.Controllers
                 {
                     BankDetail bank = new BankDetail()
                     {
+
                         UserId = user.Id,
                         BankId = model.BankDetails.BankId,
                         Beneficiary = model.BankDetails.Beneficiary,

@@ -116,7 +116,7 @@
 .option-check {
     padding-top: 4px !important;
     padding-right: 0px !important;
-    padding-bottom: 4px !important;
+    padding-bottom: 6px !important;
     padding-left: 0px !important;
 }
 .terms-check {
@@ -138,7 +138,7 @@
     padding-right: 10px;
 }
 .sign-up-logo {
-    padding-bottom: 2%;
+    padding-bottom: 1.5%;
     font-weight: 500;
     font-size: 24px;
     text-align: center;
@@ -149,7 +149,8 @@
     margin: 1.5px !important;
 }
 .payment-heading {
-    padding-top: 2% !important;
+    padding-top: 1.5% !important;
+    padding-bottom: 1% !important;
     font-weight: 500;
     font-size: 20px;
 }

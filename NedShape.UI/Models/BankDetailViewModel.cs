@@ -13,7 +13,11 @@ namespace NedShape.UI.Models
         public int UserId { get; set; }
 
         public int BankId { get; set; }
-        
+
+        [Display(Name = "AccountHolder")]
+        [StringLength(150, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0)]
+        public string AccountHolder { get; set; }
+
         [Display( Name = "Beneficiary" )]
         [StringLength( 150, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string Beneficiary { get; set; }
