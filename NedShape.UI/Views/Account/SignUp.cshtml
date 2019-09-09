@@ -7,6 +7,7 @@
 <link href="~/Content/Index.css" rel="stylesheet" />
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/account.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -238,17 +239,17 @@
                 </div>
 
                 @*<div id="confirm-cell" class="@( ( Model.PaymentMethod == PaymentMethod.Bank ) ? "block" : "none" ) none editor-field">
-                        <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
-                            CONFIRM CELL NUMBER
-                        </label>
+                    <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
+                        CONFIRM CELL NUMBER
+                    </label>
 
-                        @Html.TextBoxFor( model => model.ConfirmCell, new { @class = "input", @placeholder = "Confirm your Cellphone Number", @style = "float: right; display: inline-block; width: 60%;" } )
+                    @Html.TextBoxFor( model => model.ConfirmCell, new { @class = "input", @placeholder = "Confirm your Cellphone Number", @style = "float: right; display: inline-block; width: 60%;" } )
 
-                        <div class="clear"></div>
+                    <div class="clear"></div>
 
-                        @Html.ValidationMessageFor( model => model.ConfirmCell )
+                    @Html.ValidationMessageFor( model => model.ConfirmCell )
 
-                    </div>*@
+                </div>*@
 
 
 
@@ -362,7 +363,7 @@
                     <a href="@Url.Content( "~/Uploads/Documents/Terms-and-Conditions.pdf" )" target="_blank"><strong style="font-size: 14px;">Terms and Conditions</strong></a>
                     of signing up?
                     <label class="terms-check">
-                        <input id="IsAccpetedTC" name="IsAccpetedTC" value="True" type="checkbox" class="sign-up-check" />
+                        <input id="IsAccpetedTC" name="IsAccpetedTC" value="True" type="checkbox" class="sign-up-check" onclick="signUpEnable()" />
                     </label>
                     <strong style="margin-left:10px;">  I agree</strong>
                 </div>
@@ -419,89 +420,89 @@
                     @Html.ValidationMessageFor(model => model.Files.FirstOrDefault().File)
                 </div>
             </div>
-        }
 
-        <div class="col-lg-12 col-sm-12">
-            <div class="col-lg-12 col-md-12 col-sm-12 padding-none payment-heading">
-                Membership Payment
-            </div>
 
-            <div class="col-lg-7  col-md-7 col-sm-12 form-column-left padding-none">
-                <div class="col-lg-12  editor-field option-check">
-                    <u>PREFFERD METHOD OF PAYMENT</u>
-                    <label class="card-check">
-                        <input name="IsCREDIT" value="1" type="radio" @((Model.IsCREDIT == YesNo.Yes) ? "checked=checked" : "") style="margin-top: 1px;" /> Credit/Debit card
-                    </label>
-                    <label class="card-check">
-                        <input name="IsCREDIT" value="0" type="radio" @((Model.IsCREDIT == YesNo.No) ? "checked=checked" : "") style="margin-top: 1px;" /> Debit Order
-                    </label>
+            <div class="col-lg-12 col-sm-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 padding-none payment-heading">
+                    Membership Payment
                 </div>
 
-                <div class="editor-field">
-                    <label class="label-text">
-                        Account Holder
-                    </label>
+                <div class="col-lg-7  col-md-7 col-sm-12 form-column-left padding-none">
+                    <div class="col-lg-12  editor-field option-check">
+                        <u>PREFFERD METHOD OF PAYMENT</u>
+                        <label class="card-check">
+                            <input name="IsCREDIT" value="1" type="radio" @((Model.IsCREDIT == YesNo.Yes) ? "checked=checked" : "") style="margin-top: 1px;" /> Credit/Debit card
+                        </label>
+                        <label class="card-check">
+                            <input name="IsCREDIT" value="0" type="radio" @((Model.IsCREDIT == YesNo.No) ? "checked=checked" : "") style="margin-top: 1px;" /> Debit Order
+                        </label>
+                    </div>
 
-                    <input type="text" class="input input-box" name="BankDetails.Beneficiary" value="@bank.AccountHolder" placeholder="Account Holder" />
+                    <div class="editor-field">
+                        <label class="label-text">
+                            Account Holder
+                        </label>
 
-                    <div class="clear"></div>
+                        <input type="text" class="input input-box" name="BankDetails.Beneficiary" value="@bank.AccountHolder" placeholder="Account Holder" />
 
-                    @Html.ValidationMessageFor(model => model.BankDetails.AccountHolder)
+                        <div class="clear"></div>
 
-                </div>
-                <div class="editor-field">
-                    <label class="label-text">
-                        BRANCH CODE
-                    </label>
+                        @Html.ValidationMessageFor(model => model.BankDetails.AccountHolder)
+
+                    </div>
+                    <div class="editor-field">
+                        <label class="label-text">
+                            BRANCH CODE
+                        </label>
 
 
-                    <input id="BankDetails_Branch" name="BankDetails.Branch" type="text" class="input input-box" value="@bank.Branch" placeholder="Enter Branch Code" />
+                        <input id="BankDetails_Branch" name="BankDetails.Branch" type="text" class="input input-box" value="@bank.Branch" placeholder="Enter Branch Code" />
 
-                    <div class="clear"></div>
+                        <div class="clear"></div>
 
-                    @Html.ValidationMessageFor(model => model.BankDetails.Branch)
-                </div>
+                        @Html.ValidationMessageFor(model => model.BankDetails.Branch)
+                    </div>
 
-                <div class="editor-field">
-                    <label class="label-text">
-                        ACCOUNT TYPE
-                    </label>
+                    <div class="editor-field">
+                        <label class="label-text">
+                            ACCOUNT TYPE
+                        </label>
 
-                    <select class="chzn input-box" id="BankDetails_AccountType" name="BankDetails.AccountType">
-                        <option value="">--select</option>
+                        <select class="chzn input-box" id="BankDetails_AccountType" name="BankDetails.AccountType">
+                            <option value="">--select</option>
 
-                        @foreach (int p in Enum.GetValues(typeof(BankAccountType)))
-                        {
-                            string text = ((BankAccountType)p).GetDisplayText();
-
-                            if (text.ToLower() == "all" || text.ToLower() == "none")
+                            @foreach (int p in Enum.GetValues(typeof(BankAccountType)))
                             {
-                                continue;
+                                string text = ((BankAccountType)p).GetDisplayText();
+
+                                if (text.ToLower() == "all" || text.ToLower() == "none")
+                                {
+                                    continue;
+                                }
+
+                                string sel = (p == (int?)bank?.AccountType) ? "selected=selected" : "";
+
+                                <option value="@p" @sel>@text</option>
                             }
 
-                            string sel = (p == (int?)bank?.AccountType) ? "selected=selected" : "";
+                        </select>
 
-                            <option value="@p" @sel>@text</option>
-                        }
+                        <div class="clear"></div>
 
-                    </select>
+                        @Html.ValidationMessageFor(model => model.BankDetails.AccountType)
+
+                    </div>
+
 
                     <div class="clear"></div>
 
-                    @Html.ValidationMessageFor(model => model.BankDetails.AccountType)
+                    @Html.ValidationMessageFor(model => model.BankDetails.BankId)
 
                 </div>
 
 
-                <div class="clear"></div>
 
-                @Html.ValidationMessageFor(model => model.BankDetails.BankId)
-
-            </div>
-
-
-
-            @*<div class="editor-field" style="margin-top: 24px; padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px dashed #ddd;">
+                @*<div class="editor-field" style="margin-top: 24px; padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px dashed #ddd;">
 
                     <p>
                         <strong style="font-size: 14px;">REWARDS MUST BE PAID TO:</strong>
@@ -521,7 +522,7 @@
 
                 </div>*@
 
-            @*
+                @*
                 <div class="editor-field">
                     <label class="label-text">
                         Bank ID
@@ -544,9 +545,9 @@
                         </select>
 
                     </div>
-            *@
+                *@
 
-            @*<div class="editor-field">
+                @*<div class="editor-field">
                     <label style="display: inline-block; float: left; text-align: left; margin: 7px 0 0 0; color: #848484;">
                         ACCOUNT NUMBER
                     </label>
@@ -571,15 +572,37 @@
                     @Html.ValidationMessageFor( model => model.BankDetails.Branch )
                 </div>*@
 
-        </div>
+            </div>
+        }
+
+
+
 
         <p class="col-lg-12 col-sm-12 sign-up-button">
 
-            <input id="signUp" type="submit" value="Sign Up" style="display: inline;" />
+            <input id="signUp" type="submit" value="Sign Up" disabled="disabled" style="background-color:rgba(0, 158, 15,0.1);" data-toggle="modal" data-target="#myModal" />
 
             <span style="padding: 0 2px;">/</span>
 
             @Html.ActionLink("Sign In", "Login", new { }, new { @class = "uppercase" })
         </p>
+    </div>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                                     <p id="thank-you">Thank you for signing up to be a member on Nedfit, please activate your login from the email that was sent to you.</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="modal-close" type="button" class="btn" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 </body>

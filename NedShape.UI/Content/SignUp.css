@@ -158,3 +158,22 @@
     padding-right: 2% !important;
     text-align: right;
 }
+.modal-dialog{
+    margin-top:22% !important;
+}
+.modal-content {
+    background-color: rgb(10, 110, 55) !important;
+    text-align:center;
+}
+.modal-header {
+    border: none !important;
+}
+.modal-body {
+    border: none !important;
+}
+.modal-footer {
+    border: none !important;
+}
+.modal-close {
+    background-color: rgb(0, 158, 15) !important;
+}

@@ -366,6 +366,7 @@
     <Content Include="Images\warn.png" />
     <Content Include="Images\warning.png" />
     <Content Include="Images\wireless-signal.png" />
+    <Content Include="Scripts\account.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
