@@ -74,6 +74,8 @@ namespace NedShape.UI.Models
         public BankDetailViewModel BankDetails { get; set; }
 
         public List<FileViewModel> Files { get; set; }
+
+        [Required]
         public List<AddressViewModel> Addresses { get; set; }
 
         public bool EditMode { get; set; }

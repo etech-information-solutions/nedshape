@@ -1,8 +1,14 @@
 ﻿body {
-    background: #0a4237;
+    background: rgba(34, 34, 34, 1) !important;
     text-align: center;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+}
+.container-fluid {
+    background: #274e13 !important;
+    padding:0 !important;
+
+
 }
 .member-check {
     text-align: left;
@@ -176,4 +182,12 @@
 }
 .modal-close {
     background-color: rgb(0, 158, 15) !important;
+}
+.sign-in .field-validation-error {
+    text-align:right !important;
+}
+.sign-in.sign-up {
+    background: rgba(34, 34, 34, 1) !important;
+    padding-left: 69px !important;
+    padding-right: 69px !important;
 }

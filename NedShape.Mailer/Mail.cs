@@ -22,7 +22,7 @@ namespace NedShape.Mailer
             {
                 try
                 {
-                    using ( MailMessage mail = new MailMessage( model.From, reciptient, model.Subject, model.Body ) )
+                    using ( MailMessage mail = new MailMessage( model.From,  reciptient, model.Subject, model.Body ) )
                     {
                         mail.IsBodyHtml = true;
 
