@@ -637,7 +637,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Reset Password",
-                From = ConfigSettings.SystemRules.ContactEmail,
+                From = "support@nedshape.co.za",
                 Recipients = new List<string>() { user.Email }
             };
 
@@ -662,7 +662,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Welcome",
-                From = ConfigSettings.SystemRules.ContactEmail,
+                From = "support@nedshape.co.za",
                 Recipients = new List<string>() { user.Email }
             };
 
@@ -687,7 +687,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - NEW AGENT Signup RREQUEST",
-                From = ConfigSettings.SystemRules.ContactEmail,
+                From = "support@nedshape.co.za",
                 Recipients = new List<string>() { ConfigSettings.SystemRules.ContactEmail }
             };
 
@@ -712,7 +712,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Signup Request Approved",
-                From = ConfigSettings.SystemRules.ContactEmail,
+                From = "support@nedshape.co.za",
                 Recipients = new List<string>() { user.Email }
             };
 
@@ -737,7 +737,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Signup Request Declined",
-                From = ConfigSettings.SystemRules.ContactEmail,
+                From = "support@nedshape.co.za",
                 Recipients = new List<string>() { user.Email }
             };
 

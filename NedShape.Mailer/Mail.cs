@@ -16,7 +16,7 @@ namespace NedShape.Mailer
         /// <returns></returns>
         public static bool Send( EmailModel model, StreamWriter writer = null )
         {
-            bool success = false;
+            bool success = true;
 
             foreach ( string reciptient in model.Recipients )
             {
@@ -39,9 +39,9 @@ namespace NedShape.Mailer
                         {
                             client.Port = 25;
                             client.UseDefaultCredentials = false;
-                            client.Host = "smtp.testcash4leads.co.za";
+                            client.Host = "smtp.testnedfit.co.za";
 
-                            client.Credentials = new System.Net.NetworkCredential( "support@testcash4leads.co.za", "$N990R07@c4134D$" );
+                            client.Credentials = new System.Net.NetworkCredential("support@testnedfit.co.za", "$5__96O&7T@H3dF17$");
 
                             client.Send( mail );
                         }
@@ -53,6 +53,7 @@ namespace NedShape.Mailer
                         }
                     }
                 }
+
                 catch ( Exception ex )
                 {
                     if ( writer != null )
@@ -66,10 +67,11 @@ namespace NedShape.Mailer
 
                         #endregion
                     }
+                    success = false;
                 }
             }
 
-            success = true;
+            
 
             return success;
         }

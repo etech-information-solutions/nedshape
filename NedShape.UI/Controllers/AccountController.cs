@@ -462,6 +462,14 @@ namespace NedShape.UI.Controllers
 
             // Send Welcome Email
             bool sent = SendUserWelcome( model );
+            if (sent != true)
+            {
+                Notify("Email not succesfully sent.", NotificationType.Error);
+            }
+            if (sent == true)
+            {
+                Notify("Email sent.", NotificationType.Success);
+            }
 
             Notify( "Your Agent Account was successfully created. An email with further details has been sent to you.", NotificationType.Success );
 
