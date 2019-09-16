@@ -51,7 +51,7 @@
                 Clients
             </th>
             <th>
-                Products
+                Services
             </th>
             <th>
                 Members
@@ -107,8 +107,8 @@
                     <td class="@( ( item.Clients ? "light-green-bg" : "") )">
                         @item.Clients
                     </td>
-                    <td class="@( ( item.Products ? "light-green-bg" : "") )">
-                        @item.Products
+                    <td class="@( ( item.Services ? "light-green-bg" : "") )">
+                        @item.Services
                     </td>
                     <td class="@( ( item.Members ? "light-green-bg" : "") )">
                         @item.Members
@@ -131,11 +131,10 @@
                     <td class="@( ( item.Statements ? "light-green-bg" : "") )">
                         @item.Statements
                     </td>
-                    <td width="15%">
+                    <td width="10%">
                         @Html.ActionLink( "Details", "RoleDetails", new { id = item.Id }, new { @class = "info", @data_details = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
 
                         @Html.ActionLink( "Edit", "EditRole", new { id = item.Id, returnView = "Roles" }, new { @class = "edit", @data_edit = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
-                        @Html.ActionLink( "Delete", "DeleteRole", new { id = item.Id }, new { @class = "warn", @data_delete = "1", @data_id = item.Id, @data_target = "#tr-" + item.Id + "-item", @data_refresh_target = "#roles", @rel = "tipsyE", @title = "Delete this item?" } )
                     </td>
 
                 </tr>

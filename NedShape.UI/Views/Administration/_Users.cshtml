@@ -53,11 +53,11 @@
             <th data-column="IdNumber">
                 ID/Passport #
             </th>
-            <th data-column="TaxNumber">
-                Tax #
-            </th>
             <th data-column="Status">
                 Status
+            </th>
+            <th data-column="UserType">
+                Type
             </th>
             <th>
                 Role
@@ -84,7 +84,7 @@
                 {
                     role = item.UserRoles.FirstOrDefault().Role;
                 }
-                
+
                 RoleType roleType = ( RoleType ) role.Type;
 
                 String active = status.Equals( Status.Active ) ? "active" : "inactive";
@@ -106,30 +106,13 @@
                         @item.IdNumber
                     </td>
                     <td>
-                        @item.TaxNumber
-                    </td>
-                    <td>
                         @status.GetDisplayText()
                     </td>
                     <td>
+                        @item.UserType.Description
+                    </td>
+                    <td>
                         @roleType.GetDisplayText()
-
-                        @if ( item.QAUserClients.Count > 0 )
-                        {
-                            <a class="info" data-sticky-one="1" data-target="#qa-@item.Id-clients" data-trigger="mouseover" data-arrow="center-right" data-title="Clients @item.Name is QA for">
-                                (@item.QAUserClients.Count)
-                            </a>
-                            <div id="qa-@item.Id-clients" class="none">
-                                <ul class="list">
-                                    @foreach ( Client c in item.QAUserClients.Select( s => s.Client ) )
-                                    {
-                                        <li style="line-height: 17px;">
-                                            @c.CompanyName
-                                        </li>
-                                    }
-                                </ul>
-                            </div>
-                        }
                     </td>
                     <td>
                         @item.LastLogin
@@ -146,7 +129,7 @@
                     </td>
 
                 </tr>
-                
+
                 count++;
             }
         }

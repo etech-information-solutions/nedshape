@@ -117,8 +117,9 @@ namespace NedShape.Core.Services
                           DisplayName = u.Name + " " + u.Surname,
                           NiceCreatedOn = u.CreatedOn,
                           DateOfBirth = u.DateOfBirth,
-                          IsAdmin = u.UserRoles.Any( ur => ur.Role.Administration ),
-                          Roles = u.UserRoles.Select( ur => ur.Role )
+                          IsAdmin = u.UserRoles.Any( ur => ur.Role.Administration && ur.Status == ( int ) Status.Active ),
+                          Roles = u.UserRoles.Where( ur => ur.Status == ( int ) Status.Active )
+                                             .Select( ur => ur.Role )
                                              .OrderByDescending( r => r.Id )
                                              .ToList(),
                           Addresses = context.Addresses
@@ -134,7 +135,7 @@ namespace NedShape.Core.Services
                                           .Where( a => a.ObjectId == u.Id && a.ObjectType == "User" && a.Name.ToLower() == "contract" )
                                           .Select( s => VariableExtension.SystemRules.ImagesLocation + "//" + s.Location ).FirstOrDefault(),
 
-                          BankDetail = new BankDetailModel()
+                          /*BankDetail = new BankDetailModel()
                           {
                               Account = u.BankDetails.FirstOrDefault().Account,
                               AccountType = u.BankDetails.FirstOrDefault().AccountType,
@@ -142,7 +143,7 @@ namespace NedShape.Core.Services
                               Beneficiary = u.BankDetails.FirstOrDefault().Beneficiary,
                               Branch = u.BankDetails.FirstOrDefault().Branch,
                               Id = u.BankDetails.FirstOrDefault().Id
-                          }
+                          }*/
                       } ).FirstOrDefault();
 
             if ( model != null )
@@ -196,8 +197,9 @@ namespace NedShape.Core.Services
                           DisplayName = u.Name + " " + u.Surname,
                           NiceCreatedOn = u.CreatedOn,
                           DateOfBirth = u.DateOfBirth,
-                          IsAdmin = u.UserRoles.Any( ur => ur.Role.Administration ),
-                          Roles = u.UserRoles.Select( ur => ur.Role )
+                          IsAdmin = u.UserRoles.Any( ur => ur.Role.Administration && ur.Status == ( int ) Status.Active ),
+                          Roles = u.UserRoles.Where( ur => ur.Status == ( int ) Status.Active )
+                                             .Select( ur => ur.Role )
                                              .OrderByDescending( r => r.Id )
                                              .ToList(),
                           Addresses = context.Addresses
@@ -213,7 +215,7 @@ namespace NedShape.Core.Services
                                           .Where( a => a.ObjectId == u.Id && a.ObjectType == "User" && a.Name.ToLower() == "contract" )
                                           .Select( s => VariableExtension.SystemRules.ImagesLocation + "//" + s.Location ).FirstOrDefault(),
 
-                          BankDetail = new BankDetailModel()
+                          /*BankDetail = new BankDetailModel()
                           {
                               Account = u.BankDetails.FirstOrDefault().Account,
                               AccountType = u.BankDetails.FirstOrDefault().AccountType,
@@ -221,7 +223,7 @@ namespace NedShape.Core.Services
                               Beneficiary = u.BankDetails.FirstOrDefault().Beneficiary,
                               Branch = u.BankDetails.FirstOrDefault().Branch,
                               Id = u.BankDetails.FirstOrDefault().Id
-                          }
+                          }*/
                       } ).FirstOrDefault();
 
 
@@ -353,13 +355,17 @@ namespace NedShape.Core.Services
                 {
                     properties[ i ].SetValue( item, DateTime.Now, null );
                 }
+                if ( !isUpdate && ( properties[ i ].Name == "CreatedBy" ) )
+                {
+                    properties[ i ].SetValue( item, ( ( CurrentUser != null && CurrentUser.Id != 0 ) ? CurrentUser.Id : 0 ), null );
+                }
                 if ( properties[ i ].Name == "ModifiedOn" )
                 {
                     properties[ i ].SetValue( item, DateTime.Now, null );
                 }
                 if ( properties[ i ].Name == "ModifiedBy" )
                 {
-                    properties[ i ].SetValue( item, ( ( CurrentUser != null && CurrentUser.Email != null ) ? CurrentUser.Email : "System" ), null );
+                    properties[ i ].SetValue( item, ( ( CurrentUser != null && CurrentUser.Id != 0 ) ? CurrentUser.Id : 0 ), null );
                 }
 
                 // TRIM all strings
@@ -827,7 +833,7 @@ namespace NedShape.Core.Services
         //    {
         //        // Get the current Max Statement number like so:
         //        string number = ( service.Max( "Number" ) as string ) ?? "0";
-                
+
         //        int.TryParse( number.Trim().ToLower(), out int n );
 
         //        return $"{prefix}{( n + 1 )}";

@@ -350,6 +350,9 @@ namespace NedShape.UI.Controllers
                 {
                     //Type = ( int ) RoleType.Agent,
                     //Status = ( int ) AgentStatus.Pending,
+                    CreatedOn = DateTime.Now,
+                    ModifiedOn = DateTime.Now,
+                    UserTypeId = 2,
                     Reset = true,
                     IdNumber = model.IdNumber,
                     TaxNumber = model.TaxNumber,
@@ -366,7 +369,9 @@ namespace NedShape.UI.Controllers
                 // Get Agent Role
                 //Role role = rservice.GetByName( RoleType.Agent.GetStringValue() );
 
-                //user = uservice.Create( user, role.Id );
+
+                //Role == 1 for now(new user)
+                user = uservice.Create( user,  1);
 
                 #endregion
 
@@ -384,7 +389,7 @@ namespace NedShape.UI.Controllers
                             Addressline1 = a.AddressLine1,
                             Addressline2 = a.AddressLine2,
                             Town = a.Town,
-                            PostCode = a.PostCode,
+                            PostalCode = a.PostalCode,
                             Province = ( int ) a.Province,
                             Type = ( int ) a.AddressType,
                             Status = ( int ) Status.Active
@@ -403,8 +408,8 @@ namespace NedShape.UI.Controllers
                 {
                     BankDetail bank = new BankDetail()
                     {
-
-                        UserId = user.Id,
+                        ObjectId = user.Id,
+                        ObjectType = "User",
                         BankId = model.BankDetails.BankId,
                         Beneficiary = model.BankDetails.Beneficiary,
                         Account = model.BankDetails.Account,
@@ -462,18 +467,18 @@ namespace NedShape.UI.Controllers
 
             // Send Welcome Email
             bool sent = SendUserWelcome( model );
-            if (sent != true)
-            {
-                Notify("Email not succesfully sent.", NotificationType.Error);
+            if (sent != true){
+                Notify("Sign up not conneced.", NotificationType.Error);
+                return RedirectToAction("SignUp");
             }
-            if (sent == true)
-            {
-                Notify("Email sent.", NotificationType.Success);
+            else {
+                Notify("Your Agent Account was successfully created. An email with further details has been sent to you.", NotificationType.Success);
+                return RedirectToAction("Login");
             }
 
-            Notify( "Your Agent Account was successfully created. An email with further details has been sent to you.", NotificationType.Success );
+            
 
-            return RedirectToAction( "Login" );
+           
         }
 
         /// <summary>

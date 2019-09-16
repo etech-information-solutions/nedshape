@@ -19,21 +19,26 @@ namespace NedShape.UI.Models
         [Display( Name = "Address line 1" )]
         [StringLength( 100, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string AddressLine1 { get; set; }
-
-    
+        
         [Display( Name = "Address line 2" )]
         [StringLength( 100, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string AddressLine2 { get; set; }
 
-        [Required]
         [Display( Name = "Town" )]
         [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string Town { get; set; }
 
-        [Required]
-        [Display( Name = "Post Code" )]
+        [Display( Name = "Postal Code" )]
         [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
-        public string PostCode { get; set; }
+        public string PostalCode { get; set; }
+
+        [Display( Name = "Longitude" )]
+        [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        public string Longitude { get; set; }
+
+        [Display( Name = "Latitude" )]
+        [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        public string Latitude { get; set; }
 
         [Required]
         [Display( Name = "Province" )]

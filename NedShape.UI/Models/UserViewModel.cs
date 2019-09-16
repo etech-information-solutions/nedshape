@@ -87,16 +87,7 @@ namespace NedShape.UI.Models
 
         #region Model Options 
 
-        public List<Role> RoleOptions
-        {
-            get
-            {
-                using ( RoleService service = new RoleService() )
-                {
-                    return service.List();
-                }
-            }
-        }
+        
 
         #endregion
     }

@@ -1,0 +1,39 @@
+﻿
+@using NedShape.Core.Enums
+
+@{
+    ViewBag.Title = "Gyms & Services";
+}
+
+<div class="ap-tabs">
+
+    <ul>
+
+        @if ( User.Has( PermissionContext.Administrator ) )
+        {
+            <li data-hot-spot="1" data-c="Gym" data-t="Gyms">
+                <a data-ap-tab="1" data-target="#gyms" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="/Gym/Gyms">Gyms</a>
+            </li>
+
+            <li data-hot-spot="1" data-c="Service" data-t="Services">
+                <a data-ap-tab="1" data-target="#services" data-tab-holder="#tab-data" data-partial-load="1" data-rendered="0" data-load-url="/Service/Services">Services</a>
+            </li>
+        }
+
+        <li class="last"></li>
+    </ul>
+
+
+
+    <div id="tab-data" class="tab-data">
+
+        @if ( User.Has( PermissionContext.Administrator ) )
+        {
+            <div id="gyms" class="da-tab none" data-load-url="/Gym/Gyms"> </div>
+
+            <div id="services" class="da-tab none" data-load-url="/Service/Services"> </div>
+        }
+
+    </div>
+
+</div>

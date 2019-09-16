@@ -1,0 +1,127 @@
+﻿@model PagingExtension
+
+@using NedShape.Data.Models;
+@using NedShape.Core.Enums;
+@using NedShape.Core.Models;
+
+@{
+    ViewBag.ShowExport = true;
+    ViewBag.ShowCustom = true;
+
+    ViewBag.ViewName = "_Services";
+}
+
+
+@Html.Partial( "_Notification" )
+
+
+@{
+    Int32 count = Model.Start;
+    List<ServiceCustomModel> items = ( List<ServiceCustomModel> ) Model.Items;
+}
+
+
+@if ( Model == null || !items.Any() )
+{
+    <div class="notification message-warn" style="margin-bottom: 20px;">
+        There are no Services available matching your search criteria.
+    </div>
+}
+
+<p>
+    @Html.ActionLink( "Add Service", "Add", new { }, new { @class = "add", @rel = "tipsyS", @title = "Add a new Service?", @data_edit = "1", @data_id = 0, @data_target = "#services" } )
+    <span class="loader"></span>
+</p>
+
+
+<table class="da-table datatable-numberpaging sort">
+
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th data-column="g.CreatedOn">
+                Date Created
+            </th>
+            <th data-column="s.Name">
+                Name
+            </th>
+            <th data-column="s.Description">
+                Description
+            </th>
+            <th data-column="s.Price">
+                Price
+            </th>
+            <th data-column="s.Status">
+                Status
+            </th>
+            <th data-column="GymCount">
+                Gyms
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if ( Model != null && items != null && items.Count() > 0 )
+        {
+            foreach ( var item in items )
+            {
+                Status status = ( Status ) item.Status;
+
+                String active = status.Equals( Status.Active ) ? "active" : "inactive";
+                String enable = status.Equals( Status.Active ) ? "Disable" : "Enable";
+
+                <tr id="tr-@item.Id-item" class="tr-@item.Id-item @active">
+
+                    <td width="1%">
+                        @count
+                    </td>
+                    <td>
+                        @item.CreatedOn.ToString( "yyyy-MM-dd @ HH:mm" )
+                        <i class="block">@item.CreatedByUser</i>
+                    </td>
+                    <td style="width: 15%;">
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Description
+                    </td>
+                    <td width="10%">
+                        @if ( item.Price.HasValue )
+                        {
+                            <span>@item.Price.Value.ToString( "C", System.Globalization.CultureInfo.CreateSpecificCulture( "en-ZA" ) )</span>
+                        }
+                    </td>
+                    <td>
+                        @status.GetDisplayText()
+                    </td>
+                    <td>
+                        <a rel="tipsyW" title="@item.GymCount gym (s) are using this service." data-bullet="1" data-type="GymCount" data-Url="Services/Bullet/@item.Id">
+                            @item.GymCount
+                        </a>
+                    </td>
+                    <td width="10%">
+                        @Html.ActionLink( "Details", "Details", new { id = item.Id }, new { @class = "info", @data_details = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
+
+                        @Html.ActionLink( "Edit", "Edit", new { id = item.Id, returnView = "Services" }, new { @class = "edit", @data_edit = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
+
+                        @*@Html.ActionLink( enable, "Delete", new { id = item.Id }, new { @class = "warn", @data_delete = "1", @data_id = item.Id, @data_target = "#tr-" + item.Id + "-item", @data_refresh_target = "#list", @rel = "tipsyE", @title = enable + " this item?" } )*@
+
+                    </td>
+
+                </tr>
+
+                count++;
+            }
+        }
+    </tbody>
+
+</table>
+
+@*@Html.Partial( "_ServiceCustomSearch", new NedShape.Core.Models.CustomSearchModel( "Service" ) )*@
+
+@Html.Partial( "_Paging" )

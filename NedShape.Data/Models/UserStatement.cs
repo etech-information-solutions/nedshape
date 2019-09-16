@@ -18,8 +18,9 @@ namespace NedShape.Data.Models
         public int UserId { get; set; }
         public int GymId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public string MembershipNo { get; set; }
         public decimal Amount { get; set; }
         public string Reference { get; set; }

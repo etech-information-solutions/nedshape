@@ -48,6 +48,29 @@ namespace NedShape.Core.Services
         }
 
         /// <summary>
+        /// Gets a document using the specified objectId, objectType and isMain
+        /// </summary>
+        /// <param name="objectId"></param>
+        /// <param name="objectType"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public Document Get( int objectId, string objectType, string name )
+        {
+            return context.Documents.FirstOrDefault( d => d.ObjectId == objectId && d.ObjectType == objectType && d.Name == name );
+        }
+
+        /// <summary>
+        /// Gets a list of Images using the specified objectId and objectType
+        /// </summary>
+        /// <param name="objectId"></param>
+        /// <param name="objectType"></param>
+        /// <returns></returns>
+        public List<Document> List( int objectId, string objectType )
+        {
+            return context.Documents.Where( b => b.ObjectId == objectId && b.ObjectType == objectType ).ToList();
+        }
+
+        /// <summary>
         /// Checks if a document with the same title, category and type already exists...?
         /// </summary>
         /// <param name="name"></param>

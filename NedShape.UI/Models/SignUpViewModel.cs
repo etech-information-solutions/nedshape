@@ -37,6 +37,7 @@ namespace NedShape.UI.Models
         [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string ConfirmCell { get; set; }
 
+
         [Required]
         [Display( Name = "ID/Passport Number" )]
         [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]

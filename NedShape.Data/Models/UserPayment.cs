@@ -17,6 +17,8 @@ namespace NedShape.Data.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public int GymServiceId { get; set; }
+        public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public Nullable<System.DateTime> PaymentDate { get; set; }
         public string PaymentReference { get; set; }
         public Nullable<decimal> Amount { get; set; }

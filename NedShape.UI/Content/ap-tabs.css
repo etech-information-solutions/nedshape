@@ -1,13 +1,11 @@
 ﻿
 
 
-.ap-tabs
-{
+.ap-tabs {
     position: relative;
 }
 
-    .ap-tabs > ul
-    {
+    .ap-tabs > ul {
         padding: 0;
         height: auto;
         overflow: hidden;
@@ -17,8 +15,7 @@
         border-bottom: 1px solid #ebebeb;
     }
 
-        .ap-tabs > ul li
-        {
+        .ap-tabs > ul li {
             float: left;
             height: 62px;
             margin: 0 0.8%;
@@ -26,15 +23,13 @@
             position: relative;
         }
 
-            .ap-tabs > ul li.last
-            {
+            .ap-tabs > ul li.last {
                 height: 0;
                 float: none;
                 clear: both;
             }
 
-            .ap-tabs > ul li a
-            {
+            .ap-tabs > ul li a {
                 display: block;
                 color: #9ca4ab;
                 padding: 20px 0;
@@ -43,21 +38,18 @@
                 transition: all 0.4s ease-in 0s;
             }
 
-                .ap-tabs > ul li a.current, .ap-tabs > ul li a:hover
-                {
-                    border-bottom: 6px solid #1e80c0 !important;
+                .ap-tabs > ul li a.current, .ap-tabs > ul li a:hover {
+                    border-bottom: 6px solid #274e13 !important;
                 }
 
-    .ap-tabs .tab-data
-    {
+    .ap-tabs .tab-data {
         padding: 20px;
         margin: 20px 0 0 0;
         background: #ffffff;
     }
 
 /* ************* MOBILE MENU ************** */
-.mobile-menu
-{
+.mobile-menu {
     top: 0;
     right: 0;
     height: 40px;
@@ -67,13 +59,11 @@
     position: absolute !important;
 }
 
-    .mobile-menu i
-    {
+    .mobile-menu i {
         font-size: 18px;
     }
 
-    .mobile-menu .mobile-menu-items
-    {
+    .mobile-menu .mobile-menu-items {
         top: -10px;
         right: 12px;
         width: 170px;
@@ -83,36 +73,31 @@
         background: url("../images/arrow-right.png") no-repeat 99% 28px;
     }
 
-        .mobile-menu .mobile-menu-items ul
-        {
+        .mobile-menu .mobile-menu-items ul {
             border-radius: 4px;
             background: #eeeeee;
             border: 1px solid #000000;
             padding: 10px 20px 10px 10px;
         }
 
-            .mobile-menu .mobile-menu-items ul li
-            {
+            .mobile-menu .mobile-menu-items ul li {
                 float: none;
                 height: auto;
                 display: block;
                 margin: 0 0 5px 0;
             }
 
-                .mobile-menu .mobile-menu-items ul li:last-child
-                {
+                .mobile-menu .mobile-menu-items ul li:last-child {
                     margin-bottom: 0;
                 }
 
-                .mobile-menu .mobile-menu-items ul li a
-                {
+                .mobile-menu .mobile-menu-items ul li a {
                     padding: 0;
                     display: block;
                     border-bottom: 6px solid #eeeeee;
                 }
 
-    .mobile-menu:hover .mobile-menu-items
-    {
+    .mobile-menu:hover .mobile-menu-items {
         z-index: 200;
         display: block;
     }

@@ -25,29 +25,30 @@ namespace NedShape.Data.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<AuditLog> AuditLogs { get; set; }
         public virtual DbSet<Bank> Banks { get; set; }
+        public virtual DbSet<BankDetail> BankDetails { get; set; }
         public virtual DbSet<Broadcast> Broadcasts { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
         public virtual DbSet<Gym> Gyms { get; set; }
         public virtual DbSet<GymAgreement> GymAgreements { get; set; }
+        public virtual DbSet<GymMember> GymMembers { get; set; }
         public virtual DbSet<GymPayment> GymPayments { get; set; }
         public virtual DbSet<GymService> GymServices { get; set; }
         public virtual DbSet<GymTime> GymTimes { get; set; }
+        public virtual DbSet<GymUser> GymUsers { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
+        public virtual DbSet<Token> Tokens { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserBroadcast> UserBroadcasts { get; set; }
-        public virtual DbSet<UserGym> UserGyms { get; set; }
         public virtual DbSet<UserPassword> UserPasswords { get; set; }
         public virtual DbSet<UserPayment> UserPayments { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<UserStatement> UserStatements { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
-        public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<BankDetail> BankDetails { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<Token> Tokens { get; set; }
     }
 }

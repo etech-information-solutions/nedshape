@@ -15,9 +15,12 @@ namespace NedShape.Data.Models
     public partial class Document
     {
         public int Id { get; set; }
+        public Nullable<int> ObjectId { get; set; }
+        public string ObjectType { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }

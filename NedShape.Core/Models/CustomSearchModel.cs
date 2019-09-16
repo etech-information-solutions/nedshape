@@ -30,6 +30,15 @@ namespace NedShape.Core.Models
         }
 
         /// <summary>
+        /// Can be used as a selected gym service 
+        /// </summary>
+        [Display( Name = "Service" )]
+        public int ServiceId
+        {
+            get; set;
+        }
+
+        /// <summary>
         /// Can be used for a Start date range
         /// </summary>
         [Display( Name = "From Date" )]
@@ -137,6 +146,15 @@ namespace NedShape.Core.Models
             get; set;
         }
 
+        /// <summary>
+        /// Gym Status
+        /// </summary>
+        [Display( Name = "Gym Status" )]
+        public GymStatus GymStatus
+        {
+            get; set;
+        }
+
         [Display( Name = "Target Table" )]
         public string TableName
         {
@@ -170,10 +188,10 @@ namespace NedShape.Core.Models
 
 
         #region Model Options
-        
+
         public List<SimpleUserModel> UserOptions
         {
-            get;set;
+            get; set;
             //get
             //{
             //    using ( UserService service = new UserService() )
@@ -182,7 +200,12 @@ namespace NedShape.Core.Models
             //    }
             //}
         }
-        
+
+        public Dictionary<int, string> ServiceOptions
+        {
+            get; set;
+        }
+
         public List<Bank> BankOptions
         {
             get
@@ -233,24 +256,37 @@ namespace NedShape.Core.Models
         public CustomSearchModel( string listType, bool isPRP = false )
         {
             SetDefaults();
-            
+
             switch ( listType )
             {
                 case "User":
 
                     #region User
 
-                    
+
 
                     #endregion
 
                     break;
-                    
+
+                case "Gym":
+
+                    #region Gym
+
+                    using ( ServicesService sservice = new ServicesService() )
+                    {
+                        ServiceOptions = sservice.SimpleList();
+                    }
+
+                    #endregion
+
+                    break;
+
                 case "AuditLog":
 
                     #region Audit Log
 
-                    
+
 
                     #endregion
 
@@ -266,12 +302,13 @@ namespace NedShape.Core.Models
 
         private void SetDefaults()
         {
-            Status = Enums.Status.All;
-            Province = Enums.Province.Any;
-            RoleType = Enums.RoleType.All;
-            RoleType1 = Enums.RoleType.All;
-            ActivityType = Enums.ActivityTypes.All;
-            AccountType = Enums.BankAccountType.All;
+            Status = Status.All;
+            Province = Province.Any;
+            RoleType = RoleType.All;
+            RoleType1 = RoleType.All;
+            GymStatus = GymStatus.All;
+            ActivityType = ActivityTypes.All;
+            AccountType = BankAccountType.All;
         }
     }
 }

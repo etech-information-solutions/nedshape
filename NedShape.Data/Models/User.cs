@@ -18,23 +18,23 @@ namespace NedShape.Data.Models
         public User()
         {
             this.Gyms = new HashSet<Gym>();
+            this.GymMembers = new HashSet<GymMember>();
             this.GymPayments = new HashSet<GymPayment>();
+            this.GymUsers = new HashSet<GymUser>();
+            this.Tokens = new HashSet<Token>();
             this.UserBroadcasts = new HashSet<UserBroadcast>();
-            this.UserGyms = new HashSet<UserGym>();
             this.UserPasswords = new HashSet<UserPassword>();
             this.UserPayments = new HashSet<UserPayment>();
             this.UserRoles = new HashSet<UserRole>();
             this.UserStatements = new HashSet<UserStatement>();
-            this.BankDetails = new HashSet<BankDetail>();
-            this.Tokens = new HashSet<Token>();
         }
     
         public int Id { get; set; }
-        public Nullable<int> BankId { get; set; }
         public int UserTypeId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public int Status { get; set; }
         public bool Reset { get; set; }
         public string IdNumber { get; set; }
@@ -50,30 +50,23 @@ namespace NedShape.Data.Models
         public Nullable<int> PaymentMethod { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string TaxNumber { get; set; }
-        public string Province { get; set; }
-        public string City { get; set; }
-        public string BuildingNo { get; set; }
-        public string BuildingName { get; set; }
-        public string StreetNo { get; set; }
-        public string StreetName { get; set; }
-        public string AddressCoordinates { get; set; }
-        public string PostCode { get; set; }
         public Nullable<bool> IsAgreement { get; set; }
-        public string BankAccountNo { get; set; }
-        public string BankBranch { get; set; }
         public Nullable<System.DateTime> DebitDate { get; set; }
         public string MembershipNo { get; set; }
     
-        public virtual Bank Bank { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gym> Gyms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GymMember> GymMembers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GymPayment> GymPayments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GymUser> GymUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Token> Tokens { get; set; }
         public virtual UserType UserType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserBroadcast> UserBroadcasts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserGym> UserGyms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserPassword> UserPasswords { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -82,9 +75,5 @@ namespace NedShape.Data.Models
         public virtual ICollection<UserRole> UserRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserStatement> UserStatements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BankDetail> BankDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Token> Tokens { get; set; }
     }
 }

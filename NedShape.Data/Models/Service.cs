@@ -14,13 +14,23 @@ namespace NedShape.Data.Models
     
     public partial class Service
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Service()
+        {
+            this.GymServices = new HashSet<GymService>();
+        }
+    
         public int Id { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public Nullable<int> Status { get; set; }
         public Nullable<decimal> Price { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GymService> GymServices { get; set; }
     }
 }

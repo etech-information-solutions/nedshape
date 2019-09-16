@@ -74,6 +74,9 @@
     <Compile Include="Models\GymAgreement.cs">
       <DependentUpon>NedShape.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GymMember.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\GymPayment.cs">
       <DependentUpon>NedShape.tt</DependentUpon>
     </Compile>
@@ -81,6 +84,9 @@
       <DependentUpon>NedShape.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GymTime.cs">
+      <DependentUpon>NedShape.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GymUser.cs">
       <DependentUpon>NedShape.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Image.cs">
@@ -117,9 +123,6 @@
       <DependentUpon>NedShape.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserBroadcast.cs">
-      <DependentUpon>NedShape.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\UserGym.cs">
       <DependentUpon>NedShape.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UserPassword.cs">

@@ -190,8 +190,10 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\GymController.cs" />
     <Compile Include="Controllers\GymsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
     <Compile Include="Extensions\ContextExtensions.cs" />
     <Compile Include="Extensions\ControllerExtensions.cs" />
     <Compile Include="Extensions\HtmlHelperExtensions.cs" />
@@ -208,10 +210,13 @@
     <Compile Include="Models\EmailSuccessViewModel.cs" />
     <Compile Include="Models\FileViewModel.cs" />
     <Compile Include="Models\ForgotPasswordViewModel.cs" />
+    <Compile Include="Models\GymTimeViewModel.cs" />
+    <Compile Include="Models\GymViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\RegisterViewModel.cs" />
     <Compile Include="Models\ResetPasswordViewModel.cs" />
     <Compile Include="Models\RoleViewModel.cs" />
+    <Compile Include="Models\ServiceViewModel.cs" />
     <Compile Include="Models\SignUpViewModel.cs" />
     <Compile Include="Models\SystemConfigViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
@@ -240,6 +245,7 @@
     <Content Include="Content\modal.css" />
     <Content Include="Content\reset.css" />
     <Content Include="Content\select2.css" />
+    <Content Include="Content\SignUp.css" />
     <Content Include="Content\stickyone.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\table.css" />
@@ -473,6 +479,18 @@
     <Content Include="Views\Email\_UserDecline.cshtml" />
     <Content Include="Views\Email\_UserWelcome.cshtml" />
     <Content Include="Views\Email\_UserWelcome1.cshtml" />
+    <Content Include="Views\Gym\Add.cshtml" />
+    <Content Include="Views\Gym\Details.cshtml" />
+    <Content Include="Views\Gym\Edit.cshtml" />
+    <Content Include="Views\Gym\Index.cshtml" />
+    <Content Include="Views\Gym\_Gyms.cshtml" />
+    <Content Include="Views\Gym\_Search.cshtml" />
+    <Content Include="Views\Service\Add.cshtml" />
+    <Content Include="Views\Service\Details.cshtml" />
+    <Content Include="Views\Service\Edit.cshtml" />
+    <Content Include="Views\Service\_Services.cshtml" />
+    <Content Include="Views\Shared\_GymCustomSearch.cshtml" />
+    <Content Include="Views\Shared\_ServiceCustomSearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

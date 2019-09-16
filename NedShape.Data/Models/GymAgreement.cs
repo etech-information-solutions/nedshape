@@ -17,8 +17,9 @@ namespace NedShape.Data.Models
         public int Id { get; set; }
         public int GymId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public int Status { get; set; }
     
         public virtual Gym Gym { get; set; }

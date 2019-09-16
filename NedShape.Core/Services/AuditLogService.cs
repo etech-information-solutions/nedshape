@@ -37,8 +37,6 @@ namespace NedShape.Core.Services
                 csm.ControllerName = csm.ControllerName.Replace( "Controller", "" );
             }
 
-            CountModel count = new CountModel();
-
             #region Parameters
 
             List<object> parameters = new List<object>()
@@ -61,7 +59,7 @@ namespace NedShape.Core.Services
                                   COUNT(1) AS [Total]
                                FROM
                                   [dbo].[AuditLog] a
-                                  INNER JOIN [dbo].[Users] u ON u.Id=a.UserId";
+                                  INNER JOIN [dbo].[User] u ON u.Id=a.UserId";
 
             #region WHERE
 
@@ -129,7 +127,7 @@ namespace NedShape.Core.Services
 
             #endregion
 
-            count = context.Database.SqlQuery<CountModel>( query.Trim(), parameters.ToArray() ).FirstOrDefault();
+            CountModel count = context.Database.SqlQuery<CountModel>( query.Trim(), parameters.ToArray() ).FirstOrDefault();
 
             return count.Total;
         }
@@ -143,8 +141,6 @@ namespace NedShape.Core.Services
         public new List<AuditLogCustomModel> List( PagingModel pm, CustomSearchModel csm )
         {
             string query = string.Empty;
-
-            List<AuditLogCustomModel> list = new List<AuditLogCustomModel>();
 
             if ( !string.IsNullOrEmpty( csm.ControllerName ) )
             {
@@ -174,16 +170,11 @@ namespace NedShape.Core.Services
                                   u.Name + ' ' + u.Surname AS [UserName]
                                FROM
                                   [dbo].[AuditLog] a
-                                  INNER JOIN [dbo].[Users] u ON u.Id=a.UserId";
+                                  INNER JOIN [dbo].[User] u ON u.Id=a.UserId";
 
             #region WHERE
 
             query = $"{query} WHERE (1=1) ";
-
-            //if ( CurrentUser != null && CurrentUser.Id != 0 && CurrentUser.RoleType != RoleType.SuperAdmin )
-            //{
-            //    query = string.Format( "{0} AND EXISTS(SELECT 1 FROM [dbo].[UserStructure] us WHERE us.UserId=@userid AND us.Branch=u.Branch) ", query );
-            //}
 
             #endregion
 
@@ -250,7 +241,7 @@ namespace NedShape.Core.Services
 
             context.Database.CommandTimeout = 6000;
 
-            list = context.Database.SqlQuery<AuditLogCustomModel>( query.Trim(), parameters.ToArray() ).ToList();
+            List<AuditLogCustomModel> list = context.Database.SqlQuery<AuditLogCustomModel>( query.Trim(), parameters.ToArray() ).ToList();
 
             return list;
         }
@@ -409,7 +400,8 @@ namespace NedShape.Core.Services
                     ActionTable = actionTable,
                     Browser = b,
                     UserId = ( ( CurrentUser != null ) ? CurrentUser.Id : 0 ),
-                    ModifiedBy = ( ( CurrentUser != null ) ? CurrentUser.Email : "System" ),
+                    CreatedBy = ( ( CurrentUser != null ) ? CurrentUser.Id : 0 ),
+                    ModifiedBy = ( ( CurrentUser != null ) ? CurrentUser.Id : 0 ),
                     Comments = string.Format( "Created/Updated a {0}", actionTable ),
                     Action = HttpContext.Current.Request.RequestContext.RouteData.Values[ "action" ] as string,
                     IsAjaxRequest = ( HttpContext.Current.Request.Headers[ "X-Requested-With" ] == "XMLHttpRequest" ),

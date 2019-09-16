@@ -22,13 +22,18 @@ namespace NedShape.Data.Models
         }
     
         public int Id { get; set; }
+        public int GymId { get; set; }
+        public int ServiceId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public int Status { get; set; }
         public decimal Fee { get; set; }
         public string Description { get; set; }
     
+        public virtual Gym Gym { get; set; }
+        public virtual Service Service { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GymTime> GymTimes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

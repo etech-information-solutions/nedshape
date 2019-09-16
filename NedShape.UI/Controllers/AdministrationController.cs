@@ -41,7 +41,7 @@ namespace NedShape.UI.Controllers
 
                     #region Roles
 
-                    csv = String.Format( "Name, Dashboard, Clients, Products, Agents, Leads, Financials, Administration, Reports {0}", Environment.NewLine );
+                    csv = String.Format( "Name, Dashboard, Clients, Services, Members, Gyms, Financials, Administration, Reports, Profile, Statements {0}", Environment.NewLine );
 
                     List<Role> roles = new List<Role>();
 
@@ -54,15 +54,19 @@ namespace NedShape.UI.Controllers
                     {
                         foreach ( Role item in roles )
                         {
-                            csv = String.Format( "{0} {1},{2},{3},{4},{5},{6},{7}, {8}, {9} {10}",
+                            csv = String.Format( "{0} {1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11} {12}",
                                                 csv,
                                                 item.Name,
                                                 item.DashBoard,
                                                 item.Clients,
-                                                item.Products,
+                                                item.Services,
+                                                item.Members,
+                                                item.Gyms,
                                                 item.Financials,
                                                 item.Administration,
                                                 item.Reports,
+                                                item.Profile,
+                                                item.Statements,
                                                 Environment.NewLine );
                         }
                     }
@@ -75,7 +79,7 @@ namespace NedShape.UI.Controllers
 
                     #region System Config
 
-                    csv = String.Format( "System Contact Email, Finance Contact Email, Password Change, Images Location, Documents Location {0}", Environment.NewLine );
+                    csv = String.Format( "System Contact Email, Finance Contact Email, Password Change, Images Location, Documents Location, Contact Email, Finance Email, Address, Contact Number, Payment User Code, Payment Account, App Download URL, Payment Monitor Path, Payment Monitor Day, Payment Monitor Start, Last Payment Monitor Run, Last Payment Monitor Count, Payments Export Path, Statement Folder, Payment Folder, DR Discount {0}", Environment.NewLine );
 
                     List<SystemConfig> items = new List<SystemConfig>();
 
@@ -88,13 +92,29 @@ namespace NedShape.UI.Controllers
                     {
                         foreach ( SystemConfig item in items )
                         {
-                            csv = String.Format( "{0} {1},{2},{3},{4},{5} {6}",
+                            csv = String.Format( "{0} {1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21} {22}",
                                                 csv,
                                                 item.ContactEmail,
                                                 item.FinancialEmail,
                                                 item.PasswordChange,
                                                 item.ImagesLocation,
                                                 item.DocumentsLocation,
+                                                item.ContactEmail,
+                                                item.FinancialEmail,
+                                                item.Address,
+                                                item.ContactNumber,
+                                                item.PaymentUserCode,
+                                                item.PaymentAccount,
+                                                item.AppDownloadUrl,
+                                                item.PaymentMonitorPath,
+                                                item.PaymentMonitorDay,
+                                                item.PaymentMonitorStart,
+                                                item.LastPaymentMonitorRun,
+                                                item.LastPaymentMonitorCount,
+                                                item.PaymentsExportPath,
+                                                item.StatementFolder,
+                                                item.PaymentFolder,
+                                                item.DRDiscount,
                                                 Environment.NewLine );
                         }
                     }
@@ -122,10 +142,15 @@ namespace NedShape.UI.Controllers
                         {
                             ActivityTypes activity = ( ActivityTypes ) item.Type;
 
-                            csv = string.Format( "{0} {1},{2},{3},{4},{5},{6},{7},{8},{9},{10} {11}", csv,
-                                                item.CreatedOn.ToString( "yyyy/MM/dd" ), activity.GetDisplayText(),
-                                                item.User.Name + " " + item.User.Surname, item.ActionTable,
-                                                item.Action, item.Controller, "\"" + item.Comments + "\"",
+                            csv = string.Format( "{0} {1},{2},{3},{4},{5},{6},{7},{8},{9},{10} {11}",
+                                                csv,
+                                                item.CreatedOn.ToString( "yyyy/MM/dd" ),
+                                                activity.GetDisplayText(),
+                                                item.User.Name + " " + item.User.Surname,
+                                                item.ActionTable,
+                                                item.Action,
+                                                item.Controller,
+                                                "\"" + item.Comments + "\"",
                                                 "\"" + ( item.BeforeImage ?? "" ).Replace( '"', ' ' ) + "\"",
                                                 "\"" + ( item.BeforeImage ?? "" ).Replace( '"', ' ' ) + "\"",
                                                 "\"" + ( item.Browser ?? "" ) + "\"",
@@ -218,7 +243,7 @@ namespace NedShape.UI.Controllers
                                                     address?.Town,
                                                     address?.Addressline1,
                                                     address?.Addressline2,
-                                                    address?.PostCode,
+                                                    address?.PostalCode,
                                                     Environment.NewLine );
                             }
                         }
@@ -344,10 +369,12 @@ namespace NedShape.UI.Controllers
                     Name = model.Name,
                     Reports = model.Reports,
                     Clients = model.Clients,
+                    Profile = model.Profile,
                     Type = ( int ) model.Type,
-                    Products = model.Products,
+                    Services = model.Services,
                     DashBoard = model.DashBoard,
                     Financials = model.Financials,
+                    Statements = model.Statements,
                     Administration = model.Administration
                 };
 
@@ -390,8 +417,12 @@ namespace NedShape.UI.Controllers
                 Name = role.Name,
                 Reports = role.Reports,
                 Clients = role.Clients,
-                Products = role.Products,
+                Profile = role.Profile,
+                Services = role.Services,
+                Gyms = role.Gyms,
+                Members = role.Members,
                 DashBoard = role.DashBoard,
+                Statements = role.Statements,
                 Financials = role.Financials,
                 Type = ( RoleType ) role.Type,
                 Administration = role.Administration,
@@ -405,7 +436,7 @@ namespace NedShape.UI.Controllers
         // POST: /Administration/EditRole/5
         [HttpPost]
         [Requires( PermissionTo.Edit )]
-        public ActionResult EditRole( RoleViewModel model, PagingModel pm, bool isstructure = false )
+        public ActionResult EditRole( RoleViewModel model )
         {
             if ( !ModelState.IsValid )
             {
@@ -446,9 +477,11 @@ namespace NedShape.UI.Controllers
                 role.Name = model.Name;
                 role.Reports = model.Reports;
                 role.Clients = model.Clients;
+                role.Profile = model.Profile;
                 role.Type = ( int ) model.Type;
-                role.Products = model.Products;
+                role.Services = model.Services;
                 role.DashBoard = model.DashBoard;
+                role.Statements = model.Statements;
                 role.Financials = model.Financials;
                 role.Administration = model.Administration;
 
@@ -460,33 +493,6 @@ namespace NedShape.UI.Controllers
             }
 
             Notify( "The selected Role details were successfully updated.", NotificationType.Success );
-
-            return RedirectToAction( "Roles" );
-        }
-
-        //
-        // POST: /Administration/DeleteRole/5
-        [HttpPost]
-        [Requires( PermissionTo.Delete )]
-        public ActionResult DeleteRole( RoleViewModel model, PagingModel pm )
-        {
-            Role role = new Role();
-
-            using ( RoleService service = new RoleService() )
-            {
-                role = service.GetById( model.Id );
-
-                if ( role == null )
-                {
-                    Notify( "Sorry, the requested resource could not be found. Please try again", NotificationType.Error );
-
-                    return PartialView( "_AccessDenied" );
-                }
-
-                service.Delete( role );
-
-                Notify( "The selected Role was successfully Deleted.", NotificationType.Success );
-            }
 
             return RedirectToAction( "Roles" );
         }
@@ -529,10 +535,15 @@ namespace NedShape.UI.Controllers
                 PaymentAccount = config.PaymentAccount,
                 PaymentUserCode = config.PaymentUserCode,
                 AppDownloadUrl = config.AppDownloadUrl,
+                DRDiscount = config.DRDiscount,
 
                 PaymentMonitorPath = config.PaymentMonitorPath,
                 PaymentMonitorStart = config.PaymentMonitorStart,
-                PaymentMonitorDay = config.PaymentMonitorDay
+                PaymentMonitorDay = config.PaymentMonitorDay,
+
+                PaymentsExportPath = config.PaymentsExportPath,
+                StatementFolder = config.StatementFolder,
+                PaymentFolder = config.PaymentFolder
             };
 
             return View( model );
@@ -542,7 +553,7 @@ namespace NedShape.UI.Controllers
         // POST: /Administration/EditSystemConfig/5
         [HttpPost]
         [Requires( PermissionTo.Edit )]
-        public ActionResult EditSystemConfig( SystemConfigViewModel model, PagingModel pm )
+        public ActionResult EditSystemConfig( SystemConfigViewModel model )
         {
             if ( !ModelState.IsValid )
             {
@@ -574,10 +585,15 @@ namespace NedShape.UI.Controllers
                 config.PaymentAccount = model.PaymentAccount;
                 config.PaymentUserCode = model.PaymentUserCode;
                 config.AppDownloadUrl = model.AppDownloadUrl;
+                config.DRDiscount = model.DRDiscount;
 
                 config.PaymentMonitorPath = model.PaymentMonitorPath;
                 config.PaymentMonitorStart = model.PaymentMonitorStart;
                 config.PaymentMonitorDay = model.PaymentMonitorDay;
+
+                config.PaymentsExportPath = model.PaymentsExportPath;
+                config.StatementFolder = model.StatementFolder;
+                config.PaymentFolder = model.PaymentFolder;
 
                 service.Update( config );
             }
@@ -633,7 +649,11 @@ namespace NedShape.UI.Controllers
         public ActionResult UserDetails( int id, bool layout = true )
         {
             User model;
+
+            List<Image> images;
             List<Address> addresses;
+            List<Document> documents;
+            List<BankDetail> bankDetails;
 
             using ( UserService service = new UserService() )
             {
@@ -647,12 +667,21 @@ namespace NedShape.UI.Controllers
                 return RedirectToAction( "Index" );
             }
 
-            using ( AddressService service = new AddressService() )
+            using ( ImageService iservice = new ImageService() )
+            using ( AddressService aservice = new AddressService() )
+            using ( DocumentService dservice = new DocumentService() )
+            using ( BankDetailService bservice = new BankDetailService() )
             {
-                addresses = service.List( model.Id, "User" );
+                addresses = aservice.List( model.Id, "User" );
+                images = iservice.List( model.Id, "User" );
+                documents = dservice.List( model.Id, "User" );
+                bankDetails = bservice.List( model.Id, "User" );
             }
 
-            ViewBag.Address = addresses?.FirstOrDefault();
+            ViewBag.Images = images;
+            ViewBag.Addresses = addresses;
+            ViewBag.Documents = documents;
+            ViewBag.BankDetails = bankDetails;
 
             if ( layout )
             {
@@ -766,7 +795,7 @@ namespace NedShape.UI.Controllers
                             Addressline1 = a.AddressLine1,
                             Addressline2 = a.AddressLine2,
                             Town = a.Town,
-                            PostCode = a.PostCode,
+                            PostalCode = a.PostalCode,
                             Province = ( int ) a.Province,
                             Type = ( int ) a.AddressType,
                             Status = ( int ) Status.Active
@@ -849,7 +878,7 @@ namespace NedShape.UI.Controllers
                         Town = a.Town,
                         EditMode = true,
                         ObjectId = a.ObjectId,
-                        PostCode = a.PostCode,
+                        PostalCode = a.PostalCode,
                         Status = ( Status ) a.Status,
                         AddressLine1 = a.Addressline1,
                         AddressLine2 = a.Addressline2,
@@ -963,7 +992,7 @@ namespace NedShape.UI.Controllers
                             Address address = aservice.GetById( a.Id );
 
                             address.Town = a.Town;
-                            address.PostCode = a.PostCode;
+                            address.PostalCode = a.PostalCode;
                             address.Type = ( int ) a.AddressType;
                             address.Addressline1 = a.AddressLine1;
                             address.Addressline2 = a.AddressLine2;
@@ -978,7 +1007,7 @@ namespace NedShape.UI.Controllers
                                 Town = a.Town,
                                 ObjectId = user.Id,
                                 ObjectType = "User",
-                                PostCode = a.PostCode,
+                                PostalCode = a.PostalCode,
                                 Type = ( int ) a.AddressType,
                                 Addressline1 = a.AddressLine1,
                                 Addressline2 = a.AddressLine2,

@@ -188,6 +188,11 @@
 }
 .sign-in.sign-up {
     background: rgba(34, 34, 34, 1) !important;
-    padding-left: 69px !important;
-    padding-right: 69px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0px !important;
+    margin-top: 0px !important;
+    margin-left: auto !important;
+    width: 80% !important;
+    max-width: 1400px !important;
 }

@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using NedShape.Core.Models;
 using NedShape.Data.Models;
+using NedShape.Core.Enums;
 
 namespace NedShape.Core.Services
 {
@@ -36,7 +37,7 @@ namespace NedShape.Core.Services
         /// <returns></returns>
         public bool Exist( DateTime startDate )
         {
-            return context.Broadcasts.Any( b => b.EndDate > startDate );
+            return context.Broadcasts.Any( b => b.Status == ( int ) Status.Active && b.EndDate > startDate );
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace NedShape.Core.Services
         /// <returns></returns>
         public Broadcast GetUnreadByUser( int userid )
         {
-            return context.Broadcasts.FirstOrDefault( b => b.EndDate > DateTime.Now && !b.UserBroadcasts.Any( ub => ub.UserId == userid ) );
+            return context.Broadcasts.FirstOrDefault( b => b.Status == ( int ) Status.Active && b.EndDate > DateTime.Now && !b.UserBroadcasts.Any( ub => ub.UserId == userid ) );
         }
     }
 }

@@ -73,6 +73,7 @@
     <Compile Include="Enums\ActivityTypes.cs" />
     <Compile Include="Enums\AddressType.cs" />
     <Compile Include="Enums\BroadcastType.cs" />
+    <Compile Include="Enums\GymStatus.cs" />
     <Compile Include="Enums\Timers.cs" />
     <Compile Include="Enums\BankAccountType.cs" />
     <Compile Include="Enums\DeclineReason.cs" />
@@ -122,9 +123,11 @@
     <Compile Include="Models\CDVResult.cs" />
     <Compile Include="Models\DeclinePRModel.cs" />
     <Compile Include="Models\DownloadDocumentModel.cs" />
+    <Compile Include="Models\GymCustomModel.cs" />
     <Compile Include="Models\JsonCommonModel.cs" />
     <Compile Include="Models\CountModel.cs" />
     <Compile Include="Models\KeyValueModel.cs" />
+    <Compile Include="Models\ServiceCustomModel.cs" />
     <Compile Include="Models\SimpleBankModel.cs" />
     <Compile Include="Models\CustomSearchModel.cs" />
     <Compile Include="Models\EmailModel.cs" />
@@ -141,7 +144,13 @@
     <Compile Include="Services\DocumentService.cs" />
     <Compile Include="Services\BankService.cs" />
     <Compile Include="Services\BroadcastService.cs" />
+    <Compile Include="Services\GymAgreementService.cs" />
+    <Compile Include="Services\GymPaymentService.cs" />
+    <Compile Include="Services\GymService.cs" />
+    <Compile Include="Services\GymServiceService.cs" />
+    <Compile Include="Services\GymTimeService.cs" />
     <Compile Include="Services\ImageService.cs" />
+    <Compile Include="Services\ServicesService.cs" />
     <Compile Include="Services\TokenService.cs" />
     <Compile Include="Services\UserBroadcastService.cs" />
     <Compile Include="Services\SystemConfigService.cs" />

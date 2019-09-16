@@ -17,8 +17,11 @@ namespace NedShape.Data.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public int RoleId { get; set; }
-        public int Status { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public System.DateTime ModifiedOn { get; set; }
+        public int ModifiedBy { get; set; }
+        public int Status { get; set; }
     
         public virtual Role Role { get; set; }
         public virtual User User { get; set; }

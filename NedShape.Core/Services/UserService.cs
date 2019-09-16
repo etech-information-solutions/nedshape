@@ -100,7 +100,7 @@ namespace NedShape.Core.Services
                      where
                      (
                          // Where
-                         u.UserRoles.Any( ur => ur.Role.Type != ( int ) RoleType.Member ) &&
+                         //u.UserRoles.Any( ur => ur.Role.Type != ( int ) RoleType.Member && ur.Role.Type != ( int ) RoleType.GymUser ) &&
 
 
 
@@ -108,7 +108,7 @@ namespace NedShape.Core.Services
                          (
                             ( ( csm.Status != Status.All ) ? u.Status == ( int ) csm.Status : true ) &&
                             ( ( csm.RoleType != RoleType.All ) ? u.UserRoles.Any( ur => ur.Role.Type == ( int ) csm.RoleType ) : true ) &&
-                            ( ( csm.Province != Province.All ) ? context.Addresses.Any( a => a.ObjectId == u.Id && a.ObjectType == "User" && a.Province == ( int ) csm.Province ) : true )
+                            ( ( csm.Province != Province.Any ) ? context.Addresses.Any( a => a.ObjectId == u.Id && a.ObjectType == "User" && a.Province == ( int ) csm.Province ) : true )
                          ) &&
 
 
@@ -139,8 +139,8 @@ namespace NedShape.Core.Services
         {
             string[] qs = ( csm.Query ?? "" ).Split( ' ' );
 
-            base.context.Configuration.LazyLoadingEnabled = true;
-            base.context.Configuration.ProxyCreationEnabled = true;
+            context.Configuration.LazyLoadingEnabled = true;
+            context.Configuration.ProxyCreationEnabled = true;
 
             return ( from u in context.Users
 
@@ -149,7 +149,7 @@ namespace NedShape.Core.Services
                      where
                      (
                          // Where
-                         u.UserRoles.Any( ur => ur.Role.Type != ( int ) RoleType.Member ) &&
+                         //!u.UserRoles.Any( ur => ur.Role.Type == ( int ) RoleType.Member || ur.Role.Type == ( int ) RoleType.GymUser ) &&
 
 
 
@@ -157,7 +157,7 @@ namespace NedShape.Core.Services
                          (
                             ( ( csm.Status != Status.All ) ? u.Status == ( int ) csm.Status : true ) &&
                             ( ( csm.RoleType != RoleType.All ) ? u.UserRoles.Any( ur => ur.Role.Type == ( int ) csm.RoleType ) : true ) &&
-                            ( ( csm.Province != Province.All ) ? context.Addresses.Any( a => a.ObjectId == u.Id && a.ObjectType == "User" && a.Province == ( int ) csm.Province ) : true )
+                            ( ( csm.Province != Province.Any ) ? context.Addresses.Any( a => a.ObjectId == u.Id && a.ObjectType == "User" && a.Province == ( int ) csm.Province ) : true )
                          ) &&
 
 

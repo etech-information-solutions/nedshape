@@ -12,20 +12,13 @@ namespace NedShape.Data.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class UserGym
+    public partial class GymUser
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
         public int GymId { get; set; }
+        public int UserId { get; set; }
         public System.DateTime CreatedOn { get; set; }
-        public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
-        public Nullable<System.DateTime> FirstVisit { get; set; }
-        public Nullable<System.DateTime> LastVisit { get; set; }
-        public Nullable<System.DateTime> DateJoined { get; set; }
-        public Nullable<System.DateTime> DateLeft { get; set; }
-        public Nullable<int> Status { get; set; }
-        public string UserGymAgreement { get; set; }
+        public int CreatedBy { get; set; }
     
         public virtual Gym Gym { get; set; }
         public virtual User User { get; set; }

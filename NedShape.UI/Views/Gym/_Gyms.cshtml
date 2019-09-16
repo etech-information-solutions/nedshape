@@ -1,0 +1,171 @@
+﻿@model PagingExtension
+
+@using NedShape.Data.Models;
+@using NedShape.Core.Enums;
+@using NedShape.Core.Models;
+
+@{
+    ViewBag.ShowExport = true;
+    ViewBag.ShowCustom = true;
+
+    ViewBag.ViewName = "_Gyms";
+}
+
+
+@Html.Partial( "_Notification" )
+
+
+@{
+    Int32 count = Model.Start;
+    List<GymCustomModel> items = ( List<GymCustomModel> ) Model.Items;
+}
+
+
+@if ( Model == null || !items.Any() )
+{
+    <div class="notification message-warn" style="margin-bottom: 20px;">
+        There are no Gyms  available matching your search criteria.
+    </div>
+}
+
+<p>
+    @Html.ActionLink( "Add Gym", "AddGym", new { }, new { @class = "add", @rel = "tipsyS", @title = "Add a new Gym?", @data_edit = "1", @data_id = 0, @data_target = "#list" } )
+    <span class="loader"></span>
+</p>
+
+
+<table class="da-table datatable-numberpaging sort">
+
+    <thead>
+        <tr>
+            <th>
+                #
+            </th>
+            <th data-column="g.CreatedOn">
+                Date Created
+            </th>
+            <th data-column="g.Name">
+                Name
+            </th>
+            <th data-column="g.RegNo">
+                Reg #
+            </th>
+            <th data-column="g.ContactPerson">
+                Contacts
+            </th>
+            <th data-column="g.Approved">
+                Approved
+            </th>
+            <th data-column="Status">
+                Status
+            </th>
+            <th data-column="UserCount">
+                Users
+            </th>
+            <th data-column="MemberCount">
+                Members
+            </th>
+            <th data-column="ServiceCount">
+                Services
+            </th>
+            <th>
+                Actions
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if ( Model != null && items != null && items.Count() > 0 )
+        {
+            foreach ( var item in items )
+            {
+                GymStatus status = ( GymStatus ) item.Status;
+
+                String active = status.Equals( GymStatus.Active ) ? "active" : "inactive";
+                String enable = status.Equals( GymStatus.Active ) ? "Disable" : "Enable";
+
+                <tr id="tr-@item.Id-item" class="tr-@item.Id-item @active">
+
+                    <td width="1%">
+                        @count
+                    </td>
+                    <td>
+                        @item.CreatedOn.ToString( "yyyy-MM-dd @ HH:mm" )
+                        <i class="block">@item.CreatedByUser</i>
+                    </td>
+                    <td style="width: 15%;">
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.RegNo
+                    </td>
+                    <td width="10%">
+
+                        @item.ContactPerson <br />
+
+                        @if ( !string.IsNullOrEmpty( item.ContactTel ) )
+                        {
+                            <i>@item.ContactTel - </i>
+                        }
+                        @if ( !string.IsNullOrEmpty( item.ContactEmail ) )
+                        {
+                            <i>@item.ContactEmail</i>
+                        }
+                    </td>
+                    <td>
+                        @if ( item.Approved )
+                        {
+                            <img alt="Yes" src="@Url.Content( "~/Images/thumbs-up.png" )" />
+                            <i>By @item.ApprovedByUser On @item.ApprovedOn.Value.ToString( "yyyy-MM-dd @ HH:mm" )</i>
+                        }
+                        else
+                        {
+                            <img alt="Yes" src="@Url.Content( "~/Images/thumbs-down.png" )" />
+                        }
+                    </td>
+                    <td>
+                        @status.GetDisplayText()
+                    </td>
+                    <td>
+                        <a data-bullet="1" data-type="UserCount" data-Url="Gyms/Bullet/@item.Id">
+                            @item.UserCount
+                        </a>
+                    </td>
+                    <td>
+                        <a data-bullet="1" data-type="MemberCount" data-Url="Gyms/Bullet/@item.Id">
+                            @item.MemberCount
+                        </a>
+                    </td>
+                    <td>
+                        <a data-bullet="1" data-type="ServiceCount" data-Url="Gyms/Bullet/@item.Id">
+                            @item.ServiceCount
+                        </a>
+                    </td>
+                    <td width="10%">
+                        @Html.ActionLink( "Details", "Details", new { id = item.Id }, new { @class = "info", @data_details = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
+
+                        @Html.ActionLink( "Edit", "Edit", new { id = item.Id, returnView = "Gyms" }, new { @class = "edit", @data_edit = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
+
+                        <span class="block"></span>
+
+                        @Html.ActionLink( enable, "Delete", new { id = item.Id }, new { @class = "warn", @data_delete = "1", @data_id = item.Id, @data_target = "#tr-" + item.Id + "-item", @data_refresh_target = "#list", @rel = "tipsyE", @title = enable + " this item?" } )
+
+                        @if ( item.DocumentCount > 0 )
+                        {
+                            @Html.ActionLink( "Docs (" + item.DocumentCount + ")", "Documents", new { id = item.Id }, new { @class = "docs", @data_details = "1", @data_id = item.Id, @data_target = ".tr-" + item.Id + "-item" } )
+                        }
+
+                    </td>
+
+                </tr>
+
+                count++;
+            }
+        }
+    </tbody>
+
+</table>
+
+@*@Html.Partial( "_GymCustomSearch", new NedShape.Core.Models.CustomSearchModel( "Gym" ) )*@
+
+@Html.Partial( "_Paging" )

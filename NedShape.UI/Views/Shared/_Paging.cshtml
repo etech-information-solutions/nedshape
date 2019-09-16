@@ -3,11 +3,13 @@
 @using NedShape.Data.Models;
 
 @{
-    Boolean show = ViewBag.ShowSearch != null && ( Boolean ) ViewBag.ShowSearch;
-    Boolean showExport = ViewBag.ShowExport != null && ( Boolean ) ViewBag.ShowExport;
-    Boolean showCustom = ViewBag.ShowCustom != null && ( Boolean ) ViewBag.ShowCustom;
+    bool show = ViewBag.ShowSearch != null && ( bool ) ViewBag.ShowSearch;
+    bool showExport = ViewBag.ShowExport != null && ( bool ) ViewBag.ShowExport;
+    bool showCustom = ViewBag.ShowCustom != null && ( bool ) ViewBag.ShowCustom;
 
-    String action = ViewBag.ViewName != null ? ( ( String ) ViewBag.ViewName ).ToLower().Replace( "_", "" ) : "";
+    string action = ViewBag.ViewName != null ? ( ( string ) ViewBag.ViewName ).ToLower().Replace( "_", "" ) : "";
+
+    string controller = ( string ) ViewContext.RouteData.Values[ "controller" ];
 }
 
 <div class="paging-pieces">
@@ -68,7 +70,7 @@
 
             <span style="padding-left: 5px;">&nbsp;</span>
 
-            <a id="data-page-search" rel="tipsyS" title="..perform a custom search?" class="do-custom-search" data-sticky-one="1" data-target="#@action #custom-search" data-t="@action" data-trigger="click" data-arrow="center-right" data-title="Custom Search" data-callback="NS.UI.DataCustomSearch($(this), $('#sticky-one .search-query'));">
+            <a id="data-page-search" rel="tipsyS" title="..perform a custom search?" class="do-custom-search" data-sticky-one="1" data-target="#@action #custom-search" data-t="/@controller/@action" data-trigger="click" data-arrow="center-right" data-title="Custom Search" data-callback="NS.UI.DataCustomSearch($(this), $('#sticky-one .search-query'));">
                 <i class="fa fa-search"></i>
                 Custom Search
             </a>

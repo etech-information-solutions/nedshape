@@ -17,8 +17,9 @@ namespace NedShape.Data.Models
         public int Id { get; set; }
         public int UserId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public System.Guid UID { get; set; }
         public int Status { get; set; }
     

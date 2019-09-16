@@ -13,16 +13,6 @@ namespace NedShape.Core.Services
         }
 
         /// <summary>
-        /// Gets a list of banks using the specified userid
-        /// </summary>
-        /// <param name="userId"></param>
-        /// <returns></returns>
-        public List<BankDetail> ListByUserId( int userId )
-        {
-            return context.BankDetails.Where( b => b.UserId == userId ).ToList();
-        }
-
-        /// <summary>
         /// Gets a list of banks using the specified account type
         /// </summary>
         /// <param name="accountType"></param>
@@ -33,13 +23,14 @@ namespace NedShape.Core.Services
         }
 
         /// <summary>
-        /// Gets a Bank Detail using the specified user id
+        /// Gets a list of BankDetails using the specified objectId and objectType
         /// </summary>
-        /// <param name="UserId"></param>
+        /// <param name="objectId"></param>
+        /// <param name="objectType"></param>
         /// <returns></returns>
-        public BankDetail GetByUserId( int userId )
+        public List<BankDetail> List( int objectId, string objectType )
         {
-            return context.BankDetails.Include( "Bank" ).FirstOrDefault( b => b.UserId == userId );
+            return context.BankDetails.Where( b => b.ObjectId == objectId && b.ObjectType == objectType ).ToList();
         }
     }
 }

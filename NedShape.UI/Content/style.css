@@ -327,17 +327,17 @@ form fieldset, fieldset {
 /* login
 ----------------------------------------------------------*/
 .sign-in {
-    // width: 20%;
-    // padding: 45px;
+    width: 20%;
+    padding: 45px;
     color: #ffffff;
-    background: #274e13;
-    // margin: 10px auto 0 auto;
-    // border-top-left-radius: 10px;
+    background: #0a4237;
+    margin: 10px auto 0 auto;
+    border-top-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
     .sign-in.sign-up {
-      //  width: 60%;
+        width: 60%;
     }
 
     .sign-in .details {
@@ -350,7 +350,7 @@ form fieldset, fieldset {
         }
 
         .sign-in .details .boldx {
-            // width: 93px;
+            width: 93px;
             float: left;
             display: block;
             font-size: 15px;
@@ -382,7 +382,7 @@ form fieldset, fieldset {
     }
 
     .sign-in .input {
-        //width: 240px;
+        width: 240px;
         border: 0 none;
         font-size: 14px;
         padding-left: 30px;
@@ -1171,6 +1171,23 @@ span.totals {
         border-bottom-style: solid;
     }
 
+.gyms {
+}
+
+.gym-list {
+    width: 30%;
+    float: left;
+    padding: 10px;
+    border-right: 1px solid #dddddd;
+}
+
+.gym-details {
+    width: 65%;
+    float: left;
+    padding: 10px;
+    background: #efefef;
+}
+
 
 
 
@@ -1184,7 +1201,7 @@ footer {
     position: fixed;
     font-weight: bold;
     text-align: center;
-    background: rgba(10, 66, 55,0.7);
+    background: #0a4237;
     filter: alpha(opacity=50);
 }
 

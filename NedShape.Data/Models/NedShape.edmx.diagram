@@ -4,53 +4,55 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="af12a12ddfba4d8d8d7f51769a9fa0e9" Name="Diagram1">
-        <EntityTypeShape EntityType="NedShapeModel.AuditLog" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.Bank" Width="1.5" PointX="0.75" PointY="14.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.Broadcast" Width="1.5" PointX="9" PointY="25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.Document" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.Gym" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.GymAgreement" Width="1.5" PointX="5.25" PointY="22.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.GymPayment" Width="1.5" PointX="8.25" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.GymService" Width="1.5" PointX="6" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.GymTime" Width="1.5" PointX="8.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.Role" Width="1.5" PointX="6" PointY="25.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.Service" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.SystemConfig" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.User" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.UserBroadcast" Width="1.5" PointX="11.25" PointY="19.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.UserGym" Width="1.5" PointX="11.25" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.UserPassword" Width="1.5" PointX="8.25" PointY="18.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.UserPayment" Width="1.5" PointX="8.25" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.UserRole" Width="1.5" PointX="8.25" PointY="21.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.UserStatement" Width="1.5" PointX="11.25" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="NedShapeModel.UserType" Width="1.5" PointX="3.75" PointY="7.25" IsExpanded="true" />
-        <AssociationConnector Association="NedShapeModel.FK_Gym_Bank" ManuallyRouted="false" />
-        <AssociationConnector Association="NedShapeModel.FK_User_Bank" ManuallyRouted="false" />
+      <Diagram DiagramId="55b6871f52474a06897fd669ecf8f17d" Name="Diagram1">
+        <EntityTypeShape EntityType="NedShapeModel.Address" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.AuditLog" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Bank" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.BankDetail" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Broadcast" Width="1.5" PointX="6" PointY="37" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Document" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Gym" Width="1.5" PointX="5.25" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.GymAgreement" Width="1.5" PointX="7.5" PointY="20.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.GymMember" Width="1.5" PointX="7.5" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.GymPayment" Width="1.5" PointX="10.5" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.GymService" Width="1.5" PointX="10.5" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.GymTime" Width="1.5" PointX="12.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.GymUser" Width="1.5" PointX="10.5" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Image" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Role" Width="1.5" PointX="9" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Service" Width="1.5" PointX="8.25" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.SystemConfig" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.Token" Width="1.5" PointX="5.25" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.User" Width="1.5" PointX="3" PointY="21.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.UserBroadcast" Width="1.5" PointX="8.25" PointY="30.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.UserPassword" Width="1.5" PointX="5.25" PointY="33.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.UserPayment" Width="1.5" PointX="15.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.UserRole" Width="1.5" PointX="11.25" PointY="30" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.UserStatement" Width="1.5" PointX="13.5" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NedShapeModel.UserType" Width="1.5" PointX="0.75" PointY="24.25" IsExpanded="true" />
+        <AssociationConnector Association="NedShapeModel.FK_BankDetail_Bank" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserBroadcasts_Broadcasts" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_Gym_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_GymAgreement_Gym" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_GymPayment_Gym" ManuallyRouted="false" />
+        <AssociationConnector Association="NedShapeModel.FK_GymService_Gym" ManuallyRouted="false" />
+        <AssociationConnector Association="NedShapeModel.FK_GymUser_Gym" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserGym_Gym" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserStatement_Gym" ManuallyRouted="false" />
+        <AssociationConnector Association="NedShapeModel.FK_UserGym_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_GymPayment_User" ManuallyRouted="false" />
+        <AssociationConnector Association="NedShapeModel.FK_GymService_Service" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_GymTime_GymService" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserPayment_GymService" ManuallyRouted="false" />
+        <AssociationConnector Association="NedShapeModel.FK_GymUser_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserRole_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="NedShapeModel.FK_Token_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_User_UserType" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserBroadcast_User" ManuallyRouted="false" />
-        <AssociationConnector Association="NedShapeModel.FK_UserGym_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserPassword_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserPayment_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserRole_User" ManuallyRouted="false" />
         <AssociationConnector Association="NedShapeModel.FK_UserStatement_User" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="NedShapeModel.Address" Width="1.5" PointX="0.75" PointY="5.75" />
-        <EntityTypeShape EntityType="NedShapeModel.BankDetail" Width="1.5" PointX="14.625" PointY="14.75" />
-        <EntityTypeShape EntityType="NedShapeModel.Image" Width="1.5" PointX="13.75" PointY="0.75" />
-        <EntityTypeShape EntityType="NedShapeModel.Token" Width="1.5" PointX="8.625" PointY="28.5" />
-        <AssociationConnector Association="NedShapeModel.FK_BankDetail_Bank" />
-        <AssociationConnector Association="NedShapeModel.FK_BankDetail_User" />
-        <AssociationConnector Association="NedShapeModel.FK_Token_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -18,6 +18,7 @@ namespace NedShape.Data.Models
         public int UserId { get; set; }
         public int BroadcastId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
     
         public virtual Broadcast Broadcast { get; set; }
         public virtual User User { get; set; }

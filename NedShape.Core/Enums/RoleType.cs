@@ -8,9 +8,8 @@ namespace NedShape.Core.Enums
     {
         [UiIgnoreEnumValue]
         [StringEnumDisplayText( "All / NA" )]
-        All = 0,
+        All = -1,
 
-        [UiIgnoreEnumValue]
         [StringEnumDisplayText( "Gym Member" )]
         Member = 1,
 

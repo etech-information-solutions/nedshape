@@ -10,14 +10,17 @@
     }
 
     ViewBag.Title = "Details";
-
-    Address address = ( ViewBag.Address != null ) ? ( Address ) ViewBag.Address : new Address() { };
+    
+    List<Image> images = ( ViewBag.Images != null ) ? ( List<Image> ) ViewBag.Images : new List<Image>() { };
+    List<Address> addresses = ( ViewBag.Addresses != null ) ? ( List<Address> ) ViewBag.Addresses : new List<Address>() { };
+    List<Document> documents = ( ViewBag.Documents != null ) ? ( List<Document> ) ViewBag.Documents : new List<Document>() { };
+    List<BankDetail> banks = ( ViewBag.BankDetails != null ) ? ( List<BankDetail> ) ViewBag.BankDetails : new List<BankDetail>() { };
 }
 
 @if ( ViewBag.IncludeLayout != null )
 {
     <h2>
-        <img alt="" src="@Url.Content( "~/images/info.png" )" />
+        <img alt="i" src="@Url.Content( "~/images/info.png" )" />
         <span>User Details</span>
     </h2>
 }
@@ -66,7 +69,7 @@
             Status
         </div>
         <div class="display-field">
-            @( ( ( Status ) Model.Status ).GetDisplayText() )
+            @(( ( Status ) Model.Status ).GetDisplayText())
         </div>
 
         <div class="display-label">
@@ -76,31 +79,12 @@
             @Html.DisplayFor( model => model.UserRoles.FirstOrDefault().Role.Name )
         </div>
 
-        @if ( Model.UserRoles.FirstOrDefault().Role.Type == ( int ) RoleType.QualityAssurer )
-        {
-            <div class="display-label">
-                QA For the following client (s)
-            </div>
-            <div class="display-field" style="max-height: 200px; overflow-y: auto;">
-                <ul class="list">
-                    @foreach ( var c in Model.QAUserClients.Select( s => s.Client ) )
-                    {
-                        <li>
-                            <label>
-                                @c.CompanyName
-                            </label>
-                        </li>
-                    }
-                </ul>
-            </div>
-        }
-
     </div>
 
     <div class="left grouped-area" style="width: 45%;">
 
         <p>
-            <strong class="uppercase" style="color: #9935bd !important;">CONTACT DETAILS</strong>
+            <strong class="uppercase" style="color: #0a4237 !important;">CONTACT DETAILS</strong>
         </p>
 
         <div class="display-label">
@@ -117,42 +101,77 @@
             @Html.DisplayFor( model => model.Cell )
         </div>
 
-        <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
+        @if ( addresses != null && addresses.Any() )
+        {
+            <p>
+                <strong class="uppercase" style="color: #0a4237 !important;">ADDRESS (@addresses.Count)</strong>
+            </p>
 
-        <div class="display-label">
-            Province
-        </div>
-        <div class="display-field">
-            @( ( address != null ) ? ( ( Province ) address.Province ).GetDisplayText() : "" )
-        </div>
+            foreach ( Address item in addresses )
+            {
+                <div class="display-label">
+                    Province
+                </div>
+                <div class="display-field">
+                    @(( ( Province ) item.Province ).GetDisplayText())
+                </div>
 
-        <div class="display-label">
-            Town
-        </div>
-        <div class="display-field">
-            @( ( address != null ) ? address.Town : "" )
-        </div>
+                <div class="display-label">
+                    Town
+                </div>
+                <div class="display-field">
+                    @item.Town
+                </div>
 
-        <div class="display-label">
-            Address Line 1
-        </div>
-        <div class="display-field">
-            @( ( address != null ) ? address.Addressline1 : "" )
-        </div>
+                <div class="display-label">
+                    Address Line 1
+                </div>
+                <div class="display-field">
+                    @item.Addressline1
+                </div>
 
-        <div class="display-label">
-            Address Line 2
-        </div>
-        <div class="display-field">
-            @( ( address != null ) ? address.Addressline2 : "" )
-        </div>
+                <div class="display-label">
+                    Address Line 2
+                </div>
+                <div class="display-field">
+                    @item.Addressline2
+                </div>
 
-        <div class="display-label">
-            Postal Code
-        </div>
-        <div class="display-field">
-            @( ( address != null ) ? address.PostCode : "" )
-        </div>
+                <div class="display-label">
+                    Postal Code
+                </div>
+                <div class="display-field">
+                    @item.PostalCode
+                </div>
+            }
+        }
+
+        @if ( banks != null && banks.Any() )
+        {
+            <p>
+                <strong class="uppercase" style="color: #0a4237 !important;">Bank Details (@banks.Count)</strong>
+            </p>
+
+
+        }
+
+        @if ( documents != null && documents.Any() )
+        {
+            <p>
+                <strong class="uppercase" style="color: #0a4237 !important;">Documents (@documents.Count)</strong>
+            </p>
+
+
+        }
+
+        @if ( images != null && images.Any() )
+        {
+            <p>
+                <strong class="uppercase" style="color: #0a4237 !important;">Images (@images.Count)</strong>
+            </p>
+
+
+        }
 
     </div>
 

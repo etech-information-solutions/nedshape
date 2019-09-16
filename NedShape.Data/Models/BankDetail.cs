@@ -15,11 +15,13 @@ namespace NedShape.Data.Models
     public partial class BankDetail
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
         public int BankId { get; set; }
+        public int ObjectId { get; set; }
+        public string ObjectType { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public string Beneficiary { get; set; }
         public string Account { get; set; }
         public string Branch { get; set; }
@@ -27,6 +29,5 @@ namespace NedShape.Data.Models
         public int Status { get; set; }
     
         public virtual Bank Bank { get; set; }
-        public virtual User User { get; set; }
     }
 }

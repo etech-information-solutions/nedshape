@@ -19,8 +19,8 @@
 
         @if ( User.Has( PermissionTo.View, PermissionContext.Gyms ) )
         {
-            <li class="first @(controller.ToLower().Equals( "gyms" ) ? "current" : "")" data-hot-spot="1" data-c="Gyms" data-t="">
-                <a rel="tipsyW" title="Gyms & Services" href="@Url.Action( "Index", "Gyms" )">
+            <li class="first @(controller.ToLower().Equals( "gym" ) ? "current" : "")" data-hot-spot="1" data-c="Gym" data-t="">
+                <a rel="tipsyW" title="Gyms & Services" href="@Url.Action( "Index", "Gym" )">
                     <span>Gyms & Services</span>
                 </a>
             </li>

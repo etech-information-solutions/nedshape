@@ -19,9 +19,9 @@ namespace NedShape.Core.Enums
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
         Clients,
 
-        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Products )]
+        [PermissionPrerequisite( PermissionTo.View, PermissionContext.Services )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
-        Products,
+        Services,
 
         [PermissionPrerequisite( PermissionTo.View, PermissionContext.Members )]
         [PermissionContextSupports( PermissionTo.View | PermissionTo.Create | PermissionTo.Edit | PermissionTo.Delete )]
@@ -52,6 +52,15 @@ namespace NedShape.Core.Enums
         Administration,
 
         // Whatever else.
+        Administrator,
+
+        Operator,
+
+        Finance,
+
+        Member,
+
+        Gym
     }
 
 

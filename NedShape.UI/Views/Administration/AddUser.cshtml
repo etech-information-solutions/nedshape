@@ -14,9 +14,6 @@
     ViewBag.Title = "Add User";
 
     UserModel user = User.Get();
-    List<Role> roleOptions = new List<Role>();
-
-    roleOptions.AddRange( Model.RoleOptions.Where( r => r.Name.ToLower() != "agent" ) );
 
     AddressViewModel address = ( Model.Addresses != null && Model.Addresses.Any() ) ? Model.Addresses.FirstOrDefault() : new AddressViewModel() { };
 }
@@ -92,37 +89,8 @@
                     @Html.LabelFor( model => model.RoleId )
                 </div>
                 <div class="edit-field">
-                    @Html.DropDownListFor( model => model.RoleId, model => roleOptions, role => role.Id, role => role.Name, false, new { @class = "chzn", data_role = "1", data_target = "#qa-clients", @style = "width: 98%;" } )
+                    @Html.DropDownListFor( model => model.RoleId, model => Model.RoleOptions, role => role.Id, role => role.Name, false, new { @class = "chzn", data_role = "1", data_target = "#qa-clients", @style = "width: 98%;" } )
                     @Html.ValidationMessageFor( model => model.RoleId )
-                </div>
-
-                <div id="qa-clients" class="none">
-
-                    <div class="edit-label">
-                        @Html.LabelFor( model => model.ClientIds )
-                    </div>
-
-                    <div class="edit-field" style="position: relative;">
-
-                        <input id="qa-client-list" type="text" data-select-client="1" data-target="#qa-select-client" placeholder="Click to select client.." />
-
-                        <div id="qa-select-client" class="qa-select-client">
-                            <ul>
-                                @foreach ( var c in Model.ClientOptions )
-                                {
-                                    <li>
-                                        <label>
-                                            <input type="checkbox" name="ClientIds[0]" value="@c.Key" data-name="@c.Value" />
-                                            @c.Value
-                                        </label>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-
-                        @Html.ValidationMessageFor( model => model.ClientIds )
-                    </div>
-
                 </div>
 
                 <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
@@ -148,7 +116,7 @@
             <div class="grouped-area left" style="width: 46%;">
 
                 <p>
-                    <strong class="uppercase" style="color: #9935bd !important;">CONTACT DETAILS</strong>
+                    <strong class="uppercase" style="color: #0a4237 !important;">CONTACT DETAILS</strong>
                 </p>
 
                 <div class="edit-label">
@@ -167,9 +135,33 @@
                     @Html.ValidationMessageFor( model => model.Cell )
                 </div>
 
-                <div class="clear" style="border-bottom: 1px dashed #ccc; margin-bottom: 20px; height: 0;">&nbsp;</div>
+                <p>
+                    <strong class="uppercase" style="color: #0a4237 !important;">ADDRESS DETAILS</strong>
+                </p>
 
-                <input id="Addresses[0].AddressType" name="Addresses[0].AddressType" type="hidden" value="@( ( int ) AddressType.Postal )" />
+                <div class="edit-label">
+                    <label for="Addresses_AddressType">Type</label>
+                </div>
+                <div class="editor-field">
+                    <select id="Addresses_AddressType" name="Addresses[0].AddressType" class="chzn" required="required" style="width: 97%;">
+                        <option value="">-- select</option>
+                        @foreach ( int p in Enum.GetValues( typeof( AddressType ) ) )
+                        {
+                            string text = ( ( AddressType ) p ).GetDisplayText();
+
+                            if ( text.ToLower() == "all" || text.ToLower() == "any" )
+                            {
+                                continue;
+                            }
+
+                            string sel = ( p == ( int? ) address?.Province ) ? "selected=selected" : "";
+
+                            <option value="@p" @sel>@text</option>
+                        }
+                    </select>
+
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().AddressType )
+                </div>
 
                 <div class="edit-label">
                     <label for="Addresses_Province">Province</label>
@@ -221,8 +213,8 @@
                     <label for="Addresses_PostCode">Postal Code</label>
                 </div>
                 <div class="editor-field">
-                    <input type="text" class="input" id="Addresses_PostCode" name="Addresses[0].PostCode" value="@address.PostCode" required="required" placeholder="Enter Postal Code" />
-                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().PostCode )
+                    <input type="text" class="input" id="Addresses_PostalCode" name="Addresses[0].PostalCode" value="@address.PostalCode" required="required" placeholder="Enter Postal Code" />
+                    @Html.ValidationMessageFor( model => model.Addresses.FirstOrDefault().PostalCode )
                 </div>
 
                 <!-- END: Address Details -->

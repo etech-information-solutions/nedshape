@@ -17,30 +17,31 @@ namespace NedShape.Data.Models
         public int Id { get; set; }
         public int GymServiceId { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
-        public Nullable<bool> MondayIsOpen { get; set; }
+        public int ModifiedBy { get; set; }
+        public Nullable<bool> OpenOnMonday { get; set; }
         public Nullable<System.TimeSpan> MondayStart { get; set; }
         public Nullable<System.TimeSpan> MondayClose { get; set; }
-        public Nullable<bool> TuesdayIsOpen { get; set; }
+        public Nullable<bool> OpenOnTuesday { get; set; }
         public Nullable<System.TimeSpan> TuesdayStart { get; set; }
         public Nullable<System.TimeSpan> TuesdayClose { get; set; }
-        public Nullable<bool> WednesdayIsOpen { get; set; }
+        public Nullable<bool> OpenOnWednesday { get; set; }
         public Nullable<System.TimeSpan> WednesdayStart { get; set; }
         public Nullable<System.TimeSpan> WednesdayClose { get; set; }
-        public Nullable<bool> ThursdayIsOpen { get; set; }
+        public Nullable<bool> OpenOnThursday { get; set; }
         public Nullable<System.TimeSpan> ThursdayStart { get; set; }
         public Nullable<System.TimeSpan> ThursdayClose { get; set; }
-        public Nullable<bool> FridayIsOpen { get; set; }
+        public Nullable<bool> OpenOnFriday { get; set; }
         public Nullable<System.TimeSpan> FridayStart { get; set; }
         public Nullable<System.TimeSpan> FridayClose { get; set; }
-        public Nullable<bool> SaturdayIsOpen { get; set; }
+        public Nullable<bool> OpenOnSaturday { get; set; }
         public Nullable<System.TimeSpan> SaturdayStart { get; set; }
         public Nullable<System.TimeSpan> SaturdayClose { get; set; }
-        public Nullable<bool> SundayIsOpen { get; set; }
+        public Nullable<bool> OpenOnSunday { get; set; }
         public Nullable<System.TimeSpan> SundayStart { get; set; }
         public Nullable<System.TimeSpan> SundayClose { get; set; }
-        public Nullable<bool> PublicHolidayIsOpen { get; set; }
+        public Nullable<bool> OpenOnPublicHoliday { get; set; }
         public Nullable<System.TimeSpan> PublicHolidayStart { get; set; }
         public Nullable<System.TimeSpan> PublicHolidayClose { get; set; }
     

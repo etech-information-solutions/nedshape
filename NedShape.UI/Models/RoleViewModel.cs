@@ -24,14 +24,14 @@ namespace NedShape.UI.Models
         [Display( Name = "Clients" )]
         public bool Clients { get; set; }
 
-        [Display( Name = "Products" )]
-        public bool Products { get; set; }
+        [Display( Name = "Services" )]
+        public bool Services { get; set; }
 
-        [Display( Name = "Agents" )]
-        public bool Agents { get; set; }
+        [Display( Name = "Members" )]
+        public bool Members { get; set; }
 
-        [Display( Name = "Leads" )]
-        public bool Leads { get; set; }
+        [Display( Name = "Gyms" )]
+        public bool Gyms { get; set; }
 
         [Display( Name = "Financials" )]
         public bool Financials { get; set; }
@@ -42,9 +42,17 @@ namespace NedShape.UI.Models
         [Display( Name = "Reports" )]
         public bool Reports { get; set; }
 
+        [Display( Name = "Profile" )]
+        public bool Profile { get; set; }
+
+        [Display( Name = "Statements" )]
+        public bool Statements { get; set; }
+
         public bool EditMode { get; set; }
 
         #endregion
+
+
 
         #region Model Options
 

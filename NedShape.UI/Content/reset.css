@@ -26,7 +26,7 @@ ul, p, h1, h2 {
 }
 
     ul.list > li {
-        line-height: 23px;
+        line-height: 17px;
         padding-left: 10px;
         margin-bottom: 5px;
         border-bottom: 1px dashed #ccc;
@@ -266,7 +266,7 @@ input[type="button"], input[type="submit"], .btn {
 
     input[type="button"]:hover, input[type="submit"]:hover, .btn:hover {
         color: #ffffff;
-        background: #274e13 ;
+        background: #274e13 !important;
     }
 
 
@@ -292,7 +292,7 @@ input[type="button"], input[type="submit"], .btn {
     }
 
 input[type="text"], input[type="number"], input[type="file"], input[type="password"], textarea, select {
-    //width: 92%;
+    width: 92%;
     height: 28px;
     color: #274e13;
     font-size: 12px;
@@ -301,6 +301,15 @@ input[type="text"], input[type="number"], input[type="file"], input[type="passwo
     border: 1px solid #eee;
     border-bottom: 1px solid #cacaca;
     background: none no-repeat scroll 4px center #cccccc;
+}
+
+.logged-in input[type="text"], .logged-in input[type="number"], .logged-in input[type="file"], .logged-in input[type="password"] {
+    height: 20px;
+    background-color: #fff;
+}
+
+.logged-in textarea, .logged-in select {
+    background-color: #fff;
 }
 
 .input.username {

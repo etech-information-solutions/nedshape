@@ -180,11 +180,11 @@ namespace NedShape.UI.Controllers
                     {
                         case "DashBoard":
 
-                            filterContext.Result = RedirectToAction( "Index", "Gyms" );
+                            filterContext.Result = RedirectToAction( "Index", "Gym" );
 
                             break;
 
-                        case "Gyms":
+                        case "Gym":
 
                             filterContext.Result = RedirectToAction( "Index", "Members" );
 
@@ -505,13 +505,13 @@ namespace NedShape.UI.Controllers
         //
         // POST: /Authorisation/AddUserBroadcast/5
         [HttpPost]
-        public ActionResult AddUserBroadcast( int id )
+        public ActionResult AddUserBroadcast( int bid )
         {
             using ( UserBroadcastService service = new UserBroadcastService() )
             {
                 UserBroadcast ub = new UserBroadcast()
                 {
-                    BroadcastId = id,
+                    BroadcastId = bid,
                     UserId = CurrentUser.Id
                 };
 
@@ -637,7 +637,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Reset Password",
-                From = "support@nedshape.co.za",
+                From = ConfigSettings.SystemRules.ContactEmail,
                 Recipients = new List<string>() { user.Email }
             };
 
@@ -662,7 +662,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Welcome",
-                From = "support@nedshape.co.za",
+                From = ConfigSettings.SystemRules.ContactEmail,
                 Recipients = new List<string>() { user.Email }
             };
 
@@ -687,7 +687,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - NEW AGENT Signup RREQUEST",
-                From = "support@nedshape.co.za",
+                From = ConfigSettings.SystemRules.ContactEmail,
                 Recipients = new List<string>() { ConfigSettings.SystemRules.ContactEmail }
             };
 
@@ -712,7 +712,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Signup Request Approved",
-                From = "support@nedshape.co.za",
+                From = ConfigSettings.SystemRules.ContactEmail,
                 Recipients = new List<string>() { user.Email }
             };
 
@@ -737,7 +737,7 @@ namespace NedShape.UI.Controllers
             {
                 Body = body,
                 Subject = "NedShape - Signup Request Declined",
-                From = "support@nedshape.co.za",
+                From = ConfigSettings.SystemRules.ContactEmail,
                 Recipients = new List<string>() { user.Email }
             };
 

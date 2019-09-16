@@ -22,13 +22,14 @@ namespace NedShape.Data.Models
     
         public int Id { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public string Name { get; set; }
         public int Type { get; set; }
         public bool DashBoard { get; set; }
         public bool Clients { get; set; }
-        public bool Products { get; set; }
+        public bool Services { get; set; }
         public bool Members { get; set; }
         public bool Gyms { get; set; }
         public bool Financials { get; set; }

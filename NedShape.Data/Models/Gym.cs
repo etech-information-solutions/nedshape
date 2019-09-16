@@ -19,31 +19,24 @@ namespace NedShape.Data.Models
         {
             this.GymAgreements = new HashSet<GymAgreement>();
             this.GymPayments = new HashSet<GymPayment>();
-            this.UserGyms = new HashSet<UserGym>();
+            this.GymServices = new HashSet<GymService>();
+            this.GymUsers = new HashSet<GymUser>();
+            this.GymMembers = new HashSet<GymMember>();
             this.UserStatements = new HashSet<UserStatement>();
         }
     
         public int Id { get; set; }
-        public int BankId { get; set; }
-        public Nullable<int> ApprovedById { get; set; }
+        public Nullable<int> ApprovedBy { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public System.DateTime ModifiedOn { get; set; }
-        public string ModifiedBy { get; set; }
+        public int ModifiedBy { get; set; }
         public string Name { get; set; }
         public string TradingName { get; set; }
         public string RegNo { get; set; }
         public string Email { get; set; }
         public string Cell { get; set; }
         public string Fax { get; set; }
-        public string Address1 { get; set; }
-        public string Address2 { get; set; }
-        public string Address3 { get; set; }
-        public string PostCode { get; set; }
-        public string City { get; set; }
-        public int Province { get; set; }
-        public string Account { get; set; }
-        public string Branch { get; set; }
-        public int AccountType { get; set; }
         public string Reference { get; set; }
         public string POPEmail { get; set; }
         public string CompanyEmail { get; set; }
@@ -53,33 +46,23 @@ namespace NedShape.Data.Models
         public string ContactCell { get; set; }
         public int Status { get; set; }
         public System.DateTime StatusDate { get; set; }
-        public string PostalAddress1 { get; set; }
-        public string PostalAddress2 { get; set; }
-        public string PostPostalCode { get; set; }
         public string VATNo { get; set; }
-        public string PhysicalAddress1 { get; set; }
-        public string PhysicalAddress2 { get; set; }
-        public string PhysicalPostCode { get; set; }
-        public string PhysicalCity { get; set; }
         public string Website { get; set; }
-        public string PostalCity { get; set; }
-        public Nullable<int> PostalProvince { get; set; }
-        public Nullable<int> PhysicalProvince { get; set; }
-        public string AccountHolder { get; set; }
         public bool Approved { get; set; }
         public Nullable<System.DateTime> ApprovedOn { get; set; }
         public string ApproverComments { get; set; }
-        public string Latitude { get; set; }
-        public string Longitude { get; set; }
     
-        public virtual Bank Bank { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GymAgreement> GymAgreements { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GymPayment> GymPayments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserGym> UserGyms { get; set; }
+        public virtual ICollection<GymService> GymServices { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GymUser> GymUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GymMember> GymMembers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserStatement> UserStatements { get; set; }
     }

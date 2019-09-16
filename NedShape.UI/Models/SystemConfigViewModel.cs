@@ -30,15 +30,15 @@ namespace NedShape.UI.Models
         public string FinancialEmail { get; set; }
 
         [Display( Name = "Contact Number" )]
-        [StringLength( 150, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        [StringLength( 20, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string ContactNumber { get; set; }
 
         [Display( Name = "Address" )]
-        [StringLength( 150, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        [StringLength( 500, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string Address { get; set; }
 
         [Display( Name = "Payment User Code" )]
-        [StringLength( 150, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        [StringLength( 50, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string PaymentUserCode { get; set; }
 
         [Display( Name = "Payment Account" )]
@@ -49,50 +49,8 @@ namespace NedShape.UI.Models
         [StringLength( 500, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
         public string AppDownloadUrl { get; set; }
 
-
-
-        [Display( Name = "QA Monitor Path" )]
-        [StringLength( 200, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
-        public string QAMonitorPath { get; set; }
-
-        [Display( Name = "QA Monitor Start" )]
-        public TimeSpan? QAMonitorStart { get; set; }
-
-        [Display( Name = "QA Monitor End" )]
-        public TimeSpan? QAMonitorEnd { get; set; }
-
-        [Display( Name = "QA Monitor Poll" )]
-        public decimal? QAMonitorPoll { get; set; }
-
-
-
-        [Display( Name = "Export Monitor Path" )]
-        [StringLength( 200, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
-        public string ExportMonitorPath { get; set; }
-
-        [Display( Name = "Export Monitor Start" )]
-        public TimeSpan? ExportMonitorStart { get; set; }
-
-        [Display( Name = "Export Monitor End" )]
-        public TimeSpan? ExportMonitorEnd { get; set; }
-
-        [Display( Name = "Export Monitor Poll" )]
-        public decimal? ExportMonitorPoll { get; set; }
-
-
-
-        [Display( Name = "Import Monitor Path" )]
-        [StringLength( 200, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
-        public string ImportMonitorPath { get; set; }
-
-        [Display( Name = "Import Monitor Start" )]
-        public TimeSpan? ImportMonitorStart { get; set; }
-
-        [Display( Name = "Import Monitor End" )]
-        public TimeSpan? ImportMonitorEnd { get; set; }
-
-        [Display( Name = "Import Monitor Poll" )]
-        public decimal? ImportMonitorPoll { get; set; }
+        [Display( Name = "DR Discount" )]
+        public decimal? DRDiscount { get; set; }
 
 
 
@@ -105,6 +63,20 @@ namespace NedShape.UI.Models
 
         [Display( Name = "Payment Monitor Start" )]
         public TimeSpan? PaymentMonitorStart { get; set; }
+
+
+
+        [Display( Name = "Payments Export Path" )]
+        [StringLength( 200, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        public string PaymentsExportPath { get; set; }
+
+        [Display( Name = "Statement Folder" )]
+        [StringLength( 200, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        public string StatementFolder { get; set; }
+
+        [Display( Name = "Payment Folder" )]
+        [StringLength( 200, ErrorMessage = "Only {1} characters are allowed for this field.", MinimumLength = 0 )]
+        public string PaymentFolder { get; set; }
 
         #endregion
 
