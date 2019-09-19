@@ -371,7 +371,7 @@ namespace NedShape.UI.Controllers
 
 
                 //Role == 1 for now(new user)
-                user = uservice.Create( user,  1);
+                    user = uservice.Create( user,  1);
 
                 #endregion
 
