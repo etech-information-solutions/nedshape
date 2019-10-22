@@ -8,6 +8,13 @@
 #Header {
     z-index: 1;
 }
+.linked_in_button {
+    font-size: 21px !important;
+    color: #ffffffcf;
+}
+.linked_button{
+    position:absolute;
+}
 
 .nedshape-login {
     color: #158F5A;
@@ -106,7 +113,6 @@
 
 .social-button {
     cursor: pointer;
-    margin-left: -5px;
     padding: 0 !important;
     border: 0;
     outline: 0;
@@ -529,14 +535,14 @@
 }
 
 .middle-group-1 {
-    right: 31%;
+    right: 33%;
     position: absolute;
     top: 5%;
     z-index: 1;
 }
 
 .middle-group-2 {
-    right: 22%;
+    right: 24%;
     position: absolute;
     top: 5%;
     z-index: 1;
