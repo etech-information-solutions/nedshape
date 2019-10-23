@@ -9,12 +9,14 @@
 <link href="~/Content/font-awesome.css" rel="stylesheet" />
 <link href="~/Content/Index.css" rel="stylesheet" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
 
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
 
 <div class="col-md-12 nav-bar">
     <div class="btn-group left-group" role="group">
-        <input type="button" value="Home" class="left-button" onclick="window.location.href='/Home/Index'"/>
+        <input type="button" value="Home" class="left-button" onclick="window.location.href='/Home/Index'" />
         <input type="button" value="About" class="left-button" />
         <input type="button" value="Services" class="left-button" />
         <input type="button" value="Contact" class="left-button" />
@@ -32,28 +34,28 @@
 
     <div class="right-group" role="group">
         <button type="button" class="social-button btn btn-secondary">
-            <a href="https://www.facebook.com/Nedbank/" >
+            <a href="https://www.facebook.com/Nedbank/">
                 <div>
                     <img class="social-image" src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_19,h_19,al_c,q_80,usm_0.66_1.00_0.01/23fd2a2be53141ed810f4d3dcdcd01fa.webp">
                 </div>
             </a>
         </button>
         <button type="button" class="social-button btn btn-secondary">
-            <a href="https://twitter.com/nedbank" >
+            <a href="https://twitter.com/nedbank">
                 <div>
                     <img class="social-image" src="https://static.wixstatic.com/media/01ab6619093f45388d66736ec22e5885.png/v1/fill/w_19,h_19,al_c,q_80,usm_0.66_1.00_0.01/01ab6619093f45388d66736ec22e5885.webp">
                 </div>
             </a>
         </button>
         <button type="button" class="social-button btn btn-secondary">
-            <a href="https://www.youtube.com/user/nedbank" >
+            <a href="https://www.youtube.com/user/nedbank">
                 <div>
                     <img class="social-image" src="https://static.wixstatic.com/media/203dcdc2ac8b48de89313f90d2a4cda1.png/v1/fill/w_18,h_19,al_c,q_80,usm_0.66_1.00_0.01/203dcdc2ac8b48de89313f90d2a4cda1.webp">
                 </div>
             </a>
         </button>
         <button type="button" class="social-button btn btn-secondary">
-            <a href="https://www.linkedin.com/company/nedbank" >
+            <a href="https://www.linkedin.com/company/nedbank">
                 <div>
                     <img class="social-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEX///8AAADz8/N4eHhLS0vIyMj39/f8/Pzu7u74+Pjq6urg4ODk5OReXl7w8PB1dXVmZmZra2s3NzesrKyDg4NRUVGQkJCioqLb29sPDw+Hh4ccHBxERESvr689PT2lpaXKysodHR0yMjIoKChYWFiamprJyckTExO7u7vcshGSAAADbUlEQVR4nO2c2XbaMBBAowCFmIAhIWwhgWwt//+F5dDTJCyasWsJLb33WTqai7EtjUa+ugIAAAAAAAAAAAAAAAAAAAAAAACA6Ok/TcvRaDyZbbqhQ/HBvGW+0X4KHY9r+m1zzH3omJyyPPHbcXcdOix3rM4J7uiHDswVdxZBY25Dh+aGgVXQmCweqltB0IxDR+cCSdCYeejwmjOTDQeh42vOL9nQDEMH2JS+Ipj+i/9eM0z+WdPSDF9CR9iUd83QhI6wKacz7mNuQofYEN3wR+gQGyJN2fL4l040wUXoCJvypBmOQkfYlEIzTP6Nf/WqGCY/a9P+phnMvJXVUw6JjI4kOAkdnROEqelb6Ngc8WA1TH0+84llYvOSUcL0bCqjDB2VU4qTy7jKIAd1SDF9/NJbTLLz2zPsrKfL5XTd6YWOBAAAACBKute93jD17LmFYrt8/5rxrsrMCq42ZxPOzx+XrfGwLvD3HC+ClR3Vg7azhbXd6yWryuoZKhnk735yS/MRqWGvouHGfv0+2UZpOKxmqG747GlfJhFUz/C6imH3uZLgjp/xGf6oYKhc5wNmKRoqt+oRF8iq1zO8UQ2V3yCAomvDt5qG/l8b9Qy7muGorqAxnaQM1RqrKoPEbFj3JvzDKiZDufmbfRtLxG+xgEtDrZTTitcVlUvDf8brKyMKQ68PmzgMl9kb+iyfi8TQ46I/EsPn7A1NkaDhy6DVKgePesM969QMR52/CeCbrV6mu+MhLcPysKSxqDKbS8rwtJJjrXfapGN4d26WKR6R2+NtJezc0PLcV6+it3pr14YL2zpBuxe91cy7NrTW3Ko5OF9LKMeGU/tI2hkrX/XIjg2FkW6Vrr4yUm4NxXyE/dC43jcaQ3GoD7mvr9eFU8OWONRc7uwrleHUUNkSlDv7Oq7q1FB5HMo3oq/TK04NlYKSUuzsa3Xh1FAZayp2bmdgKO9q5GAoLzByMBTPWGGIIYYYYoghhtEYqvU0GGKIIYaNDfXaRAxjN8z/X5q/YZVKdgwxxBBDDP93w0onuzDEEEOvhhXPkGKIYUDDqme5McQQQwwxtBtW//IHhhhiiCGGNkOl3h5DDDHE0IFhnS/S1TX09YmTcUtgfPxl/UJsrn3GfS71LoVDYQAAAAAAAAAAAAAAAAAAAAAAAAAQkt8Uhjn7mAsanQAAAABJRU5ErkJggg==">
                 </div>
@@ -102,71 +104,75 @@
         </div>
     </div>
 
+    @*
+        <div class="col-lg-12 col-md-12 workout-div">
 
-    <div class="col-lg-12 col-md-12 workout-div">
-
-        <div class="workout-floating-text">
-            <span class="text-success-white">CHOOSE YOUR</span><br>
-            <span class="text-success-white">WORKOUT</span><br>
-            <div class="paragraph-text">
-                <span>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.</span>
-            </div>
+            <div class="workout-floating-text">
+                <span class="text-success-white">CHOOSE YOUR</span><br>
+                <span class="text-success-white">WORKOUT</span><br>
+                <div class="paragraph-text">
+                    <span>I'm a paragraph. Click here to add your own text and edit me. It’s easy. Just click “Edit Text” or double click me to add your own content and make changes to the font. I’m a great place for you to tell a story and let your users know a little more about you.</span>
+                </div>
 
 
 
-            <div class="col-lg-4 col-sm-4 option-icon">
-                <div class="option-number">
-                    <span class="">1</span>
+                <div class="col-lg-4 col-sm-4 option-icon">
+                    <div class="option-number">
+                        <span class="">1</span>
+                    </div>
+                    <div class="option-text-div">
+                        <a class="option-text" href=""><span>TRX WORKOUT</span></a>
+                    </div>
                 </div>
-                <div class="option-text-div">
-                    <a class="option-text" href=""><span>TRX WORKOUT</span></a>
+                <div class="col-lg-4 col-sm-4 option-icon">
+                    <div class="option-number">
+                        <span class="">2</span>
+                    </div>
+                    <div class="option-text-div">
+                        <a class="option-text" href=""><span>POSTURE CORRECTION</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 option-icon">
+                    <div class="option-number">
+                        <span class="">3</span>
+                    </div>
+                    <div class="option-text-div">
+                        <a class="option-text" href=""><span>MUSSCLE TONE</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 option-icon">
+                    <div class="option-number">
+                        <span class="">4</span>
+                    </div>
+                    <div class="option-text-div">
+                        <a class="option-text" href=""><span>WEIGHT LOSS</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 option-icon">
+                    <div class="option-number">
+                        <span class="">5</span>
+                    </div>
+                    <div class="option-text-div">
+                        <a class="option-text" href=""><span>CARDIO FITNESS</span></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4 option-icon">
+                    <div class="option-number">
+                        <span class="">6</span>
+                    </div>
+                    <div class="option-text-div">
+                        <a class="option-text" href=""><span>CORE STRENGTH</span></a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-sm-4 option-icon">
-                <div class="option-number">
-                    <span class="">2</span>
-                </div>
-                <div class="option-text-div">
-                    <a class="option-text" href=""><span>POSTURE CORRECTION</span></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-4 option-icon">
-                <div class="option-number">
-                    <span class="">3</span>
-                </div>
-                <div class="option-text-div">
-                    <a class="option-text" href=""><span>MUSSCLE TONE</span></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-4 option-icon">
-                <div class="option-number">
-                    <span class="">4</span>
-                </div>
-                <div class="option-text-div">
-                    <a class="option-text" href=""><span>WEIGHT LOSS</span></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-4 option-icon">
-                <div class="option-number">
-                    <span class="">5</span>
-                </div>
-                <div class="option-text-div">
-                    <a class="option-text" href=""><span>CARDIO FITNESS</span></a>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-4 option-icon">
-                <div class="option-number">
-                    <span class="">6</span>
-                </div>
-                <div class="option-text-div">
-                    <a class="option-text" href=""><span>CORE STRENGTH</span></a>
-                </div>
-            </div>
+
+
+            <img class="gym-image" src="https://static.wixstatic.com/media/1e47b2_b5556ecfae2f4690aa916577faa99062.jpg/v1/fill/w_1905,h_905,al_c,q_85,usm_0.66_1.00_0.01/1e47b2_b5556ecfae2f4690aa916577faa99062.webp">
+
         </div>
-
-
-        <img class="gym-image" src="https://static.wixstatic.com/media/1e47b2_b5556ecfae2f4690aa916577faa99062.jpg/v1/fill/w_1905,h_905,al_c,q_85,usm_0.66_1.00_0.01/1e47b2_b5556ecfae2f4690aa916577faa99062.webp">
-
+    *@
+    <div class="col-lg-offset-2 col-lg-8 col-md-8 map_div">
+        <div id='map'></div>
     </div>
 
     <div class="col-lg-12 col-md-12 comments-div">
@@ -291,7 +297,7 @@
 
     <div class="col-md-12">
         <h4 class="text-banner-bottom">
-            
+
             <form class="join-us-form">
                 JOIN US ON MOBILE!
                 <input class="country-code" placeholder="+27" aria-label="+27" type="tel" pattern="^[+]\d{1,4}$|^\d{1,4}$">
@@ -303,6 +309,50 @@
     </div>
 
 </body>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWFyc2htZWxsb3dmZWxsbyIsImEiOiJjazIzZTZyeHMwa3F6M25xbzJ2bThhNWVjIn0.v3rsG9DUrePQhJmILZa6SA';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/marshmellowfello/ck23euiyc1q0y1cmmnmjeh5kg', // stylesheet location
+        center: [18.5, -33.98], // starting position [lng, lat]
+        zoom: 11 // starting zoom
+    });
+
+    map.on('click', function (e) {
+        var features = map.queryRenderedFeatures(e.point, {
+            layers: ['cape-map'] // replace this with the name of the layer
+        });
+
+        if (!features.length) {
+            return;
+        }
+
+        var feature = features[0];
+
+        var popup = new mapboxgl.Popup({ offset: [0, -15] })
+            .setLngLat(feature.geometry.coordinates)
+            .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+            .addTo(map);
+    });
+</script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .mapboxgl-canvas {
+        right: 0 !important;
+    }
+
+    #map {
+        right: 0 !important;
+        width: 100% !important;
+        height: 460px !important;
+    }
+</style>
 
 
 

@@ -491,6 +491,7 @@
     <Content Include="Views\Service\_Services.cshtml" />
     <Content Include="Views\Shared\_GymCustomSearch.cshtml" />
     <Content Include="Views\Shared\_ServiceCustomSearch.cshtml" />
+    <Content Include="Views\Home\test.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

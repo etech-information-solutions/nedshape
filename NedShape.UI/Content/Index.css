@@ -15,7 +15,12 @@
 .linked_button{
     position:absolute;
 }
-
+.map_div{
+    padding:34px;
+}
+.mapboxgl-popup-content {
+    color: black !important;
+}
 .nedshape-login {
     color: #158F5A;
     font-size: 58px;

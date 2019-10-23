@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "test";
+}
+<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<link href="~/Content/Index.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<head>
+    <meta charset='utf-8' />
+    <title>Display a map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+<body>
+
+    <div id='map'></div>
+
+</body>
+
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoibWFyc2htZWxsb3dmZWxsbyIsImEiOiJjazIzZTZyeHMwa3F6M25xbzJ2bThhNWVjIn0.v3rsG9DUrePQhJmILZa6SA';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/marshmellowfello/ck23euiyc1q0y1cmmnmjeh5kg', // stylesheet location
+        center: [18.55, -33.98], // starting position [lng, lat]
+        zoom: 10 // starting zoom
+    });
+
+    map.on('click', function(e) {
+      var features = map.queryRenderedFeatures(e.point, {
+        layers: ['cape-map'] // replace this with the name of the layer
+      });
+
+      if (!features.length) {
+        return;
+      }
+
+      var feature = features[0];
+
+      var popup = new mapboxgl.Popup({ offset: [0, -15] })
+        .setLngLat(feature.geometry.coordinates)
+        .setHTML('<h3>' + feature.properties.title + '</h3><p>' + feature.properties.description + '</p>')
+        .addTo(map);
+    });
+</script>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .mapboxgl-canvas{
+        width:100% !important;
+        right:0 !important;
+        height: 90% !important;
+       
+    }
+    #map {
+        right:0 !important;
+        position: absolute;
+        width: 100% !important;
+        height: 380px !important;
+    }
+</style>

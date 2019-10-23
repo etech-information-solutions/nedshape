@@ -12,6 +12,10 @@ namespace NedShape.UI.Controllers
         {
             return View();
         }
+        public ActionResult test()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {
