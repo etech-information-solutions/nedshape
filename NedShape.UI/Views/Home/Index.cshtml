@@ -15,55 +15,6 @@
 <script src="~/Scripts/bootstrap.min.js"></script>
 <script src="~/Scripts/index.js"></script>
 
-<div class="col-md-12 nav-bar">
-    <div class="btn-group left-group" role="group">
-        <input type="button" value="Home" class="left-button" onclick="window.location.href='/Home/Index'" />
-        <input type="button" value="About" class="left-button" />
-        <input type="button" value="Services" class="left-button" />
-        <input type="button" value="Contact" class="left-button" />
-        <input type="button" value="Sign-up" class="left-button" onclick="window.location.href='/Account/SignUp'" />
-    </div>
-
-    <div class="middle-group-1" role="group">
-        <span class="nedshape-login">Nedshape</span>
-    </div>
-
-    <div class="middle-group-2" role="group">
-        <input type="button" value="Log in" style="color: #158F5A !important" class="login-button" onclick="window.location.href='/Account/Login'" />
-    </div>
-
-
-    <div class="right-group" role="group">
-        <button type="button" class="social-button btn btn-secondary">
-            <a href="https://www.facebook.com/Nedbank/">
-                <div>
-                    <img class="social-image" src="https://static.wixstatic.com/media/23fd2a2be53141ed810f4d3dcdcd01fa.png/v1/fill/w_19,h_19,al_c,q_80,usm_0.66_1.00_0.01/23fd2a2be53141ed810f4d3dcdcd01fa.webp">
-                </div>
-            </a>
-        </button>
-        <button type="button" class="social-button btn btn-secondary">
-            <a href="https://twitter.com/nedbank">
-                <div>
-                    <img class="social-image" src="https://static.wixstatic.com/media/01ab6619093f45388d66736ec22e5885.png/v1/fill/w_19,h_19,al_c,q_80,usm_0.66_1.00_0.01/01ab6619093f45388d66736ec22e5885.webp">
-                </div>
-            </a>
-        </button>
-        <button type="button" class="social-button btn btn-secondary">
-            <a href="https://www.youtube.com/user/nedbank">
-                <div>
-                    <img class="social-image" src="https://static.wixstatic.com/media/203dcdc2ac8b48de89313f90d2a4cda1.png/v1/fill/w_18,h_19,al_c,q_80,usm_0.66_1.00_0.01/203dcdc2ac8b48de89313f90d2a4cda1.webp">
-                </div>
-            </a>
-        </button>
-        <button type="button" class="social-button btn btn-secondary">
-            <a href="https://www.linkedin.com/company/nedbank">
-                <div>
-                    <img class="social-image" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAe1BMVEX///8AAADz8/N4eHhLS0vIyMj39/f8/Pzu7u74+Pjq6urg4ODk5OReXl7w8PB1dXVmZmZra2s3NzesrKyDg4NRUVGQkJCioqLb29sPDw+Hh4ccHBxERESvr689PT2lpaXKysodHR0yMjIoKChYWFiamprJyckTExO7u7vcshGSAAADbUlEQVR4nO2c2XbaMBBAowCFmIAhIWwhgWwt//+F5dDTJCyasWsJLb33WTqai7EtjUa+ugIAAAAAAAAAAAAAAAAAAAAAAACA6Ok/TcvRaDyZbbqhQ/HBvGW+0X4KHY9r+m1zzH3omJyyPPHbcXcdOix3rM4J7uiHDswVdxZBY25Dh+aGgVXQmCweqltB0IxDR+cCSdCYeejwmjOTDQeh42vOL9nQDEMH2JS+Ipj+i/9eM0z+WdPSDF9CR9iUd83QhI6wKacz7mNuQofYEN3wR+gQGyJN2fL4l040wUXoCJvypBmOQkfYlEIzTP6Nf/WqGCY/a9P+phnMvJXVUw6JjI4kOAkdnROEqelb6Ngc8WA1TH0+84llYvOSUcL0bCqjDB2VU4qTy7jKIAd1SDF9/NJbTLLz2zPsrKfL5XTd6YWOBAAAACBKute93jD17LmFYrt8/5rxrsrMCq42ZxPOzx+XrfGwLvD3HC+ClR3Vg7azhbXd6yWryuoZKhnk735yS/MRqWGvouHGfv0+2UZpOKxmqG747GlfJhFUz/C6imH3uZLgjp/xGf6oYKhc5wNmKRoqt+oRF8iq1zO8UQ2V3yCAomvDt5qG/l8b9Qy7muGorqAxnaQM1RqrKoPEbFj3JvzDKiZDufmbfRtLxG+xgEtDrZTTitcVlUvDf8brKyMKQ68PmzgMl9kb+iyfi8TQ46I/EsPn7A1NkaDhy6DVKgePesM969QMR52/CeCbrV6mu+MhLcPysKSxqDKbS8rwtJJjrXfapGN4d26WKR6R2+NtJezc0PLcV6+it3pr14YL2zpBuxe91cy7NrTW3Ko5OF9LKMeGU/tI2hkrX/XIjg2FkW6Vrr4yUm4NxXyE/dC43jcaQ3GoD7mvr9eFU8OWONRc7uwrleHUUNkSlDv7Oq7q1FB5HMo3oq/TK04NlYKSUuzsa3Xh1FAZayp2bmdgKO9q5GAoLzByMBTPWGGIIYYYYoghhtEYqvU0GGKIIYaNDfXaRAxjN8z/X5q/YZVKdgwxxBBDDP93w0onuzDEEEOvhhXPkGKIYUDDqme5McQQQwwxtBtW//IHhhhiiCGGNkOl3h5DDDHE0IFhnS/S1TX09YmTcUtgfPxl/UJsrn3GfS71LoVDYQAAAAAAAAAAAAAAAAAAAAAAAAAQkt8Uhjn7mAsanQAAAABJRU5ErkJggg==">
-                </div>
-            </a>
-        </button>
-    </div>
-</div>
 
 
 <body class="col-md-12">
@@ -214,7 +165,7 @@
                     <span>March 10th, 2019</span><br>
                 </div>
             </div>
-       </div>
+        </div>
         <img class="success-image" src="https://static.wixstatic.com/media/ebb861_2fd073a8f7834e398f6461e0629ee10f~mv2_d_6141_4098_s_4_2.jpg/v1/fill/w_1905,h_713,al_c,q_85,usm_0.66_1.00_0.01/ebb861_2fd073a8f7834e398f6461e0629ee10f~mv2_d_6141_4098_s_4_2.webp">
     </div>
 
