@@ -13,6 +13,7 @@
 
 <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
 <script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/index.js"></script>
 
 <div class="col-md-12 nav-bar">
     <div class="btn-group left-group" role="group">
@@ -171,7 +172,7 @@
 
         </div>
     *@
-    <div class="col-lg-offset-2 col-lg-8 col-md-8 map_div">
+    <div class="col-lg-offset-2 col-lg-8 col-md-offset-1 col-md-10 col-sm-12 map_div">
         <div id='map'></div>
     </div>
 
@@ -213,7 +214,7 @@
                     <span>March 10th, 2019</span><br>
                 </div>
             </div>
-        </div>
+       </div>
         <img class="success-image" src="https://static.wixstatic.com/media/ebb861_2fd073a8f7834e398f6461e0629ee10f~mv2_d_6141_4098_s_4_2.jpg/v1/fill/w_1905,h_713,al_c,q_85,usm_0.66_1.00_0.01/ebb861_2fd073a8f7834e398f6461e0629ee10f~mv2_d_6141_4098_s_4_2.webp">
     </div>
 
@@ -309,57 +310,6 @@
     </div>
 
 </body>
-
-<script>
-
-    window.onload = function WindowLoad(event) {
-         mapboxgl.accessToken = 'pk.eyJ1IjoibWFyc2htZWxsb3dmZWxsbyIsImEiOiJjazIzZTZyeHMwa3F6M25xbzJ2bThhNWVjIn0.v3rsG9DUrePQhJmILZa6SA';
-        var map = new mapboxgl.Map({
-            container: 'map', // container id
-            style: 'mapbox://styles/marshmellowfello/ck23euiyc1q0y1cmmnmjeh5kg', // stylesheet location
-            center: [18.5, -33.98], // starting position [lng, lat]
-            zoom: 11 // starting zoom
-        });
-
-        map.on('click', function (e) {
-            var features = map.queryRenderedFeatures(e.point, {
-                layers: ['cape-map'] // replace this with the name of the layer
-            });
-
-            if (!features.length) {
-                return;
-            }
-
-            var feature = features[0];
-
-            var popup = new mapboxgl.Popup({ offset: [0, -15] })
-                .setLngLat(feature.geometry.coordinates)
-                .setHTML('<h3 class="pop_up_header">' + feature.properties.title + '</h3><p class="pop_up_paragraph">' + feature.properties.description + '</p>')
-                .addTo(map);
-        });
-        map.addControl(new mapboxgl.NavigationControl());
-    }
-
-
-
-</script>
-
-<style>
-    body {
-        margin: 0;
-        padding: 0;
-    }
-
-    .mapboxgl-canvas {
-        right: 0 !important;
-    }
-
-    #map {
-        right: 0 !important;
-        width: 100% !important;
-        height: 460px !important;
-    }
-</style>
 
 
 

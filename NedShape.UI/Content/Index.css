@@ -4,7 +4,20 @@
     color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
+body {
+    margin: 0;
+    padding: 0;
+}
 
+.mapboxgl-canvas {
+    right: 0 !important;
+}
+
+#map {
+    right: 0 !important;
+    width: 100% !important;
+    height: 460px !important;
+}
 #Header {
     z-index: 1;
 }
